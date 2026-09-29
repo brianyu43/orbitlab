@@ -1,0 +1,10 @@
+{
+  "source_sha256": "77a0c4d4799272f80582b2392da7e45bff5f9fae501f579fa69cfecb55457bc9",
+  "benchmark_sha256": "4bae61b97b22c2bc56de03400fb55865790469754764a835b613fdc1c6e663f2",
+  "authorization": "User explicitlyrequestedaggressiveMacGPUusefortimesavings duringexistingR5 execution.",
+  "device": "AppleM5ProMPSfloat32;64GBunifiedmemory;18CPUlogicalcores; originaltwoCPUthreads perworker retained.",
+  "change": "Atmost2independentprimaryMPS trainingworkers withinthesameofficialtask/resplit/initgroup. Preserveoriginalfamily/taskorder andsequentialvalidation/testdispatch. Modelarchitectures,weightsinitializations,dataorders,batch32,36000updates,optimizer,precision/checkpointselection unchanged.",
+  "safety": "TemporarilySIGSTOPonlyverifiedoriginaldispatcher,nottrainingworker. Afterallgroupmodelrunreceiptscomplete,SIGCONTdispatcher. Existingdependencypids/verificationdrivers intact. finallyresumesdispatcher andterminatesownunfinishedworkers; atomiccheckpoints retained.",
+  "budget": "ExistingR5global12h/30GBcaps unchanged. InterleavedGPUworkchangeswalltiming; reportbenchmarkandactualprocesssecondswithconcurrencydisclosure. Shortvalidation/readoutGPUjobs canalsooverlap;two-worker limitrefers toprimarytraining.",
+  "no_new_scientific_results": "Schedulingbenchmark usesdiscardedweightsanddoesnotselectmodelsorclaimaccuracy."
+}

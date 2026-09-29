@@ -1,0 +1,108 @@
+{
+  "protocol_sha256": "dd9259c946ea57d77ccbfad2ef4b6a4a27d72ef9a5aa24eafe29676004869d24",
+  "serial_timed_seconds_sum": 27.553344500003732,
+  "three_worker_timed_seconds_max": 16.653256249999686,
+  "estimated_compute_throughput_speedup": 1.6545319477687286,
+  "two_worker_speedup": 1.6293675372357694,
+  "relative_to_two_worker": 1.0154442812673503,
+  "recommend_three_workers": false,
+  "runs": {
+    "serial_plain": {
+      "kind": "plain",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 7.833190459001344,
+      "updates_per_second": 25.532380585764294,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.012783908285200596,
+        0.0060447268187999725
+      ]
+    },
+    "serial_c4": {
+      "kind": "c4",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 10.853683624998666,
+      "updates_per_second": 18.4269236979924,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.013625702820718288,
+        0.007016313727945089
+      ]
+    },
+    "serial_object": {
+      "kind": "object",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 8.866470416003722,
+      "updates_per_second": 22.556890241127498,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.015531768091022968,
+        0.014906522817909718
+      ]
+    },
+    "triple_plain": {
+      "kind": "plain",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 13.228790957997262,
+      "updates_per_second": 15.11853960312927,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.012783908285200596,
+        0.0060447268187999725
+      ]
+    },
+    "triple_c4": {
+      "kind": "c4",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 16.653256249999686,
+      "updates_per_second": 12.009663275313125,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.013625702820718288,
+        0.007016313727945089
+      ]
+    },
+    "triple_object": {
+      "kind": "object",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 15.748648207998485,
+      "updates_per_second": 12.699502672135582,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.015531768091022968,
+        0.014906522817909718
+      ]
+    }
+  },
+  "scope": "Compute-onlythroughput withdifferentindependentarchitectures,firstserialplain/objecttimingsreusedfromimmediatelyprecedingbenchmark. NotisolatedfullPNG-throughputorend-to-endcompletionmeasurement."
+}

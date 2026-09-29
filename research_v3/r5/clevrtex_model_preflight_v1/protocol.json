@@ -1,0 +1,21 @@
+{
+  "model_source_sha256": "f1b8a9a17f7d0e9df935ce2e8c44967e50f806ea6852c5125801213ad544f5db",
+  "data_source_sha256": "aa9a7765deccd9b3f0936cee5d6d32c70dd6eec54d22daeb6416a6aea9710ad5",
+  "source_sha256": "d7527f286c0023ba088ed209e87040033668bcf91aff97911202106f536a8876",
+  "official_intake_sha256": "c746133bb9b906a27c70a6f1c1b44e8024bb6c34fbabe4a942de879489c353af",
+  "kinds": [
+    "plain",
+    "c4",
+    "object"
+  ],
+  "batch": 32,
+  "steps": 100,
+  "optimizer": "Adam lr=.0005, grad clip1, full image MSE",
+  "device": "MPSfloat32;CPU2threads;actual native128px PNG loading included",
+  "timing_only": "100pilot updates per model, discarded for full experiments; no model selection or scientific scoring. Uses deterministic random official training indices, not test.",
+  "parity": "Five CPUupdates on16officialtrainingpairs to obtain nonidentityweights, then same checkpoint CPUvsMPSforward on8pairs; absolute tolerance2e-4. Separate from timing100steps.",
+  "family": "clevrtex",
+  "timing_overlap": "Other authorized R4/R5 processes may overlap; timings are observed end-to-end per process, not isolated hardware throughput",
+  "torch": "2.14.0",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+}

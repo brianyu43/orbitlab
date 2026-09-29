@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "family": "clevrtex",
+  "task_order": [
+    "Single_Atomic"
+  ],
+  "kinds": [
+    "plain",
+    "c4",
+    "object"
+  ],
+  "development_initialization": 0,
+  "development_partition_seed": 890101,
+  "conditional_confirmation_partition_seeds": [
+    890201,
+    890202,
+    890203
+  ],
+  "conditional_confirmation_initializations": [
+    0,
+    1,
+    2
+  ],
+  "official_data_split": "Hard64000training divided57600train/6400validation by r5_3d_audit_v2.py family partition. Official8000test retained and only scored after validation selection. This3Dtask was not trained in the prior project; the officialsplit is fixed.",
+  "epochs_evaluated": [
+    5,
+    10,
+    20
+  ],
+  "full_epochs": 20,
+  "batch": 32,
+  "updates_each_full_run": 36000,
+  "device": "MPSfloat32,CPU2threads",
+  "optimizer": "Adam lr=.0005; global grad norm clip1; full-image MSE; no augmentation; no learning-rate tuning",
+  "initialization": "950000+init; plain/C4exactsameparametersandinitialweights. Object1081892vsplain1266467parameters; not parameter-matched.",
+  "sampling": "Whole training scenes shuffled each complete epoch, NumPyseed952000+init. All arms share exact20orders; no replacement within an epoch.",
+  "model_information": "Only source RGB input and target RGB image loss for all primary models. No true masks, factors, positions or rule IDs at inference/training. Object arm3learned slots includes background capacity; object correspondence is not assumed.",
+  "selection": "Per-model smallest validation full-image MSE among5/10/20epochs; ties choose earlier epoch. Also report fixed20epoch test as matched-training-budget secondary comparison. Never select by official test.",
+  "development_gate": "Compare validation-selectedC4andobject againstvalidation-selectedplain and inputcopy: fullimageMSE and changed-scenechangedpixelMSE each lower thanboth; preservedpixelMSE<=1.05*plain. Maximizefullimageimprovement; tieskindsorder. Only selectedcandidate+plain receive confirmation: three fresh train/validation partition seeds times three initializations. These are resplits of the SAME official dataset with the same officialtest, not new independent datasets. Gatefailureprecludesautomaticconfirmation. Resource-limited confirmation remains explicitly unfinished.",
+  "reporting": "Full image, changed pixels on changed scenes, preserved pixels, unchanged scene damage, source copy baseline. Attribute readout and integrated disk experiment are additional required work, not satisfied by pixel evaluation alone.",
+  "photometric_caveat": "ExactRGB changed-pixel regions include lighting/shadow changes and tiny CLEVRTex rendering differences even when all object attributes are unchanged. Retain originalpixelmetrics and separately aggregate semantically unchanged/changed scenes from audited metadata; do not equate changed pixels with changed semantic attributes.",
+  "preflight": "CPU/MPSforwardafter5CPUupdates,100GPUtimingupdatesperarm, allreset beforetraining. Timing evidence in the family model_preflight_v1; modelsourcesmustmatch.",
+  "caps": {
+    "initial_R5_stage_seconds": 43200,
+    "R5_bytes": 30000000000
+  },
+  "resume": "Atomic optimizer/RNG/checkpointprogress every900updates; exactsavedorders anddata/sourcehashes. Preserve partial runs onfailures.",
+  "sources": {
+    "research_v3/r5_3d_train.py": "8b4d3aee6f2616b0a2603ff9ed2f102b5659769de84832f9e829ce1e554a9e23",
+    "research_v3/r5_models.py": "f1b8a9a17f7d0e9df935ce2e8c44967e50f806ea6852c5125801213ad544f5db",
+    "research_v3/r5_3d_data.py": "aa9a7765deccd9b3f0936cee5d6d32c70dd6eec54d22daeb6416a6aea9710ad5",
+    "research_v3/r5_data.py": "3f231c6a0dfc80d7554250c606d82e372b6f839c730fec5a7dd462b698279f51",
+    "research_v3/r5_3d_audit_v2.py": "7d540cf8b77d4e26411bb4d5f030d71807aa69557f756ba0bf39120cea0c25f8",
+    "research_v3/r5_audit.py": "85062aeaa46e2fd871b85e5ebbe80747996595305da0389db92bbaf1b37818d4",
+    "research_v3/r5_3d_partitions.py": "e8370084d439805289c239a87f5a92f4fe0f7ca905e9035687a1ec6846297f34",
+    "research_v3/r5_partitions.py": "19fb1747e8e499fab9eed49318284276077bd4aa95bc6caeb26a260c088095ec",
+    "research_v3/r5_intake.py": "628f1b41256c5301fad6ffaff1e28109743a25ec894652ed7ccf5207e4603553",
+    "research_v3/r4_core.py": "0560cc04e389b673aa210f326f022e32e15b652861e0bb08b9532a02ad88e185",
+    "research_v3/v3_common.py": "3b28ab8347d53fd37b77dee30ddc3d256209a60c805a12060c21186fab93c605",
+    "followup/svib_preview_models.py": "85ddc5606df5f98eadd2b0a86d06a14512d654f868905b995e15919804fc48d1"
+  },
+  "model_preflight_receipts": {
+    "plain": "b1d48271fb3dc3536cc68b79372d7989b98315d4144c799ef8dc9de51741c796",
+    "c4": "12bc7412407cd0094f96cbae4d4b0065a4477d25157e5c6a4539b660029ef977",
+    "object": "d64a9cd2aeb2f0d7a157a883feb835bfd35e59b268d56afca0e559f49f3600c7"
+  },
+  "completed_semantic_audits": {
+    "Single_Atomic": "1c16b564898a6608ef3571f68cc2d1ecfcfbfee570c4057d12d06ede56122dcd"
+  },
+  "model_preflight_protocol_sha256": "c64b03d5513554c1cfda15bae52521be78ac626c0f0a21bf578332a5c0faf44b",
+  "audit_protocol_sha256": "5fe24f0930d6c3f180bb87a2d634b34eada25f4c0a837f4013b9c537aa1df521",
+  "intake_manifest_sha256": "c746133bb9b906a27c70a6f1c1b44e8024bb6c34fbabe4a942de879489c353af"
+}

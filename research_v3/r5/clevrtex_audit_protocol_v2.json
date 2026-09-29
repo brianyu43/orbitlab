@@ -1,0 +1,57 @@
+{
+  "source_sha256": "7d540cf8b77d4e26411bb4d5f030d71807aa69557f756ba0bf39120cea0c25f8",
+  "loader_source_sha256": "aa9a7765deccd9b3f0936cee5d6d32c70dd6eec54d22daeb6416a6aea9710ad5",
+  "intake_manifest_sha256": "c746133bb9b906a27c70a6f1c1b44e8024bb6c34fbabe4a942de879489c353af",
+  "intake_verification_sha256": "1d20637728a2e15945c069a3fff67c90baa9788fe1013f437a2fb44c95446a31",
+  "upstream_sources": {
+    "macros.py": "b56d9911125ac59cc12c9722904bb3ddbee7abe6701f66741b5b11694880b6fe",
+    "rule.py": "eb7bada813b0a00b9b01ef73130e0973d98f506dcb66c23514d5c579b1ddea48",
+    "create_data.py": "c8f66727700aff50c141a30a98851c0b1e3b121a30b929ec9ac2077ac6e6101d",
+    "utils.py": "ba4c534b010dc37194b9a3b4d1ea669d10593b8d9489efb90c7994b861d48d3f"
+  },
+  "family": "clevrtex",
+  "task": "Single_Atomic",
+  "native_pixels": "PIL convertRGB from original128x128RGBA without resize or recolor; count alpha-channel values; decode all RGB and masks.",
+  "semantic_rule": "Swap the two objects shape labels; retain other attributes, world XY and rotation. World Z and projected pixel centers may change with object mesh height; record instead of assuming invariance.",
+  "attribute_names": [
+    "shape",
+    "size",
+    "material"
+  ],
+  "vocabularies": {
+    "shape": [
+      "Cone",
+      "Cube",
+      "Cylinder",
+      "Suzanne",
+      "Icosahedron",
+      "NewellTeapot",
+      "Sphere",
+      "Torus"
+    ],
+    "size": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "material": [
+      "data/materials/PoliigonBricksFlemishRed001.blend",
+      "data/materials/PoliigonBricksPaintedWhite001.blend",
+      "data/materials/PoliigonChainmailCopperRoundedThin001.blend",
+      "data/materials/PoliigonFabricDenim003.blend",
+      "data/materials/PoliigonFabricFleece001.blend",
+      "data/materials/PoliigonMetalSpottyDiscoloration001.blend",
+      "data/materials/PoliigonRoofTilesTerracotta004.blend",
+      "data/materials/PoliigonWoodFlooring061.blend"
+    ]
+  },
+  "split_seed": 890101,
+  "train_n": 57600,
+  "val_n": 6400,
+  "test_n": 8000,
+  "family_policy": "Keep connected components sharing source OR target exact C4 RGB image-orbit hashes in one train/val split. Conservative duplicate detection, not a claim that 3D task commutes with image rotation.",
+  "official_test": "Membership preserved, overlaps reported; no previous project training on these3Dtasks.",
+  "mask_policy": "CLEVR object0 is exactblack and object1 exactred on gray background; CLEVRTex object0/1 are red/green with tone-mapped interiors near227 on blackground. Count CLEVR exactRGB; CLEVRTex dominant channel>=200, others<=5 as high-confidence interior, not a full visibility area. No primary model receives masks.",
+  "amendment": "audit_3d_preflight_v1/AMENDMENT.json preserves the original CLEVR diagnostic and source; semantic labels, RGB and split policy unchanged.",
+  "changed_region": "Exact source-target RGB difference; report semantic-unchanged scenes and background/unchanged variation so rendering noise cannot be mistaken for a semantic edit."
+}

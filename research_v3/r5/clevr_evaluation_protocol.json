@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "family": "clevr",
+  "source_sha256": "b172c38ffec20c739fb4c024a8275662eb60191c95e28f353632a37956cd4b6d",
+  "training_protocol_sha256": "a6579f757f0e08714f2c73c9a328b4eb4afa86d5cac18a22083d39913a769ecd",
+  "test_modes": [
+    "validation_selected",
+    "fixed20epoch"
+  ],
+  "test_n": 8000,
+  "batch": 32,
+  "test_policy": "Score all developmentarms after per-model validation selection and development candidate locking; never choose epochs or candidate usingtest. This family SingleAtomic officialtest was not previously used for project modeltraining; membership remainsfixed.",
+  "primary_metrics": [
+    "image_mse",
+    "changed_mse",
+    "preserved_mse",
+    "changed_pixels",
+    "copy_mse",
+    "input_damage_mse"
+  ],
+  "secondary_aggregation": "Changed error includes only scenes withchangedpixels; preserved andunchanged-scene damage retained. No nonfiniteimages silentlyexcluded.",
+  "photometric_caveat": "ExactRGBdifferences are not semantic object changes. Audits quantify tinychanges in semantically unchanged CLEVRTex scenes; report metadata-defined changed/unchanged aggregates separately without altering the frozen primarypixelgate.",
+  "verification": "Replay all8000float32RGBoutputs andmetricrows per evaluated checkpoint withsameMPSbatch32,atol1e-6. Rehash source/data/weights; repeatpixelmetrics. Notindependentretraining.",
+  "temporary_cache": "One1.57GBfloat32prediction cache per activeunit, explicitlytemporary and removedonlyafter fullpixelreplaypasses. RetainoriginalcacheSHA256, per-batchfloat32hashes,8000metricrows and32examples; checkpointreconstructsoutputs.",
+  "examples": "First16officialtestindices plus16highestchanged-region-error scenes amongchangedscenes, selectedafterallrowsfordisplayonly. No scoreexclusions.",
+  "scope": "Externalpixelstudy only. Objectattribute readout, otherexternal3Dtasks, matched moving-disk integration andindependenthuman applicability remainseparate requiredwork."
+}

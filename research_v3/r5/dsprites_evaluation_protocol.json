@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "source_sha256": "2e3c179efb1b661420b4ab9e731c4d5b40d5af2bfc780f1a0395dab5e1efa026",
+  "training_protocol_sha256": "47d4129d3fea68cc2a85533c13e2610ce302c00bf0c2902e4480b45693f04376",
+  "test_modes": [
+    "validation_selected",
+    "fixed20epoch"
+  ],
+  "test_n": 8000,
+  "batch": 32,
+  "test_policy": "Score all developmentarms after per-model validation selection and development candidate locking; never choose epochs or candidate usingtest. Same officialtestseenearlierforSingleAtomic.",
+  "primary_metrics": [
+    "image_mse",
+    "changed_mse",
+    "preserved_mse",
+    "changed_pixels",
+    "copy_mse",
+    "input_damage_mse"
+  ],
+  "secondary_aggregation": "Changed error includes only scenes withchangedpixels; preserved andunchanged-scene damage retained. No nonfiniteimages silentlyexcluded.",
+  "verification": "Replay all8000float32RGBoutputs andmetricrows per evaluated checkpoint withsameMPSbatch32,atol1e-6. Rehash source/data/weights; repeatpixelmetrics. Notindependentretraining.",
+  "temporary_cache": "One1.57GBfloat32prediction cache per activeunit, explicitlytemporary and removedonlyafter fullpixelreplaypasses. RetainoriginalcacheSHA256, per-batchfloat32hashes,8000metricrows and32examples; checkpointreconstructsoutputs.",
+  "examples": "First16officialtestindices plus16highestchanged-region-error scenes amongchangedscenes, selectedafterallrowsfordisplayonly. No scoreexclusions.",
+  "scope": "Externalpixelstudy only. Objectattribute readout, allnew3Dtasks, matched moving-disk integration andindependenthuman applicability remainseparate requiredwork."
+}

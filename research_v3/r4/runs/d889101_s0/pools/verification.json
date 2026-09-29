@@ -1,0 +1,60 @@
+{
+  "manifest_sha256": "685cb8cc779d04e446ec6e94945490a5acfa69d3260d07e4a319a9bf5e75a0b8",
+  "checks": [
+    {
+      "split": "train",
+      "images_per_encoder": 4096,
+      "all_original_codes_and_normalization_bitexact": true,
+      "two_thread_diagnostic": {
+        "base": {
+          "max_abs": 4.76837158203125e-07,
+          "differing_elements": 4,
+          "total_elements": 262144
+        },
+        "spatial": {
+          "max_abs": 2.384185791015625e-07,
+          "differing_elements": 3,
+          "total_elements": 262144
+        }
+      }
+    },
+    {
+      "split": "val",
+      "images_per_encoder": 1024,
+      "all_original_codes_and_normalization_bitexact": true,
+      "two_thread_diagnostic": {
+        "base": {
+          "max_abs": 1.9073486328125e-06,
+          "differing_elements": 1,
+          "total_elements": 65536
+        },
+        "spatial": {
+          "max_abs": 5.960464477539063e-08,
+          "differing_elements": 1,
+          "total_elements": 65536
+        }
+      }
+    },
+    {
+      "split": "ood",
+      "images_per_encoder": 1024,
+      "all_original_codes_and_normalization_bitexact": true,
+      "two_thread_diagnostic": {
+        "base": {
+          "max_abs": 0.0,
+          "differing_elements": 0,
+          "total_elements": 65536
+        },
+        "spatial": {
+          "max_abs": 0.0,
+          "differing_elements": 0,
+          "total_elements": 65536
+        }
+      }
+    }
+  ],
+  "cache_inference_threads": 6,
+  "train_only_normalization_recomputed_bitexact": true,
+  "source_sha256": "e1708ea66e8ae402d3beb93804b52cf73e3ccb54d5f619eae897d18fad2a3f05",
+  "amendment_protocol_sha256": "6941178c19ed490ae737508cf2f41b2b23815198720755f2beac29722cd14969"
+}

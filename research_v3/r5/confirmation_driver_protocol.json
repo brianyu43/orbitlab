@@ -1,0 +1,57 @@
+{
+  "source_sha256": "3eb631889c934b9976e22dcbea6630752b64343a46fb6ae46c3a5d4715d1db65",
+  "protocols": {
+    "dsprites": {
+      "training": "47d4129d3fea68cc2a85533c13e2610ce302c00bf0c2902e4480b45693f04376",
+      "evaluation": "26839de153eafb62022f84fb3f0bf731f12a267c7a31ed75100c94c8532d168f"
+    },
+    "clevr": {
+      "training": "a6579f757f0e08714f2c73c9a328b4eb4afa86d5cac18a22083d39913a769ecd",
+      "evaluation": "1617b097488f8bcc58897fb09c6f7434184c25db7f730e681efec7c376cb54ea"
+    },
+    "clevrtex": {
+      "training": "d770d9b288d29b1ef87231eb7c7f0eb234ac8bb7cca219e48adc6e0102817803",
+      "evaluation": "e371e2701fa4c2868ca332c7c08cbc7f4b8a1f786fcd9b35f042f70b686c4544"
+    }
+  },
+  "tasks": [
+    [
+      "dsprites",
+      "Single_Atomic"
+    ],
+    [
+      "dsprites",
+      "Multiple_Atomic"
+    ],
+    [
+      "dsprites",
+      "Single_Non-Atomic"
+    ],
+    [
+      "dsprites",
+      "Multiple_Non-Atomic"
+    ],
+    [
+      "clevr",
+      "Single_Atomic"
+    ],
+    [
+      "clevrtex",
+      "Single_Atomic"
+    ]
+  ],
+  "partition_seeds": [
+    890201,
+    890202,
+    890203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "selection": "Onlyselectedcandidate fromfrozendevelopmentvalidation gate plusplain. No modelreselection orcheckpointchoiceusingtest. Each18runs/positivetask36000updates;9same-datasetresplits/initializations,not9independentdatasets.",
+  "scope": "Waitall6developmenttasks, thenpositivegatedtasksinoriginalorder. Fulltrain/valverification,testselected+fixed20,fullpixelreplay,independentfrozenattribute readout+replay,calibrationdiagnostic. Inputcopyisidenticaltoalreadyverifieddevelopmentcopyandnotretrained.",
+  "resources": "Same12hglobalR5/30GBcap. Allpendingcells preservedexplicitlyifcap; no shortenedepochs orsilentcompletion.",
+  "reader": "Samefrozeninstrumenttrained ondevelopmentpartition. It nevertrains onofficialtest. Someconfirmationvalidationframesmayhavebeeninstrumenttrainframes; attributesonlyscored onofficialtest. No diagnosticgrader fittingusingconfirmationoutputs."
+}

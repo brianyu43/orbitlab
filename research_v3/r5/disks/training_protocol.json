@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "sources": {
+    "r5_disk_core.py": "c978d23ff0e50d88e3591bf6c57fb7be422affd0e470e102226dbf3c52905efe",
+    "r5_disk_train.py": "0ea1ca5d2e7c901f8a53149d6f845cbdd3981959b77ed17f1638d780ad8586db",
+    "r3_core.py": "b556d89a7499ae70db888cda9a54ee3d199eea0a5a06fe4762cec19909f42f29",
+    "r3_physics.py": "f44a4a25df22e5eb05e68ebfa716b1d8bf25e3645b2f66ce89a46ce4e5870032",
+    "r4_core.py": "0560cc04e389b673aa210f326f022e32e15b652861e0bb08b9532a02ad88e185",
+    "v3_common.py": "3b28ab8347d53fd37b77dee30ddc3d256209a60c805a12060c21186fab93c605"
+  },
+  "dependencies": {
+    "followup/dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c"
+  },
+  "data_protocol_sha256": "ce77ce09fd7431076bf2f7275efd7d01c18403145a0854cc6a1efe7b27a86a0f",
+  "data_verification_sha256": "4b774ab81c91c1bdcec1fea77759f89ef0dca8b1dff690ebf87176be00874e19",
+  "arms": [
+    "reader",
+    "force",
+    "decoder",
+    "bounded",
+    "contact"
+  ],
+  "updates": {
+    "reader": 4000,
+    "force": 3000,
+    "decoder": 3000,
+    "bounded": 2000,
+    "contact": 2000
+  },
+  "initialization": 0,
+  "optimizer": "AdamW .001, weight_decay .0001, global grad norm clip1, CPU float32,2threads",
+  "batch": {
+    "reader": 16,
+    "force": 32,
+    "decoder": 32,
+    "bounded": 32,
+    "contact": 32
+  },
+  "sampling": "Component-specific reproducible torch generators; uniform960train family and time window. Reader t3..20, force t3 only (before action), decoder t0..20. Both transitions share exactepisode/t0..12 sequences and8step rollout loss. No calibration/test labels in training.",
+  "reader": "R2-derived6-peak class-agnostic heatmap with6pxNMS, four-frame33pxRGB crops. Supervised coordinate/velocity/radius/RGB andpresence loss, exhaustive2truth-to6slot assignment for training only. Fixedpresence>=.5 at inference; no GTcount/IDs/positions/colors. Radius3..7px and velocity+-6px/frame fixed support. Every output object is a disk by prior.",
+  "force": "Separate four-frame RGB CNN trained on normalized netforce+drag. Gravity and wind decomposition is not identified or scored separately. Only pre-action frames0..3; finite observation precision can make netforce/drag ambiguous.",
+  "decoder": "Train radius/RGB->17pxRGBA patch and bilinearXY placement jointly against sharedtrain sceneRGB, weights1+8*targetforeground; black background and disk supports are explicit priors. No alpha supervision or sourceRGB skip. Targetimage supplies loss only.",
+  "dynamics": "Nine features xy/31.5,velocity/3,r/8,continuousRGB,presence; allreal variableN slots. JointC4 interaction network. Bounded uses sum messages and true-train-derived1.5max velocity limit. Contact uses local mean messages plus separate coarse physical solver andbounded.15px/frame velocity residual. Samelearnedparametercount butdifferentphysics/messagepriors; no claimlearningalone causesdifference.",
+  "checkpoint": "Final fixed updates only, no test or calibration model selection.100step timing pilots discarded; full run resets same initialization/generator. Atomicprogress every250steps includesoptimizer/RNG.",
+  "evaluation_plan": "Compare both learnedtransitions and coarsephysics across true/learnedstate xknown/inferredforce xknown/neuralrenderer at1/16/61/128. Count2/3/4/6,same/differentcolor,contactstrata,reverseimpulse andforcecounterfactual. Truefuture->neuraldecoder andinputcopycontrols. No automatic integrated3x3 based solely on component gates; fixed development diagnosis first.",
+  "resource_caps": "Same globalR5 initial12h/30GB budget. Do not reduce declaredupdates to fit. Stop and disclose remaining work if exceeded."
+}

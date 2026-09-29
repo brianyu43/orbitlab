@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "seed": 891101,
+  "sources": {
+    "r5_disk_data.py": "158936dba8c0dd36ec9a6173454d9cf9b93d3f23c61646253c967e3fac3653d3",
+    "r3_physics.py": "f44a4a25df22e5eb05e68ebfa716b1d8bf25e3645b2f66ce89a46ce4e5870032",
+    "followup/dynamics_world.py": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36"
+  },
+  "train": {
+    "episodes": 960,
+    "count": 2,
+    "transitions": 20
+  },
+  "calibration": {
+    "episodes": 96,
+    "count": 2,
+    "transitions": 131
+  },
+  "test": {
+    "episodes_per_count": 96,
+    "counts": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "transitions": 131
+  },
+  "input": "Four consecutive RGB frames0..3; first intervention occurs at frame3. 64px black background, equal-mass disks, radii4/5/6. No occlusion panel or textured background; tangent disks can overlap only antialiased boundaries.",
+  "colors": "Continuous independent RGB in [40,240]/255, half of scene families have identical colors for all disks. Palette indices affect only the preserved proposal sampler; never reader/transition/decoder input.",
+  "shared_training": "Every reader, force head, transition and neural decoder is trained only on the same960 two-disk train families and frames0..20. No old learned weights reused. Independent supervised components; no end-to-end fine-tuning.",
+  "strata": "Equal quotas for no contact, wall-only, pair contact during forecast steps1..16. R3 controlled proposals reused: free velocities/forces/actions scaled .1/.01/.1; wall .05/.1/.1 with one outward1px/frame disk7px from wall; pair unscaled. Different intervention/force distributions are reported, not population representative.",
+  "counterfactuals": "From observed frame3: negate clicked disk impulse, or increment x net force by .04. Original observed frames identical. Known intervention delta also supplied to inferred baseline force.",
+  "split": "Fresh train/val/test numerical seeds through original sampler. All time windows, counterfactuals and C4 relatives stay in one scene family. Initial physical orbit hashes checked across all fresh groups and existing R3 groups, independent of RGB differences.",
+  "physics": "Eight substeps,32 maximum contact projection sweeps, float64. Equal masses, radius-dependent reflective walls. This simulator generates labels, not a learned model.",
+  "renderer": "Original radial alpha clip(r+.5-distance,0,1), stable persistent-ID painter order, continuous RGB sidecar, round to uint8. No inferred object reorder using true IDs."
+}

@@ -13,3 +13,17 @@ R2는 계획대로 6슬롯/64px/4프레임 조건에서 단일 프레임과 다�
 ## SVIB 다음 과제
 
 [공식 자료 페이지](https://systematic-visual-imagination.github.io/)와 [공식 저장소](https://github.com/systematic-visual-imagination/svib)를 확인했다. Hard dSprites의 기존 압축에는 추가 규칙 과제가 있으므로 R5에서 먼저 로컬 파일을 확인한다. 저장소는 CC0-1.0으로 표시되어 있다. CLEVR/CLEVRTex 자료는 사용 시 다운로드 단위와 포함 라이선스를 별도로 확인해야 한다. 저장소의 라이선스 표시만으로 모든 하위 자산에 동일한 조건이 있다고 추정하지 않는다.
+
+## Aether 검토의 재사용과 R3의 차이
+
+기존 전체 검토는 `followup/reports/NEAREST_METHODS_REVIEW_V2_KO.md`에 있다. 이번에는 보존된 논문 본문과 공식 코드 자료 6개의 SHA256이 당시 manifest와 일치함을 확인했고, 고정 commit `f88cac1611d9fd8400d0ce8ae4333c936cf09022`의 state-to-state 코드를 다시 읽었다. 근거는 `aether_reuse_verification.json`이다.
+
+`AetherLocalizer`는 속도 방향으로 좌표계를 정하며 속도·힘·상대 위치를 함께 회전한다. `Aether.forward`는 추정한 장을 상태에 붙여 국소 GNN에 보내고 전역 좌표로 되돌린다. `DynamicFieldAether`의 장 추정기는 그래프 요약과 FiLM 조건화를 사용한다. [공식 고정 코드](https://github.com/mkofinas/aether/tree/f88cac1611d9fd8400d0ce8ae4333c936cf09022/nn/state2state)
+
+OrbitLab R3은 알려진 원형 물체의 위치·속도를 제공하고 일정한 합력·항력을 제공하거나 제한된 영상으로 추정한다. 접촉 후보에는 거친 원 충돌 계산이 들어간다. 일반적인 공간 장을 추정하는 Aether의 전체 영상 관측·sequence 모델·학습 예산을 재현한 것이 아니며, 이번 접촉 잔차의 성능으로 Aether에 대한 우열을 주장하지 않는다. 후속 직접 비교를 한다면 입력 상태, 관측 길이, 힘·질량·반경·접촉 사전 지식과 감독을 먼저 맞춰야 한다.
+
+Beyond Myopic World Models는 현재 실행에 구현된 비교군이 아니다. 본문·코드·실행 검증 없이 수치나 우열을 가져오지 않는다.
+
+## 채점기용 조합 자료의 다음 후보
+
+2026-09-29 [SVIB 공식 페이지](https://systematic-visual-imagination.github.io/)를 재확인했다. 세 시각 환경 각각에 모든 primitive 조합을 포함하는 짝 없는 Omni-Composition 자료가 안내돼 있다. 이는 판독기의 조합 지원을 넓히는 다음 실험의 후보이지, 이번 판독기가 이미 사용한 자료가 아니다. 실제 파일·메타데이터·라이선스·공식 test와의 동일 이미지/회전 가족 중복을 확인한 뒤 사용할 수 있다. primary 예측 모델에 추가 정보를 주는 효과와 별도 측정기에 주는 효과를 구별해야 한다.

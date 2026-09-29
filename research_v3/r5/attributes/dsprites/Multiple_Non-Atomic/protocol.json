@@ -1,0 +1,33 @@
+{
+  "source_sha256": "221f3e0b4cc8b691aa6bb2adcdafd5890f5a1f667f1e7b6843005dd508620810",
+  "family": "dsprites",
+  "task": "Multiple_Non-Atomic",
+  "attribute_names": [
+    "shape",
+    "color",
+    "size"
+  ],
+  "classes": [
+    4,
+    4,
+    4
+  ],
+  "audit_summary_sha256": "0e68ed2f4d5db218694259facc6651dd007d6df780d9fdad4d3b033582ecf85e",
+  "factor_sha256": "319431078a09ea62bb46401f05c29e35d0878dc09a5f31b172d965def308b48a",
+  "partition_sha256": "8bec9399604f3d059bcd352c6de93aa1dc9af7f5b2583f681940d89ec6a19fc7",
+  "localization": "Privileged SOURCE metadata center, unchanged between source,target and predicted images. Fixed112x112crop, no size-dependent scale, bilinear fractional center, zero padding. For3D source projectedcenter is used even iftargetmeshheight changes projection. Not a detector or an unprivileged semantic evaluator.",
+  "inputs": "CropRGB only; no true attribute, segmentation mask, object size or target center. True training attribute labels are extra supervision for the independent measurement instrument only.",
+  "training": "6000Adam updates,lr.001,batch64,mean attribute crossentropy,gradclip1; no model/checkpoint/threshold choice; finalweights. CPUfloat32,2threads. Train-only random scene,source/target andobject with replacement.",
+  "train_partition": "Use the development57600training families only. No cleanvalidation,officialtest,or primary model prediction is used in fitting. Same frozen reader later scores allprimary models and conditionalconfirmation; those resplits are not independentreadertraining.",
+  "calibration": "All6400validation and8000officialtest scenes, both source/target roles and bothobjects; report perattribute,allattributes andbothobjects accuracy, changed/unchanged semantic attributes. No assumption of perfect readout or correction that manufactures accuracy.",
+  "budget": {
+    "steps": 6000,
+    "batch": 64,
+    "preflight_updates_discarded": 100
+  },
+  "source_dependencies": {
+    "research_v3/r5_data.py": "3f231c6a0dfc80d7554250c606d82e372b6f839c730fec5a7dd462b698279f51",
+    "research_v3/r5_3d_data.py": "aa9a7765deccd9b3f0936cee5d6d32c70dd6eec54d22daeb6416a6aea9710ad5",
+    "research_v3/r5_3d_audit.py": "b6cba74573aacc7ac3ee62cb24835510e97782a0008b8e0a15bd5682012d5d40"
+  }
+}

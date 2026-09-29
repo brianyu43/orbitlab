@@ -86,6 +86,10 @@ def main():
 |---|---:|---:|---:|
 {chr(10).join(rows)}
 
+좌표 방식은 정답 속성을 받을 때 작은 화살표를 두 평가 구간 모두100%복원했지만, 실제 이미지 인코더에서는3.8%/0.0%였다. 따라서 그 디코더가 작은 화살표를 아예 그릴 수 없다는 설명은 맞지 않는다. 다만 입력 역할마다 디코더를 따로 학습했고 bridge도 별도 지도학습 모델이므로, 이 차이만으로 잠재 표현에 정보가 전혀 없다고 증명한 것은 아니다. 이번 표현·판독·학습 예산에서 그 정보를 유효하게 쓰지 못했다는 결과다.
+
+작은 화살표의 독립 원본 장면 수는val26개/OOD21개다. 두 구간은 서로 다른 색상 조합과 장면 가족이므로 OOD수치가 더 높다는 사실을 분포 변화의 이득으로 해석하지 않는다. 네 회전을 새 독립 표본으로 늘려 세지도 않는다.
+
 ![Reconstruction](reconstruction_results.png)
 
 ## 생성과 다양성
@@ -97,6 +101,8 @@ def main():
 {chr(10).join(grows)}
 
 참조는 조건별384개이며 모든9,216개 깨끗한 이미지의 strict 성공은{100*agg['reference']['strict_accepted_and_joint']:.1f}%다. 생성128개와 참조384개 히스토그램은 각각의 분모로 정규화한다. 기존 구간·coverage/TV/outside 기준과 조건별 최소32개 strict 표본 기준은 유지했다. 성공 표본만 골라 다양성이 좋아졌다고 보고하지 않는다.
+
+기준/area-edge모델의 전체 표본 분포는 다양성 기준을 통과했지만 일부 모양·색 조건의 엄격한 성공 표본이0개/1개에 불과했다. 위치·크기가 다양하다는 것과 요청한 물체를 올바르게 다양하게 만든다는 것은 이 실험에서 일치하지 않았다.
 
 ![Generation](generation_results.png)
 
@@ -124,7 +130,9 @@ def main():
 
 24,576개 모델 복원 이미지와12,288개 생성 이미지, 모든 지표 행, 두 flow의6,144개 latent와각64적분 단계를 재생했다. 또한 clean입력2,048개, 참조9,216개와 모든 캐시 인코더 코드를 검증했다. 동일 구현을 재실행한 검증이며, 독립 구현·전체 재학습 또는 사람의 의미 품질 평가가 아니다.
 
-원본 파일은 읽기 전용으로 재사용하며 새로운 파일은research_v3아래에 있다. 실행 순서: r4_data.py및--verify → r4_preflight.py → r4_driver.py → r4_verify.py metrics → r4_evaluation_driver.py → r4_report.py. 모델/자료/평가 코드는 잠긴SHA256과 다르면 중단한다. 실제 논문 수준의 일반화는 이 단일 개발 실행만으로 주장하지 않는다.
+캐시 생성 명령은 PyTorch 기본6스레드를 사용했고, 학습·주 평가는2스레드를 사용했다. 최초 검증도2스레드로 실행해 부동소수점 합산 순서에 따른 최대1.91×10⁻⁶ 차이에서 중단됐다. 캐시·모델·평가 기준은 보존하고 원래6스레드에서 허용오차0으로 재생한 뒤,2스레드 차이도 별도로 기록했다. 이는 성능 기준 완화가 아니라 실행 조건과 검증의 수정이다. 근거는pool_replay_protocol_v2.json과pool_verification_attempt_v1/AMENDMENT.json이다.
+
+원본 파일은 읽기 전용으로 재사용하며 새로운 파일은research_v3아래에 있다. 실행 순서: r4_data.py및--verify → r4_preflight.py → r4_driver.py → r4_verify.py metrics → r4_evaluation_resume.py(캐시 검증은r4_pool_replay_v2.py) → r4_report.py. 모델/자료/평가 코드는 잠긴SHA256과 다르면 중단한다. 실제 논문 수준의 일반화는 이 단일 개발 실행만으로 주장하지 않는다.
 '''
     (BASE/'RESULTS_KO.md').write_text(text)
     figures={p.name:sha(p) for name in ['reconstruction_results','generation_results','failure_examples'] for ext in ['png','pdf'] if (p:=BASE/f'{name}.{ext}').exists()}

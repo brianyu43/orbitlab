@@ -1,0 +1,3623 @@
+{
+  "context": {
+    "evaluation_protocol_sha256": "658da8462180396f287f50d4323bac3f6d6cae9b3d51430c7b997a6160599dd4",
+    "data_manifest_sha256": "c5b354e739eaa1a0d87e0bc7720aefa157c587fb57384e14f0172411a018ec29",
+    "run_hashes": {
+      "reader": "808b6d6e2b8d28c05abd5a1c845dfff3e8b41c587d0bdcb64f2dbd18ba53f891",
+      "force": "ecee95a95e6174e75b1432d8bd57e562c1ba6df72be4858abc659f0b39d0b52f",
+      "decoder": "9a2b8640b6e119a4d8abf1edf39fe8342ddf2cab51fc8210fd22ca7cf0c0187f",
+      "bounded": "45b01939843ae7b44ae9cc984c6b0ce5882973a203025ea3203889e98f7acca1",
+      "contact": "b868c83f92c83f29400d2baf570a03508ebfa0c92dae2b3a993eb8124247c034"
+    },
+    "arm": "bounded",
+    "state_kind": "learned",
+    "force_kind": "inferred",
+    "perception_sha256": "19f7b2c5ee23ba629ce8892348477cd85599d930c8d0ae43317c6d3572ffb74d"
+  },
+  "arrays_sha256": "e780aa743e465a635da82b74fba7346ad22e245843b43b3d7138f8748dc3db4a",
+  "image_hashes_sha256": "a80910f7fdef8f2dfc745cdb536cd73501bc74d572c5e4a49180b17509ccc196",
+  "examples_sha256": "e227a504761f302eef67e05abb2102d3c3ad03569a80f48cc83ce99ebb8ff45a",
+  "aggregates": [
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 0.15260834901563303,
+        "velocity_mae_px": 0.11349706578903873,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.010416666666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00020015983403673734,
+          "changed_pixel_mse": 0.007957228928870585,
+          "preserved_pixel_mse": 2.4708256393528517e-05,
+          "changed_fraction": 0.021916707356770832,
+          "changed_mae": 0.0570059745139111,
+          "preserved_mae": 0.00044707616069314957,
+          "pixel_gate": 0.3958333333333333,
+          "copy_mse": 0.0013861895518074976,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.007957228928870581,
+          "state_and_pixel_strict": 0.3958333333333333
+        },
+        "neural": {
+          "image_mse": 0.00026714208457830866,
+          "changed_pixel_mse": 0.007976793607283717,
+          "preserved_pixel_mse": 9.681238837702774e-05,
+          "changed_fraction": 0.021916707356770832,
+          "changed_mae": 0.06145193361055368,
+          "preserved_mae": 0.0012839650635411246,
+          "pixel_gate": 0.28125,
+          "copy_mse": 0.0013861895518074976,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.007976793607283717,
+          "state_and_pixel_strict": 0.28125
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.1555439827277683,
+        "velocity_mae_px": 0.11193403522024888,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.020833333333333332,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00019822925616775093,
+          "changed_pixel_mse": 0.00841653994946605,
+          "preserved_pixel_mse": 2.253326788574482e-05,
+          "changed_fraction": 0.021219889322916668,
+          "changed_mae": 0.05885550410252368,
+          "preserved_mae": 0.0004169107727520101,
+          "pixel_gate": 0.375,
+          "copy_mse": 0.0012690077227658833,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.00841653994946605,
+          "state_and_pixel_strict": 0.375
+        },
+        "neural": {
+          "image_mse": 0.00026723185313179664,
+          "changed_pixel_mse": 0.008546131332879047,
+          "preserved_pixel_mse": 9.400705913292086e-05,
+          "changed_fraction": 0.021219889322916668,
+          "changed_mae": 0.06382423038679945,
+          "preserved_mae": 0.0012396355525302815,
+          "pixel_gate": 0.25,
+          "copy_mse": 0.0012690077227658833,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.008546131332879044,
+          "state_and_pixel_strict": 0.25
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.1496727153034978,
+        "velocity_mae_px": 0.11506009635782861,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0002020904119057239,
+          "changed_pixel_mse": 0.007497917908275112,
+          "preserved_pixel_mse": 2.6883244901312222e-05,
+          "changed_fraction": 0.022613525390625,
+          "changed_mae": 0.0551564449252985,
+          "preserved_mae": 0.00047724154863428887,
+          "pixel_gate": 0.4166666666666667,
+          "copy_mse": 0.0015033713808491125,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.007497917908275112,
+          "state_and_pixel_strict": 0.4166666666666667
+        },
+        "neural": {
+          "image_mse": 0.0002670523160248211,
+          "changed_pixel_mse": 0.007407455881688388,
+          "preserved_pixel_mse": 9.961771762113455e-05,
+          "changed_fraction": 0.022613525390625,
+          "changed_mae": 0.05907963683430789,
+          "preserved_mae": 0.0013282945745519677,
+          "pixel_gate": 0.3125,
+          "copy_mse": 0.0015033713808491125,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.007407455881688389,
+          "state_and_pixel_strict": 0.3125
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.11632987896644145,
+        "velocity_mae_px": 0.06787921720257395,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00011636834282083052,
+          "changed_pixel_mse": 0.006311518455621536,
+          "preserved_pixel_mse": 1.3252537439093162e-05,
+          "changed_fraction": 0.01610565185546875,
+          "changed_mae": 0.05709309714973968,
+          "preserved_mae": 0.00039867501520987706,
+          "pixel_gate": 0.40625,
+          "copy_mse": 5.462900699750897e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.006311518455621536,
+          "state_and_pixel_strict": 0.40625
+        },
+        "neural": {
+          "image_mse": 0.00021337445964461724,
+          "changed_pixel_mse": 0.00795474616737408,
+          "preserved_pixel_mse": 8.609455725353689e-05,
+          "changed_fraction": 0.01610565185546875,
+          "changed_mae": 0.06532542693227301,
+          "preserved_mae": 0.001288144865104775,
+          "pixel_gate": 0.21875,
+          "copy_mse": 5.462900699750897e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.00795474616737408,
+          "state_and_pixel_strict": 0.21875
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.1475008750322741,
+        "velocity_mae_px": 0.09895714713974547,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00019778226872294111,
+          "changed_pixel_mse": 0.008804288731402625,
+          "preserved_pixel_mse": 1.9748851225520434e-05,
+          "changed_fraction": 0.02057647705078125,
+          "changed_mae": 0.06163355087634692,
+          "preserved_mae": 0.000407945368012205,
+          "pixel_gate": 0.1875,
+          "copy_mse": 0.0010492395080542944,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008804288731402626,
+          "state_and_pixel_strict": 0.1875
+        },
+        "neural": {
+          "image_mse": 0.00024128198692115532,
+          "changed_pixel_mse": 0.007635380074692031,
+          "preserved_pixel_mse": 8.748716853408094e-05,
+          "changed_fraction": 0.02057647705078125,
+          "changed_mae": 0.06205311973328312,
+          "preserved_mae": 0.0012561412691956596,
+          "pixel_gate": 0.15625,
+          "copy_mse": 0.0010492395080542944,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.007635380074692032,
+          "state_and_pixel_strict": 0.15625
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 1,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.19399429304818352,
+        "velocity_mae_px": 0.17365483302479684,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.03125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9375,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0002863288905664406,
+          "changed_pixel_mse": 0.008755879599587584,
+          "preserved_pixel_mse": 4.112338051597197e-05,
+          "changed_fraction": 0.0290679931640625,
+          "changed_mae": 0.052291275515646614,
+          "preserved_mae": 0.0005346080988573666,
+          "pixel_gate": 0.59375,
+          "copy_mse": 0.0030547001403706912,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008755879599587582,
+          "state_and_pixel_strict": 0.59375
+        },
+        "neural": {
+          "image_mse": 0.00034676980716915397,
+          "changed_pixel_mse": 0.00834025457978504,
+          "preserved_pixel_mse": 0.00011685543934346534,
+          "changed_fraction": 0.0290679931640625,
+          "changed_mae": 0.056977254166104906,
+          "preserved_mae": 0.001307609056322939,
+          "pixel_gate": 0.46875,
+          "copy_mse": 0.0030547001403706912,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008340254579785038,
+          "state_and_pixel_strict": 0.46875
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 4.429574805035447,
+        "velocity_mae_px": 0.4687273677569373,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.08333333333333333,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01609099157744304,
+          "changed_pixel_mse": 0.17106835700368608,
+          "preserved_pixel_mse": 0.006587754149484184,
+          "changed_fraction": 0.059315999348958336,
+          "changed_mae": 0.2946834990351907,
+          "preserved_mae": 0.011232813714043326,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.014015575752615179,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.17106835700368603,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.01580309535751102,
+          "changed_pixel_mse": 0.16822288728274812,
+          "preserved_pixel_mse": 0.006427474486514713,
+          "changed_fraction": 0.059315999348958336,
+          "changed_mae": 0.29444228588739063,
+          "preserved_mae": 0.011648935515900452,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.014015575752615179,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.16822288728274812,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.504848766245692,
+        "velocity_mae_px": 0.4837853040951518,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.041666666666666664,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0162155270892632,
+          "changed_pixel_mse": 0.17356679476611833,
+          "preserved_pixel_mse": 0.007102608914325663,
+          "changed_fraction": 0.05621337890625,
+          "changed_mae": 0.29655144938867467,
+          "preserved_mae": 0.011928372432729305,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013016330592375327,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.17356679476611836,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.015929480655375788,
+          "changed_pixel_mse": 0.17052878150113457,
+          "preserved_pixel_mse": 0.006940456365338959,
+          "changed_fraction": 0.05621337890625,
+          "changed_mae": 0.296007631064305,
+          "preserved_mae": 0.012360360059941462,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013016330592375327,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.17052878150113457,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.3543008438252055,
+        "velocity_mae_px": 0.45366943141872307,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.015966456065622876,
+          "changed_pixel_mse": 0.16856991924125372,
+          "preserved_pixel_mse": 0.006072899384642702,
+          "changed_fraction": 0.062418619791666664,
+          "changed_mae": 0.29281554868170656,
+          "preserved_mae": 0.010537254995357353,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.015014820912855033,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.16856991924125367,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.015676710059646246,
+          "changed_pixel_mse": 0.1659169930643617,
+          "preserved_pixel_mse": 0.005914492607690465,
+          "changed_fraction": 0.062418619791666664,
+          "changed_mae": 0.29287694071047626,
+          "preserved_mae": 0.010937510971859432,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.015014820912855033,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.16591699306436164,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 2.1453641922633393,
+        "velocity_mae_px": 0.25397215870695494,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0102887777725363,
+          "changed_pixel_mse": 0.13919109692691556,
+          "preserved_pixel_mse": 0.005647513429835691,
+          "changed_fraction": 0.034393310546875,
+          "changed_mae": 0.2582971706867178,
+          "preserved_mae": 0.009653793260878124,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.0057543247197967716,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13919109692691556,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.009917319390770191,
+          "changed_pixel_mse": 0.13454965219788315,
+          "preserved_pixel_mse": 0.0054239566454703635,
+          "changed_fraction": 0.034393310546875,
+          "changed_mae": 0.25694349273846556,
+          "preserved_mae": 0.010071066738556445,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.0057543247197967716,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13454965219788317,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 4.024686467673584,
+        "velocity_mae_px": 0.3216334687116689,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01875032962440857,
+          "changed_pixel_mse": 0.23802434891206828,
+          "preserved_pixel_mse": 0.005939666128330373,
+          "changed_fraction": 0.05511474609375,
+          "changed_mae": 0.390712270527724,
+          "preserved_mae": 0.009878036674720004,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01383946159780293,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.23802434891206833,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.018438580642688933,
+          "changed_pixel_mse": 0.23560482154867704,
+          "preserved_pixel_mse": 0.005744208212574768,
+          "changed_fraction": 0.05511474609375,
+          "changed_mae": 0.3908636635673889,
+          "preserved_mae": 0.010310642260332856,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01383946159780293,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.23560482154867707,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 16,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 7.118673755169424,
+        "velocity_mae_px": 0.8305764758521889,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.25,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.019233867335384233,
+          "changed_pixel_mse": 0.13598962517207427,
+          "preserved_pixel_mse": 0.008176082890286481,
+          "changed_fraction": 0.08843994140625,
+          "changed_mae": 0.23504105589113,
+          "preserved_mae": 0.01416661120653185,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022452940940245837,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13598962517207425,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.01905338603907392,
+          "changed_pixel_mse": 0.1345141881016841,
+          "preserved_pixel_mse": 0.008114258601499008,
+          "changed_fraction": 0.08843994140625,
+          "changed_mae": 0.23551970135631758,
+          "preserved_mae": 0.01456509754881205,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022452940940245837,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1345141881016841,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 12.132827593419199,
+        "velocity_mae_px": 0.4224801749357971,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.23958333333333334,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02478044986482009,
+          "changed_pixel_mse": 0.14628279384977694,
+          "preserved_pixel_mse": 0.013915628297188095,
+          "changed_fraction": 0.08249664306640625,
+          "changed_mae": 0.24348362020551073,
+          "preserved_mae": 0.02243740695220091,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022507453086390555,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.1462827938497769,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.024598903346709472,
+          "changed_pixel_mse": 0.14560807850339208,
+          "preserved_pixel_mse": 0.013774132749990257,
+          "changed_fraction": 0.08249664306640625,
+          "changed_mae": 0.24362828714876275,
+          "preserved_mae": 0.022876417488347813,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022507453086390555,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14560807850339208,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 11.68497545510278,
+        "velocity_mae_px": 0.4078788870342318,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.16666666666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.024193477275232998,
+          "changed_pixel_mse": 0.1483934770417876,
+          "preserved_pixel_mse": 0.014318189313573475,
+          "changed_fraction": 0.07489013671875,
+          "changed_mae": 0.2445927400905983,
+          "preserved_mae": 0.022739123455942385,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.020117876071678163,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14839347704178765,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023996314292732236,
+          "changed_pixel_mse": 0.1476193697417257,
+          "preserved_pixel_mse": 0.014164037954947127,
+          "changed_fraction": 0.07489013671875,
+          "changed_mae": 0.24471779828613427,
+          "preserved_mae": 0.02319624292240946,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.020117876071678163,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1476193697417257,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 12.580679731735614,
+        "velocity_mae_px": 0.437081462837362,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.3125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02536742245440718,
+          "changed_pixel_mse": 0.14417211065776608,
+          "preserved_pixel_mse": 0.013513067280802718,
+          "changed_fraction": 0.0901031494140625,
+          "changed_mae": 0.24237450032042285,
+          "preserved_mae": 0.02213569044845944,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024897030101102946,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14417211065776617,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.025201492400686695,
+          "changed_pixel_mse": 0.14359678726505845,
+          "preserved_pixel_mse": 0.013384227545033373,
+          "changed_fraction": 0.0901031494140625,
+          "changed_mae": 0.24253877601139126,
+          "preserved_mae": 0.022556592054286156,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024897030101102946,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14359678726505842,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 9.585542867168524,
+        "velocity_mae_px": 0.10527064721082524,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02359011536358562,
+          "changed_pixel_mse": 0.14697837852443513,
+          "preserved_pixel_mse": 0.014077464899534303,
+          "changed_fraction": 0.0700836181640625,
+          "changed_mae": 0.24351351123113768,
+          "preserved_mae": 0.02255545549000239,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.019021945529513883,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14697837852443513,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.0233569661393924,
+          "changed_pixel_mse": 0.14603111600387625,
+          "preserved_pixel_mse": 0.013895388739727182,
+          "changed_fraction": 0.0700836181640625,
+          "changed_mae": 0.24369417320297698,
+          "preserved_mae": 0.022936766492933996,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.019021945529513883,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14603111600387625,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 13.43390340220673,
+        "velocity_mae_px": 0.34355871916833636,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0272157962725025,
+          "changed_pixel_mse": 0.15682926207573128,
+          "preserved_pixel_mse": 0.015478700229457179,
+          "changed_fraction": 0.0852508544921875,
+          "changed_mae": 0.2538109769885224,
+          "preserved_mae": 0.02460660808569997,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02493396348866472,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15682926207573128,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.027033660711685795,
+          "changed_pixel_mse": 0.15613088385824372,
+          "preserved_pixel_mse": 0.015337422826177559,
+          "changed_fraction": 0.0852508544921875,
+          "changed_mae": 0.2537920970752586,
+          "preserved_mae": 0.025129066370300938,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02493396348866472,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1561308838582437,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 61,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 13.379036510882344,
+        "velocity_mae_px": 0.8186111584282294,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.59375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023535437958372138,
+          "changed_pixel_mse": 0.13504074094916424,
+          "preserved_pixel_mse": 0.012190719762572817,
+          "changed_fraction": 0.09215545654296875,
+          "changed_mae": 0.23312637239687187,
+          "preserved_mae": 0.020150157280900388,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023566450240993048,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13504074094916427,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023406083189050197,
+          "changed_pixel_mse": 0.1346622356480563,
+          "preserved_pixel_mse": 0.012089586684066024,
+          "changed_fraction": 0.09215545654296875,
+          "changed_mae": 0.23339859116805245,
+          "preserved_mae": 0.0205634196018085,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023566450240993048,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1346622356480563,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 12.658431193479153,
+        "velocity_mae_px": 0.3941077697209794,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5729166666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02421587150737502,
+          "changed_pixel_mse": 0.14711078709470107,
+          "preserved_pixel_mse": 0.012564033363316733,
+          "changed_fraction": 0.08780415852864583,
+          "changed_mae": 0.24371871080416796,
+          "preserved_mae": 0.020299182686081114,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024364836990739075,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14711078709470096,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.024056278067472358,
+          "changed_pixel_mse": 0.14654214966859652,
+          "preserved_pixel_mse": 0.012442472515529051,
+          "changed_fraction": 0.08780415852864583,
+          "changed_mae": 0.24391791426898435,
+          "preserved_mae": 0.020708343115252676,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024364836990739075,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14654214966859655,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 11.495715231629609,
+        "velocity_mae_px": 0.39248427721417584,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.4791666666666667,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023213977161365525,
+          "changed_pixel_mse": 0.148683516843693,
+          "preserved_pixel_mse": 0.012306285291558451,
+          "changed_fraction": 0.08185831705729167,
+          "changed_mae": 0.24363882755904617,
+          "preserved_mae": 0.01959953027727108,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022857104603781542,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14868351684369305,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023041761391481466,
+          "changed_pixel_mse": 0.14794377888776714,
+          "preserved_pixel_mse": 0.012182376598447613,
+          "changed_fraction": 0.08185831705729167,
+          "changed_mae": 0.2439503516103575,
+          "preserved_mae": 0.02001656037381177,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022857104603781542,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1479437788877672,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 13.821147155328696,
+        "velocity_mae_px": 0.3957312622277825,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.6666666666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.025217765853384536,
+          "changed_pixel_mse": 0.14553805734570893,
+          "preserved_pixel_mse": 0.01282178143507502,
+          "changed_fraction": 0.09375,
+          "changed_mae": 0.2437985940492896,
+          "preserved_mae": 0.020998835094891147,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02587256937769661,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14553805734570893,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.025070794743463267,
+          "changed_pixel_mse": 0.14514052044942585,
+          "preserved_pixel_mse": 0.012702568432610492,
+          "changed_fraction": 0.09375,
+          "changed_mae": 0.2438854769276112,
+          "preserved_mae": 0.021400125856693594,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02587256937769661,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1451405204494259,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.496144866552006,
+        "velocity_mae_px": 0.07516798413805993,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02490185686638041,
+          "changed_pixel_mse": 0.15662481461053832,
+          "preserved_pixel_mse": 0.0129154830217061,
+          "changed_fraction": 0.082672119140625,
+          "changed_mae": 0.2556109293664951,
+          "preserved_mae": 0.020765908271149776,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023540853959664956,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1566248146105383,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.024692684544535094,
+          "changed_pixel_mse": 0.1561681189668381,
+          "preserved_pixel_mse": 0.012730798401188808,
+          "changed_fraction": 0.082672119140625,
+          "changed_mae": 0.2557362087127282,
+          "preserved_mae": 0.02112400423943213,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023540853959664956,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15616811896683813,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.052062191977964,
+        "velocity_mae_px": 0.32379418847909314,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.21875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02598213274613749,
+          "changed_pixel_mse": 0.150183768710949,
+          "preserved_pixel_mse": 0.014425882756798302,
+          "changed_fraction": 0.08791351318359375,
+          "changed_mae": 0.244815660927355,
+          "preserved_mae": 0.023027098075963686,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026070951378438685,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15018376871094902,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.0257371905982398,
+          "changed_pixel_mse": 0.14907639076911527,
+          "preserved_pixel_mse": 0.014261072041488987,
+          "changed_fraction": 0.08791351318359375,
+          "changed_mae": 0.2447576423893824,
+          "preserved_mae": 0.023492589263449052,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026070951378438685,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14907639076911533,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "horizon": 128,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 13.427086521907485,
+        "velocity_mae_px": 0.7833611365457848,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.9375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0,
+        "nontarget_response_error_px": 0.0,
+        "zero_target_response_error_px": 0.0,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.021763624909607197,
+          "changed_pixel_mse": 0.13452377796261564,
+          "preserved_pixel_mse": 0.010350734311445791,
+          "changed_fraction": 0.09282684326171875,
+          "changed_mae": 0.2307295421186536,
+          "preserved_mae": 0.017104541711129892,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023482705634113584,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13452377796261566,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.021738959059642196,
+          "changed_pixel_mse": 0.1343819392698362,
+          "preserved_pixel_mse": 0.010335547103909363,
+          "changed_fraction": 0.09282684326171875,
+          "changed_mae": 0.2312598917048424,
+          "preserved_mae": 0.01750843584287685,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023482705634113584,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13438193926983621,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 0.1671081722219591,
+        "velocity_mae_px": 0.14121159595220914,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.03125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9479166666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.02059802892228166,
+        "nontarget_response_error_px": 0.03367259001314114,
+        "zero_target_response_error_px": 0.4999008536536404,
+        "zero_nontarget_response_error_px": 0.010803681335755178
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00024383630450391673,
+          "changed_pixel_mse": 0.008979276400991767,
+          "preserved_pixel_mse": 3.8894768018764434e-05,
+          "changed_fraction": 0.021677652994791668,
+          "changed_mae": 0.05925969680373066,
+          "preserved_mae": 0.0004810896915696662,
+          "pixel_gate": 0.34375,
+          "copy_mse": 0.001255923635432352,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.008979276400991767,
+          "state_and_pixel_strict": 0.3333333333333333
+        },
+        "neural": {
+          "image_mse": 0.0003060214333954793,
+          "changed_pixel_mse": 0.00887180141196983,
+          "preserved_pixel_mse": 0.00010994412800587759,
+          "changed_fraction": 0.021677652994791668,
+          "changed_mae": 0.06400870922087941,
+          "preserved_mae": 0.001310867115200436,
+          "pixel_gate": 0.20833333333333334,
+          "copy_mse": 0.001255923635432352,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.00887180141196983,
+          "state_and_pixel_strict": 0.19791666666666666
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.16520205389432366,
+        "velocity_mae_px": 0.11756952375911738,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.020833333333333332,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.01719451922261414,
+        "nontarget_response_error_px": 0.0300533484156701,
+        "zero_target_response_error_px": 0.4801143747376377,
+        "zero_nontarget_response_error_px": 0.00786261973004551
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00023215777930593161,
+          "changed_pixel_mse": 0.00918200747990366,
+          "preserved_pixel_mse": 3.258172665000079e-05,
+          "changed_fraction": 0.020955403645833332,
+          "changed_mae": 0.06017612581793089,
+          "preserved_mae": 0.0004369816373879295,
+          "pixel_gate": 0.3125,
+          "copy_mse": 0.0012007731349237341,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.00918200747990366,
+          "state_and_pixel_strict": 0.3125
+        },
+        "neural": {
+          "image_mse": 0.00030127145376487044,
+          "changed_pixel_mse": 0.009289317609203344,
+          "preserved_pixel_mse": 0.00010503352331636966,
+          "changed_fraction": 0.020955403645833332,
+          "changed_mae": 0.06557616005478449,
+          "preserved_mae": 0.0012589036982968576,
+          "pixel_gate": 0.16666666666666666,
+          "copy_mse": 0.0012007731349237341,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.00928931760920334,
+          "state_and_pixel_strict": 0.16666666666666666
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.1690142905495945,
+        "velocity_mae_px": 0.16485366814530103,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.041666666666666664,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9166666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.02400153862194919,
+        "nontarget_response_error_px": 0.03729183161061219,
+        "zero_target_response_error_px": 0.5196873325696427,
+        "zero_nontarget_response_error_px": 0.013744742941464848
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00025551482970190184,
+          "changed_pixel_mse": 0.008776545322079875,
+          "preserved_pixel_mse": 4.520780938752805e-05,
+          "changed_fraction": 0.02239990234375,
+          "changed_mae": 0.058343267789530355,
+          "preserved_mae": 0.0005251977457514024,
+          "pixel_gate": 0.375,
+          "copy_mse": 0.0013110741359409711,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.008776545322079875,
+          "state_and_pixel_strict": 0.3541666666666667
+        },
+        "neural": {
+          "image_mse": 0.0003107714130260885,
+          "changed_pixel_mse": 0.008454285214736314,
+          "preserved_pixel_mse": 0.00011485473269538549,
+          "changed_fraction": 0.02239990234375,
+          "changed_mae": 0.06244125838697435,
+          "preserved_mae": 0.0013628305321040145,
+          "pixel_gate": 0.25,
+          "copy_mse": 0.0013110741359409711,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.008454285214736316,
+          "state_and_pixel_strict": 0.22916666666666666
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.11698174719634957,
+        "velocity_mae_px": 0.06723005582639717,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.002539145507366944,
+        "nontarget_response_error_px": 0.00584756481111981,
+        "zero_target_response_error_px": 0.12759217741504203,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00011750511596389465,
+          "changed_pixel_mse": 0.0063504959599422865,
+          "preserved_pixel_mse": 1.327352587927969e-05,
+          "changed_fraction": 0.01622772216796875,
+          "changed_mae": 0.05691358904269941,
+          "preserved_mae": 0.0003998469409548638,
+          "pixel_gate": 0.34375,
+          "copy_mse": 6.241746213395489e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.006350495959942288,
+          "state_and_pixel_strict": 0.34375
+        },
+        "neural": {
+          "image_mse": 0.00021060869083265891,
+          "changed_pixel_mse": 0.007827170877976571,
+          "preserved_pixel_mse": 8.462580927184162e-05,
+          "changed_fraction": 0.01622772216796875,
+          "changed_mae": 0.06565613814884978,
+          "preserved_mae": 0.0012713797968169592,
+          "pixel_gate": 0.1875,
+          "copy_mse": 6.241746213395489e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.007827170877976571,
+          "state_and_pixel_strict": 0.1875
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.14668401361961894,
+        "velocity_mae_px": 0.0978475693233466,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0025424222801037604,
+        "nontarget_response_error_px": 0.005721920017094817,
+        "zero_target_response_error_px": 0.12571762904829198,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0001963997669434058,
+          "changed_pixel_mse": 0.008579115662244018,
+          "preserved_pixel_mse": 2.2586496232842754e-05,
+          "changed_fraction": 0.0205535888671875,
+          "changed_mae": 0.06111090104849251,
+          "preserved_mae": 0.0004163322310735783,
+          "pixel_gate": 0.25,
+          "copy_mse": 0.0010603758232510736,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008579115662244018,
+          "state_and_pixel_strict": 0.25
+        },
+        "neural": {
+          "image_mse": 0.00024351282742318206,
+          "changed_pixel_mse": 0.0073964781694931345,
+          "preserved_pixel_mse": 9.419286159806597e-05,
+          "changed_fraction": 0.0205535888671875,
+          "changed_mae": 0.06158545108889694,
+          "preserved_mae": 0.0012795507095205358,
+          "pixel_gate": 0.1875,
+          "copy_mse": 0.0010603758232510736,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.007396478169493136,
+          "state_and_pixel_strict": 0.1875
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 1,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.23765875584990875,
+        "velocity_mae_px": 0.25855716270688384,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.09375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.84375,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.05671251897937429,
+        "nontarget_response_error_px": 0.0894482852112088,
+        "zero_target_response_error_px": 1.2463927544975868,
+        "zero_nontarget_response_error_px": 0.032411044007265535
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00041760403060444966,
+          "changed_pixel_mse": 0.012008217580788995,
+          "preserved_pixel_mse": 8.082428194417082e-05,
+          "changed_fraction": 0.02825164794921875,
+          "changed_mae": 0.05975460031999993,
+          "preserved_mae": 0.0006270899026805557,
+          "pixel_gate": 0.4375,
+          "copy_mse": 0.002644977620912029,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.012008217580788998,
+          "state_and_pixel_strict": 0.40625
+        },
+        "neural": {
+          "image_mse": 0.00046394278193059727,
+          "changed_pixel_mse": 0.011391755188439781,
+          "preserved_pixel_mse": 0.0001510137131477251,
+          "changed_fraction": 0.02825164794921875,
+          "changed_mae": 0.06478453842489153,
+          "preserved_mae": 0.0013816708392638134,
+          "pixel_gate": 0.25,
+          "copy_mse": 0.002644977620912029,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.01139175518843978,
+          "state_and_pixel_strict": 0.21875
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 4.494393687880384,
+        "velocity_mae_px": 0.4580915914036558,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 4.142991810102459,
+        "nontarget_response_error_px": 2.3702213531801015,
+        "zero_target_response_error_px": 5.737720839474947,
+        "zero_nontarget_response_error_px": 2.0747689212583147
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01713923557827088,
+          "changed_pixel_mse": 0.17539691115029768,
+          "preserved_pixel_mse": 0.007063810683082258,
+          "changed_fraction": 0.061032613118489586,
+          "changed_mae": 0.3006063256424409,
+          "preserved_mae": 0.012034088020390304,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.014541842959163338,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.17539691115029774,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.0169515554902443,
+          "changed_pixel_mse": 0.17311348896710585,
+          "preserved_pixel_mse": 0.006974072512257549,
+          "changed_fraction": 0.061032613118489586,
+          "changed_mae": 0.3003409267277383,
+          "preserved_mae": 0.012461862218650263,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.014541842959163338,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.17311348896710577,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.482129060196104,
+        "velocity_mae_px": 0.46307746368205854,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 3.732061539173785,
+        "nontarget_response_error_px": 1.8206915044412664,
+        "zero_target_response_error_px": 4.81544572864981,
+        "zero_nontarget_response_error_px": 1.7851214538419828
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.016638115182477427,
+          "changed_pixel_mse": 0.174671090152023,
+          "preserved_pixel_mse": 0.007287782600354231,
+          "changed_fraction": 0.057607014973958336,
+          "changed_mae": 0.2987355444937552,
+          "preserved_mae": 0.012273215292514158,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013447520935457515,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.17467109015202306,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.016424511089661017,
+          "changed_pixel_mse": 0.17240339495669602,
+          "preserved_pixel_mse": 0.007179455209765955,
+          "changed_fraction": 0.057607014973958336,
+          "changed_mae": 0.29846039821849574,
+          "preserved_mae": 0.012679312017075573,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013447520935457515,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.17240339495669607,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.5066583155646684,
+        "velocity_mae_px": 0.45310571912525227,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 4.55392208103113,
+        "nontarget_response_error_px": 2.919751201918938,
+        "zero_target_response_error_px": 6.659995950300087,
+        "zero_nontarget_response_error_px": 2.364416388674646
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.017640355974064322,
+          "changed_pixel_mse": 0.17612273214857235,
+          "preserved_pixel_mse": 0.0068398387658102815,
+          "changed_fraction": 0.06445821126302083,
+          "changed_mae": 0.30247710679112666,
+          "preserved_mae": 0.011794960748266456,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.015636164982869166,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1761227321485724,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.017478599890827572,
+          "changed_pixel_mse": 0.17382358297751552,
+          "preserved_pixel_mse": 0.006768689814749148,
+          "changed_fraction": 0.06445821126302083,
+          "changed_mae": 0.3022214552369808,
+          "preserved_mae": 0.012244412420224962,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.015636164982869166,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.17382358297751552,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 2.1763434640550186,
+        "velocity_mae_px": 0.2572702653190686,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.0495705356958467,
+        "nontarget_response_error_px": 0.29355966893490404,
+        "zero_target_response_error_px": 1.9934700845412123,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.010399423219945865,
+          "changed_pixel_mse": 0.14573988507940372,
+          "preserved_pixel_mse": 0.005462612704800369,
+          "changed_fraction": 0.0352783203125,
+          "changed_mae": 0.2655176324333486,
+          "preserved_mae": 0.009457237581005074,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.006058116239659926,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14573988507940377,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.010140674798121986,
+          "changed_pixel_mse": 0.14185644419184837,
+          "preserved_pixel_mse": 0.005325560755905088,
+          "changed_fraction": 0.0352783203125,
+          "changed_mae": 0.26412752784864935,
+          "preserved_mae": 0.009897463315915445,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.006058116239659926,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14185644419184834,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 3.996100756442159,
+        "velocity_mae_px": 0.30983239109169075,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.356226289468848,
+        "nontarget_response_error_px": 0.2535463010935928,
+        "zero_target_response_error_px": 1.9699983073501222,
+        "zero_nontarget_response_error_px": 0.0
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01867679954281617,
+          "changed_pixel_mse": 0.23366299172600685,
+          "preserved_pixel_mse": 0.0061353495429001675,
+          "changed_fraction": 0.05515289306640625,
+          "changed_mae": 0.3829919164877846,
+          "preserved_mae": 0.010211424518130969,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013852950969629073,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.23366299172600682,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.018441204487937454,
+          "changed_pixel_mse": 0.2315955788812097,
+          "preserved_pixel_mse": 0.0059979193984681005,
+          "changed_fraction": 0.05515289306640625,
+          "changed_mae": 0.38284286964494646,
+          "preserved_mae": 0.010641728095792584,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.013852950969629073,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.23159557888120968,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 16,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 7.310736843143982,
+        "velocity_mae_px": 0.8071721178002074,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.1875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 10.02317860514268,
+        "nontarget_response_error_px": 6.563558089511808,
+        "zero_target_response_error_px": 13.249694126533512,
+        "zero_nontarget_response_error_px": 6.224306763774944
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02234148397205059,
+          "changed_pixel_mse": 0.14678785664548255,
+          "preserved_pixel_mse": 0.00959346980154624,
+          "changed_fraction": 0.0926666259765625,
+          "changed_mae": 0.2533094280061896,
+          "preserved_mae": 0.016433601962034868,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02371446166820103,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14678785664548255,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.022272787184673452,
+          "changed_pixel_mse": 0.1458884438282593,
+          "preserved_pixel_mse": 0.00959873738239946,
+          "changed_fraction": 0.0926666259765625,
+          "changed_mae": 0.25405238268961905,
+          "preserved_mae": 0.016846395244242786,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02371446166820103,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14588844382825927,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 11.62969474620275,
+        "velocity_mae_px": 0.4168494759391894,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.14583333333333334,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 9.62757161171704,
+        "nontarget_response_error_px": 6.5971911474905935,
+        "zero_target_response_error_px": 9.815178169690688,
+        "zero_nontarget_response_error_px": 6.486019891403525
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02498487072981874,
+          "changed_pixel_mse": 0.1494505219593069,
+          "preserved_pixel_mse": 0.013916242610881972,
+          "changed_fraction": 0.08307902018229167,
+          "changed_mae": 0.24755065174387916,
+          "preserved_mae": 0.022484860249326943,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022656670028984416,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14945052195930683,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.024818807253636305,
+          "changed_pixel_mse": 0.14874276763072006,
+          "preserved_pixel_mse": 0.01379751834216901,
+          "changed_fraction": 0.08307902018229167,
+          "changed_mae": 0.24775512540988512,
+          "preserved_mae": 0.02294039183818494,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.022656670028984416,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14874276763072003,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 12.039414431453805,
+        "velocity_mae_px": 0.4058198662341777,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.10416666666666667,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 9.125626496854467,
+        "nontarget_response_error_px": 5.924458581496773,
+        "zero_target_response_error_px": 9.297850489089951,
+        "zero_nontarget_response_error_px": 5.863964960092397
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.025025502393719156,
+          "changed_pixel_mse": 0.1549726908281591,
+          "preserved_pixel_mse": 0.014341699426186955,
+          "changed_fraction": 0.0774383544921875,
+          "changed_mae": 0.2531870657785855,
+          "preserved_mae": 0.022801644817380794,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.021155048054058736,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.15497269082815912,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02482602007150692,
+          "changed_pixel_mse": 0.1543035931087094,
+          "preserved_pixel_mse": 0.01417738673752957,
+          "changed_fraction": 0.0774383544921875,
+          "changed_mae": 0.25336094126368786,
+          "preserved_mae": 0.023260552393175704,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.021155048054058736,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1543035931087094,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 11.21997506095168,
+        "velocity_mae_px": 0.4278790856442007,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.1875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 10.129516726579608,
+        "nontarget_response_error_px": 7.269923713484418,
+        "zero_target_response_error_px": 10.332505850291417,
+        "zero_nontarget_response_error_px": 7.108074822714657
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.024944239065918302,
+          "changed_pixel_mse": 0.14392835309045449,
+          "preserved_pixel_mse": 0.013490785795576984,
+          "changed_fraction": 0.08871968587239583,
+          "changed_mae": 0.24191423770917295,
+          "preserved_mae": 0.022168075681273092,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02415829200391009,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14392835309045457,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02481159443576569,
+          "changed_pixel_mse": 0.14318194215273064,
+          "preserved_pixel_mse": 0.013417649946808446,
+          "changed_fraction": 0.08871968587239583,
+          "changed_mae": 0.24214930955608227,
+          "preserved_mae": 0.022620231283194164,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02415829200391009,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14318194215273067,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 9.567443684772451,
+        "velocity_mae_px": 0.11171895128364713,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 6.466548875692788,
+        "nontarget_response_error_px": 0.7798992399917886,
+        "zero_target_response_error_px": 6.709789898441195,
+        "zero_nontarget_response_error_px": 0.6332847892632678
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023859528806002686,
+          "changed_pixel_mse": 0.15172337659379914,
+          "preserved_pixel_mse": 0.014040158057919703,
+          "changed_fraction": 0.07147216796875,
+          "changed_mae": 0.25032810972624825,
+          "preserved_mae": 0.022632816304981696,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01945503689517704,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1517233765937992,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023600451602708804,
+          "changed_pixel_mse": 0.15080620537034276,
+          "preserved_pixel_mse": 0.013830446272204679,
+          "changed_fraction": 0.07147216796875,
+          "changed_mae": 0.2506003553539831,
+          "preserved_mae": 0.02301845911553125,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01945503689517704,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15080620537034276,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 13.282929725396526,
+        "velocity_mae_px": 0.34739001957457577,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 6.783613567589051,
+        "nontarget_response_error_px": 2.0185234482735,
+        "zero_target_response_error_px": 6.947768046534471,
+        "zero_nontarget_response_error_px": 1.9188146628663487
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.027568061968211707,
+          "changed_pixel_mse": 0.1599342789143021,
+          "preserved_pixel_mse": 0.01581519079023299,
+          "changed_fraction": 0.08417510986328125,
+          "changed_mae": 0.25742783333428915,
+          "preserved_mae": 0.025107717647466467,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02457356669147183,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15993427891430212,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.027469867347545453,
+          "changed_pixel_mse": 0.15941551624057376,
+          "preserved_pixel_mse": 0.015753385672236928,
+          "changed_fraction": 0.08417510986328125,
+          "changed_mae": 0.2574990475359796,
+          "preserved_mae": 0.025637777901798973,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02457356669147183,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15941551624057373,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 61,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.038710828439255,
+        "velocity_mae_px": 0.7914394569593451,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 15.632552391869273,
+        "nontarget_response_error_px": 16.99315075420649,
+        "zero_target_response_error_px": 15.787976564096384,
+        "zero_nontarget_response_error_px": 16.905960222080957
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023527021415241812,
+          "changed_pixel_mse": 0.13669391036981915,
+          "preserved_pixel_mse": 0.011893378984493212,
+          "changed_fraction": 0.09358978271484375,
+          "changed_mae": 0.23489601217110018,
+          "preserved_mae": 0.019714046795532663,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02394140650030436,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13669391036981918,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02338610281065465,
+          "changed_pixel_mse": 0.13600658128124357,
+          "preserved_pixel_mse": 0.011808723082065414,
+          "changed_fraction": 0.09358978271484375,
+          "changed_mae": 0.23516597333969252,
+          "preserved_mae": 0.020164938497224574,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02394140650030436,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1360065812812436,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 12.232968068018584,
+        "velocity_mae_px": 0.4136704116464909,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.53125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.234291892733308,
+        "nontarget_response_error_px": 9.018212752118485,
+        "zero_target_response_error_px": 13.328904368511205,
+        "zero_nontarget_response_error_px": 8.909621558768238
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02462646083009336,
+          "changed_pixel_mse": 0.149677524604421,
+          "preserved_pixel_mse": 0.012580886218506856,
+          "changed_fraction": 0.08867899576822917,
+          "changed_mae": 0.24638723401046428,
+          "preserved_mae": 0.02041475017534942,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024893470681703125,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.149677524604421,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.0244566187093298,
+          "changed_pixel_mse": 0.1490328683838332,
+          "preserved_pixel_mse": 0.012456966385198954,
+          "changed_fraction": 0.08867899576822917,
+          "changed_mae": 0.24652629565396958,
+          "preserved_mae": 0.020823974452732905,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024893470681703125,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14903286838383323,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 12.06740222161446,
+        "velocity_mae_px": 0.3887725342558302,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.4375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.246002776748826,
+        "nontarget_response_error_px": 7.425038655654816,
+        "zero_target_response_error_px": 13.352217758148846,
+        "zero_nontarget_response_error_px": 7.2790079536329495
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023940215648053337,
+          "changed_pixel_mse": 0.15359433207159698,
+          "preserved_pixel_mse": 0.012547727099321905,
+          "changed_fraction": 0.082000732421875,
+          "changed_mae": 0.2504209603686511,
+          "preserved_mae": 0.02013329920511527,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023230256663978405,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.15359433207159698,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023785486466440256,
+          "changed_pixel_mse": 0.15304539695357147,
+          "preserved_pixel_mse": 0.012427673605470419,
+          "changed_fraction": 0.082000732421875,
+          "changed_mae": 0.25081939931321,
+          "preserved_mae": 0.020567906480823604,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023230256663978405,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.15304539695357144,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 12.398533914422721,
+        "velocity_mae_px": 0.43856828903715134,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.222581008717794,
+        "nontarget_response_error_px": 10.611386848582146,
+        "zero_target_response_error_px": 13.30559097887357,
+        "zero_nontarget_response_error_px": 10.540235163903521
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02531270601213337,
+          "changed_pixel_mse": 0.145760717137245,
+          "preserved_pixel_mse": 0.0126140453376918,
+          "changed_fraction": 0.09535725911458333,
+          "changed_mae": 0.2423535076522778,
+          "preserved_mae": 0.02069620114558358,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026556684699427846,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.145760717137245,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02512775095221935,
+          "changed_pixel_mse": 0.14502033981409504,
+          "preserved_pixel_mse": 0.012486259164927488,
+          "changed_fraction": 0.09535725911458333,
+          "changed_mae": 0.24223319199472912,
+          "preserved_mae": 0.021080042424642207,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026556684699427846,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14502033981409498,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 11.601649702985092,
+        "velocity_mae_px": 0.08114974223774209,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.713471503705685,
+        "nontarget_response_error_px": 2.580062543495072,
+        "zero_target_response_error_px": 11.789927092303722,
+        "zero_nontarget_response_error_px": 2.478969397651011
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02417003241927242,
+          "changed_pixel_mse": 0.15566310636075148,
+          "preserved_pixel_mse": 0.012470361060453714,
+          "changed_fraction": 0.08275604248046875,
+          "changed_mae": 0.25269116658162283,
+          "preserved_mae": 0.0200098702929166,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023301532084890227,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1556631063607515,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023938031719409288,
+          "changed_pixel_mse": 0.15502406536515934,
+          "preserved_pixel_mse": 0.012277900725496615,
+          "changed_fraction": 0.08275604248046875,
+          "changed_mae": 0.25287925147307805,
+          "preserved_mae": 0.02035959394586475,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023301532084890227,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15502406536515934,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.410230945884749,
+        "velocity_mae_px": 0.34638411029222477,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.21875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.464676917807033,
+        "nontarget_response_error_px": 6.745692872615179,
+        "zero_target_response_error_px": 11.50144495573472,
+        "zero_nontarget_response_error_px": 6.700200253928485
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02692688443025378,
+          "changed_pixel_mse": 0.15648567435027375,
+          "preserved_pixel_mse": 0.014420993466296564,
+          "changed_fraction": 0.08941650390625,
+          "changed_mae": 0.25118492420149013,
+          "preserved_mae": 0.02307520822811093,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02688391298662924,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15648567435027375,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.026727881363612253,
+          "changed_pixel_mse": 0.15562259572373766,
+          "preserved_pixel_mse": 0.014280949566830932,
+          "changed_fraction": 0.08941650390625,
+          "changed_mae": 0.2511657024758793,
+          "preserved_mae": 0.023564955313011008,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02688391298662924,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1556225957237377,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "reverse_impulse",
+      "horizon": 128,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.687023555185933,
+        "velocity_mae_px": 0.8134773824095056,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.8125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 16.524727256687207,
+        "nontarget_response_error_px": 17.728882840245195,
+        "zero_target_response_error_px": 16.695341057495177,
+        "zero_nontarget_response_error_px": 17.549695024725214
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.022782465640753872,
+          "changed_pixel_mse": 0.13688379310223778,
+          "preserved_pixel_mse": 0.010851304128770283,
+          "changed_fraction": 0.09386444091796875,
+          "changed_mae": 0.23528561124828035,
+          "preserved_mae": 0.018159172005020742,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024494966973589886,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13688379310223775,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02270394304496786,
+          "changed_pixel_mse": 0.13645194406260264,
+          "preserved_pixel_mse": 0.010812048863269311,
+          "changed_fraction": 0.09386444091796875,
+          "changed_mae": 0.23553393301295125,
+          "preserved_mae": 0.018547374099322955,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024494966973589886,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13645194406260264,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 0.15273432549353866,
+        "velocity_mae_px": 0.11346990916965315,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.010416666666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0046870032690351105,
+        "nontarget_response_error_px": 0.00460937804432801,
+        "zero_target_response_error_px": 0.01123627640638754,
+        "zero_nontarget_response_error_px": 0.011242786823053436
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0002011109123202961,
+          "changed_pixel_mse": 0.007931990531109058,
+          "preserved_pixel_mse": 2.576516522909105e-05,
+          "changed_fraction": 0.021924336751302082,
+          "changed_mae": 0.056889006161187416,
+          "preserved_mae": 0.00044973018431522044,
+          "pixel_gate": 0.3958333333333333,
+          "copy_mse": 0.0013827237227760619,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.007931990531109056,
+          "state_and_pixel_strict": 0.3958333333333333
+        },
+        "neural": {
+          "image_mse": 0.0002682944220491304,
+          "changed_pixel_mse": 0.008002184529055142,
+          "preserved_pixel_mse": 9.691639347242767e-05,
+          "changed_fraction": 0.021924336751302082,
+          "changed_mae": 0.061577161615920924,
+          "preserved_mae": 0.0012821983479694196,
+          "pixel_gate": 0.2708333333333333,
+          "copy_mse": 0.0013827237227760619,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.008002184529055142,
+          "state_and_pixel_strict": 0.2708333333333333
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.15553172294044185,
+        "velocity_mae_px": 0.11163361909063181,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.020833333333333332,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0044966984423473475,
+        "nontarget_response_error_px": 0.004508926630141004,
+        "zero_target_response_error_px": 0.011244582152930708,
+        "zero_nontarget_response_error_px": 0.01124458215292988
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0001983127691072531,
+          "changed_pixel_mse": 0.008358511629987967,
+          "preserved_pixel_mse": 2.383769992682746e-05,
+          "changed_fraction": 0.021214803059895832,
+          "changed_mae": 0.05860945845848509,
+          "preserved_mae": 0.00042115125479394254,
+          "pixel_gate": 0.375,
+          "copy_mse": 0.0012695569322713086,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.008358511629987969,
+          "state_and_pixel_strict": 0.375
+        },
+        "neural": {
+          "image_mse": 0.0002673483679609734,
+          "changed_pixel_mse": 0.00850366655579683,
+          "preserved_pixel_mse": 9.4816238832344e-05,
+          "changed_fraction": 0.021214803059895832,
+          "changed_mae": 0.06373163545463092,
+          "preserved_mae": 0.0012403391738598436,
+          "pixel_gate": 0.25,
+          "copy_mse": 0.0012695569322713086,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.008503666555796827,
+          "state_and_pixel_strict": 0.25
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 0.14993692804663544,
+        "velocity_mae_px": 0.11530619924867452,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9791666666666666,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.0048773080957228735,
+        "nontarget_response_error_px": 0.004709829458515017,
+        "zero_target_response_error_px": 0.01122797065984437,
+        "zero_nontarget_response_error_px": 0.011240991493176991
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00020390905553333902,
+          "changed_pixel_mse": 0.007505469432230144,
+          "preserved_pixel_mse": 2.769263053135465e-05,
+          "changed_fraction": 0.022633870442708332,
+          "changed_mae": 0.05516855386388966,
+          "preserved_mae": 0.00047830911383649823,
+          "pixel_gate": 0.4166666666666667,
+          "copy_mse": 0.001495890513280816,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.007505469432230145,
+          "state_and_pixel_strict": 0.4166666666666667
+        },
+        "neural": {
+          "image_mse": 0.0002692404761372873,
+          "changed_pixel_mse": 0.00750070250231346,
+          "preserved_pixel_mse": 9.90165481125114e-05,
+          "changed_fraction": 0.022633870442708332,
+          "changed_mae": 0.05942268777721085,
+          "preserved_mae": 0.0013240575220789948,
+          "pixel_gate": 0.2916666666666667,
+          "copy_mse": 0.001495890513280816,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.00750070250231346,
+          "state_and_pixel_strict": 0.2916666666666667
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.11530332575575405,
+        "velocity_mae_px": 0.06755902070516602,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.005008719034427135,
+        "nontarget_response_error_px": 0.0051243238000231355,
+        "zero_target_response_error_px": 0.011244290969094085,
+        "zero_nontarget_response_error_px": 0.011244290969093285
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00011488873106216271,
+          "changed_pixel_mse": 0.006248885365948689,
+          "preserved_pixel_mse": 1.2144845989599486e-05,
+          "changed_fraction": 0.01613616943359375,
+          "changed_mae": 0.056726355239864766,
+          "preserved_mae": 0.00039398791675506395,
+          "pixel_gate": 0.375,
+          "copy_mse": 5.427146284882418e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.00624888536594869,
+          "state_and_pixel_strict": 0.375
+        },
+        "neural": {
+          "image_mse": 0.00021130487222100557,
+          "changed_pixel_mse": 0.00792502410320117,
+          "preserved_pixel_mse": 8.394071525709154e-05,
+          "changed_fraction": 0.01613616943359375,
+          "changed_mae": 0.06515950368040141,
+          "preserved_mae": 0.0012782937072366954,
+          "pixel_gate": 0.21875,
+          "copy_mse": 5.427146284882418e-05,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.007925024103201169,
+          "state_and_pixel_strict": 0.21875
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.14805036788196407,
+        "velocity_mae_px": 0.09905320440384352,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 1.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.004370666498461117,
+        "nontarget_response_error_px": 0.004349689869002537,
+        "zero_target_response_error_px": 0.011240531439570088,
+        "zero_nontarget_response_error_px": 0.011240531439568945
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.00019919089560671758,
+          "changed_pixel_mse": 0.008804631326710841,
+          "preserved_pixel_mse": 2.1150822496863748e-05,
+          "changed_fraction": 0.0205535888671875,
+          "changed_mae": 0.06156927777423992,
+          "preserved_mae": 0.00041448566946902674,
+          "pixel_gate": 0.21875,
+          "copy_mse": 0.0010444783669442041,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008804631326710841,
+          "state_and_pixel_strict": 0.21875
+        },
+        "neural": {
+          "image_mse": 0.00024320277964135888,
+          "changed_pixel_mse": 0.007676730787464063,
+          "preserved_pixel_mse": 8.855393928773359e-05,
+          "changed_fraction": 0.0205535888671875,
+          "changed_mae": 0.06226143579571159,
+          "preserved_mae": 0.0012599715063871851,
+          "pixel_gate": 0.125,
+          "copy_mse": 0.0010444783669442041,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.007676730787464062,
+          "state_and_pixel_strict": 0.125
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 1,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 0.1948492828428978,
+        "velocity_mae_px": 0.17379750239994993,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.03125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.9375,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.00468162427421708,
+        "nontarget_response_error_px": 0.004354120463958359,
+        "zero_target_response_error_px": 0.011224006810498446,
+        "zero_nontarget_response_error_px": 0.011243538060498074
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0002892531102920079,
+          "changed_pixel_mse": 0.008742454900667636,
+          "preserved_pixel_mse": 4.399982720080993e-05,
+          "changed_fraction": 0.029083251953125,
+          "changed_mae": 0.0523713854694575,
+          "preserved_mae": 0.0005407169667215705,
+          "pixel_gate": 0.59375,
+          "copy_mse": 0.0030494213385351587,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.008742454900667638,
+          "state_and_pixel_strict": 0.59375
+        },
+        "neural": {
+          "image_mse": 0.00035037561428502675,
+          "changed_pixel_mse": 0.0084047986965002,
+          "preserved_pixel_mse": 0.00011825452587245802,
+          "changed_fraction": 0.029083251953125,
+          "changed_mae": 0.057310545371649695,
+          "preserved_mae": 0.0013083298302843775,
+          "pixel_gate": 0.46875,
+          "copy_mse": 0.0030494213385351587,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.0084047986965002,
+          "state_and_pixel_strict": 0.46875
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 4.322536663782194,
+        "velocity_mae_px": 0.4919400201341851,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.08333333333333333,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.085453165035827,
+        "nontarget_response_error_px": 0.9608166953958067,
+        "zero_target_response_error_px": 2.0549447727140473,
+        "zero_nontarget_response_error_px": 2.1641707750015873
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01584816504684482,
+          "changed_pixel_mse": 0.14646508484671927,
+          "preserved_pixel_mse": 0.005501561290853076,
+          "changed_fraction": 0.07287343343098958,
+          "changed_mae": 0.2512840251030835,
+          "preserved_mae": 0.00949015335863475,
+          "pixel_gate": 0.010416666666666666,
+          "copy_mse": 0.019359697407672734,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.1464650848467193,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.015681081196881334,
+          "changed_pixel_mse": 0.1441548058111892,
+          "preserved_pixel_mse": 0.0054789158744880705,
+          "changed_fraction": 0.07287343343098958,
+          "changed_mae": 0.25244092576052557,
+          "preserved_mae": 0.00983775961159356,
+          "pixel_gate": 0.010416666666666666,
+          "copy_mse": 0.019359697407672734,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.1441548058111892,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.294214078185456,
+        "velocity_mae_px": 0.504534741834518,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.041666666666666664,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.1144362083883996,
+        "nontarget_response_error_px": 0.9900352959672695,
+        "zero_target_response_error_px": 2.013414141657391,
+        "zero_nontarget_response_error_px": 2.155591519451368
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01585873908570786,
+          "changed_pixel_mse": 0.14661773486025728,
+          "preserved_pixel_mse": 0.006145841011843494,
+          "changed_fraction": 0.06921895345052083,
+          "changed_mae": 0.24968796357907128,
+          "preserved_mae": 0.010392436491459578,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01848343726596541,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1466177348602573,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.015672124841715592,
+          "changed_pixel_mse": 0.14404239573217237,
+          "preserved_pixel_mse": 0.006113678067697793,
+          "changed_fraction": 0.06921895345052083,
+          "changed_mae": 0.25074916282732135,
+          "preserved_mae": 0.010745921516484272,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.01848343726596541,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1440423957321724,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 4.350859249378932,
+        "velocity_mae_px": 0.479345298433852,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.0564701216832544,
+        "nontarget_response_error_px": 0.9315980948243436,
+        "zero_target_response_error_px": 2.096475403770703,
+        "zero_nontarget_response_error_px": 2.172750030551806
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01583759100798179,
+          "changed_pixel_mse": 0.1463124348331813,
+          "preserved_pixel_mse": 0.004857281569862659,
+          "changed_fraction": 0.07652791341145833,
+          "changed_mae": 0.2528800866270959,
+          "preserved_mae": 0.008587870225809932,
+          "pixel_gate": 0.020833333333333332,
+          "copy_mse": 0.020235957549380044,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1463124348331813,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.015690037552047086,
+          "changed_pixel_mse": 0.14426721589020605,
+          "preserved_pixel_mse": 0.004844153681278349,
+          "changed_fraction": 0.07652791341145833,
+          "changed_mae": 0.25413268869372957,
+          "preserved_mae": 0.00892959770670285,
+          "pixel_gate": 0.020833333333333332,
+          "copy_mse": 0.020235957549380044,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.144267215890206,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 2.0515142275315097,
+        "velocity_mae_px": 0.29222112215246404,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.8648911422322503,
+        "nontarget_response_error_px": 0.8129175457326667,
+        "zero_target_response_error_px": 2.3532339334649417,
+        "zero_nontarget_response_error_px": 2.3567519305873206
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.009867783686086824,
+          "changed_pixel_mse": 0.11622517734357271,
+          "preserved_pixel_mse": 0.0035006879157214845,
+          "changed_fraction": 0.05815887451171875,
+          "changed_mae": 0.20948880943291998,
+          "preserved_mae": 0.0061140223335086,
+          "pixel_gate": 0.03125,
+          "copy_mse": 0.014504362226342233,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.11622517734357271,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.009604400119662437,
+          "changed_pixel_mse": 0.1122101297087876,
+          "preserved_pixel_mse": 0.0034496320813825272,
+          "changed_fraction": 0.05815887451171875,
+          "changed_mae": 0.2105837439980916,
+          "preserved_mae": 0.006440400928078658,
+          "pixel_gate": 0.03125,
+          "copy_mse": 0.014504362226342233,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.11221012970878766,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 3.6950628332887674,
+        "velocity_mae_px": 0.3500349145859986,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 0.9495468916115318,
+        "nontarget_response_error_px": 0.8228520345764823,
+        "zero_target_response_error_px": 1.29755781646745,
+        "zero_nontarget_response_error_px": 1.4586183433445565
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.01730818700469597,
+          "changed_pixel_mse": 0.18572442811676593,
+          "preserved_pixel_mse": 0.004320066675693245,
+          "changed_fraction": 0.0717010498046875,
+          "changed_mae": 0.307902550186989,
+          "preserved_mae": 0.00737362727214942,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02021436989253932,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.18572442811676598,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.01720687932149265,
+          "changed_pixel_mse": 0.18391575655635795,
+          "preserved_pixel_mse": 0.00434458940175553,
+          "changed_fraction": 0.0717010498046875,
+          "changed_mae": 0.3095821571463274,
+          "preserved_mae": 0.007723405807831218,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02021436989253932,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.18391575655635797,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 16,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 7.221032930526308,
+        "velocity_mae_px": 0.8335640236640927,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.25,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 1.4419214612636992,
+        "nontarget_response_error_px": 1.2466805058782708,
+        "zero_target_response_error_px": 2.51404256820975,
+        "zero_nontarget_response_error_px": 2.6771420510728845
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.020368524449751683,
+          "changed_pixel_mse": 0.13744564907981927,
+          "preserved_pixel_mse": 0.008683929281144509,
+          "changed_fraction": 0.0887603759765625,
+          "changed_mae": 0.23646071568934193,
+          "preserved_mae": 0.014982810470246246,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023360360104136627,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1374456490798192,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02023196414948893,
+          "changed_pixel_mse": 0.13633853116842196,
+          "preserved_pixel_mse": 0.008642526140326155,
+          "changed_fraction": 0.0887603759765625,
+          "changed_mae": 0.2371568761371574,
+          "preserved_mae": 0.015349472098870807,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023360360104136627,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13633853116842198,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 10.026488638980107,
+        "velocity_mae_px": 0.644759751964744,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.25,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.73168342914711,
+        "nontarget_response_error_px": 11.439582965769707,
+        "zero_target_response_error_px": 10.995796505535056,
+        "zero_nontarget_response_error_px": 11.18528055719253
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023009353064762022,
+          "changed_pixel_mse": 0.14029430895262596,
+          "preserved_pixel_mse": 0.012213905514050926,
+          "changed_fraction": 0.08515421549479167,
+          "changed_mae": 0.2355443579297788,
+          "preserved_mae": 0.019745396699377107,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02372792299811571,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14029430895262598,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.022822806774384006,
+          "changed_pixel_mse": 0.1391970716081551,
+          "preserved_pixel_mse": 0.012106164623964044,
+          "changed_fraction": 0.08515421549479167,
+          "changed_mae": 0.23556809725249786,
+          "preserved_mae": 0.020169494973145668,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02372792299811571,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.13919707160815506,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 9.657333785240823,
+        "velocity_mae_px": 0.6595665130054024,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.1875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 12.35292742572961,
+        "nontarget_response_error_px": 11.5925722188697,
+        "zero_target_response_error_px": 11.689872199085324,
+        "zero_nontarget_response_error_px": 11.10199455707638
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02232099714975445,
+          "changed_pixel_mse": 0.13862044564580256,
+          "preserved_pixel_mse": 0.012776933681984673,
+          "changed_fraction": 0.07843526204427083,
+          "changed_mae": 0.23051245679490207,
+          "preserved_mae": 0.020345244028298903,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02174818756691471,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.13862044564580256,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.022057154912696848,
+          "changed_pixel_mse": 0.13748058263090168,
+          "preserved_pixel_mse": 0.01258455249316398,
+          "changed_fraction": 0.07843526204427083,
+          "changed_mae": 0.23053934030996684,
+          "preserved_mae": 0.020773113302958345,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02174818756691471,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.13748058263090168,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 10.395643492719392,
+        "velocity_mae_px": 0.6299529909240854,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.3125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.110439432564611,
+        "nontarget_response_error_px": 11.286593712669706,
+        "zero_target_response_error_px": 10.301720811984795,
+        "zero_nontarget_response_error_px": 11.268566557308683
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.023697708979769597,
+          "changed_pixel_mse": 0.14196817225944944,
+          "preserved_pixel_mse": 0.011650877346117187,
+          "changed_fraction": 0.0918731689453125,
+          "changed_mae": 0.24057625906465527,
+          "preserved_mae": 0.019145549370455303,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.0257076584293167,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14196817225944938,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02358845863607117,
+          "changed_pixel_mse": 0.1409135605854084,
+          "preserved_pixel_mse": 0.011627776754764113,
+          "changed_fraction": 0.0918731689453125,
+          "changed_mae": 0.24059685419502885,
+          "preserved_mae": 0.01956587664333299,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.0257076584293167,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14091356058540846,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 7.195159909784564,
+        "velocity_mae_px": 0.4068089262442571,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.125,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 7.761971595818415,
+        "nontarget_response_error_px": 8.116000391877728,
+        "zero_target_response_error_px": 7.972738948101291,
+        "zero_nontarget_response_error_px": 7.696773953795156
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.021056845443195797,
+          "changed_pixel_mse": 0.13713609533942125,
+          "preserved_pixel_mse": 0.011715739327232202,
+          "changed_fraction": 0.076629638671875,
+          "changed_mae": 0.22931566573739282,
+          "preserved_mae": 0.018876541483523288,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02139852521603771,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13713609533942125,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.020777429316124113,
+          "changed_pixel_mse": 0.13563560786421372,
+          "preserved_pixel_mse": 0.0115274199506509,
+          "changed_fraction": 0.076629638671875,
+          "changed_mae": 0.22943577266329476,
+          "preserved_mae": 0.0192360770143271,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02139852521603771,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1356356078642137,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 9.555093593348971,
+        "velocity_mae_px": 0.5920007711752521,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.0,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.972795557227338,
+        "nontarget_response_error_px": 13.145882362501572,
+        "zero_target_response_error_px": 12.70447639497216,
+        "zero_nontarget_response_error_px": 13.688503524175951
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.025118377212026793,
+          "changed_pixel_mse": 0.15021603620662008,
+          "preserved_pixel_mse": 0.013389873389118814,
+          "changed_fraction": 0.086334228515625,
+          "changed_mae": 0.24619674420585078,
+          "preserved_mae": 0.02137990457006894,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026053141166533504,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.15021603620662002,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.024923768972000396,
+          "changed_pixel_mse": 0.1490031946356849,
+          "preserved_pixel_mse": 0.013288958477920465,
+          "changed_fraction": 0.086334228515625,
+          "changed_mae": 0.2460859132124197,
+          "preserved_mae": 0.021878400131442974,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.026053141166533504,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14900319463568484,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 61,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 13.329212413806784,
+        "velocity_mae_px": 0.9354695584747227,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.460283134395581,
+        "nontarget_response_error_px": 13.056866142929813,
+        "zero_target_response_error_px": 12.310174173531722,
+        "zero_nontarget_response_error_px": 12.170564193606486
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.022852836539063476,
+          "changed_pixel_mse": 0.13353079531183656,
+          "preserved_pixel_mse": 0.011536103825801775,
+          "changed_fraction": 0.092498779296875,
+          "changed_mae": 0.23112066384609245,
+          "preserved_mae": 0.018979744044539077,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02373210261177592,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1335307953118366,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.022767222035027533,
+          "changed_pixel_mse": 0.13295241232456662,
+          "preserved_pixel_mse": 0.011502115443320781,
+          "changed_fraction": 0.092498779296875,
+          "changed_mae": 0.23118260588177916,
+          "preserved_mae": 0.019394007773666934,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02373210261177592,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13295241232456667,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "all",
+      "episodes": 96,
+      "state": {
+        "position_mae_px": 10.40281077353783,
+        "velocity_mae_px": 0.6382145815590571,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5729166666666666,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 12.753908749771485,
+        "nontarget_response_error_px": 12.711719710408852,
+        "zero_target_response_error_px": 13.482913393323999,
+        "zero_nontarget_response_error_px": 13.416650985375261
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.022541688335351927,
+          "changed_pixel_mse": 0.14241999610199865,
+          "preserved_pixel_mse": 0.011062490405730104,
+          "changed_fraction": 0.08852895100911458,
+          "changed_mae": 0.23807255363246926,
+          "preserved_mae": 0.018036952705572203,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024916120750228116,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14241999610199874,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.022335421202896902,
+          "changed_pixel_mse": 0.14124298992761528,
+          "preserved_pixel_mse": 0.010947155390106789,
+          "changed_fraction": 0.08852895100911458,
+          "changed_mae": 0.23802343168113013,
+          "preserved_mae": 0.01840855416209553,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.024916120750228116,
+          "changed_scenes": 96,
+          "changed_scene_changed_pixel_mse": 0.14124298992761528,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "same_color",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 9.54216900625437,
+        "velocity_mae_px": 0.6611921422961656,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.9183161189238,
+        "nontarget_response_error_px": 9.603646324843401,
+        "zero_target_response_error_px": 12.972699437053143,
+        "zero_nontarget_response_error_px": 10.729853624477556
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.021496553238622165,
+          "changed_pixel_mse": 0.1367222134169043,
+          "preserved_pixel_mse": 0.011144863970822491,
+          "changed_fraction": 0.08391825358072917,
+          "changed_mae": 0.22603141169862517,
+          "preserved_mae": 0.017897959234995122,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02396717671709633,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.13672221341690427,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.0212468323290885,
+          "changed_pixel_mse": 0.13538785957700264,
+          "preserved_pixel_mse": 0.010991935519545722,
+          "changed_fraction": 0.08391825358072917,
+          "changed_mae": 0.2259348482792228,
+          "preserved_mae": 0.01827972188350282,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02396717671709633,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1353878595770026,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "different_colors",
+      "episodes": 48,
+      "state": {
+        "position_mae_px": 11.263452540821282,
+        "velocity_mae_px": 0.6152370208219485,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.6458333333333334,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 13.589501380619177,
+        "nontarget_response_error_px": 15.819793095974306,
+        "zero_target_response_error_px": 13.993127349594866,
+        "zero_nontarget_response_error_px": 16.10344834627298
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.0235868234320817,
+          "changed_pixel_mse": 0.14811777878709315,
+          "preserved_pixel_mse": 0.010980116840637724,
+          "changed_fraction": 0.0931396484375,
+          "changed_mae": 0.2501136955663132,
+          "preserved_mae": 0.018175946176149288,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.025865064783359898,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.1481177787870932,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.023424010076705307,
+          "changed_pixel_mse": 0.147098120278228,
+          "preserved_pixel_mse": 0.010902375260667854,
+          "changed_fraction": 0.0931396484375,
+          "changed_mae": 0.25011201508303754,
+          "preserved_mae": 0.018537386440688235,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.025865064783359898,
+          "changed_scenes": 48,
+          "changed_scene_changed_pixel_mse": 0.14709812027822797,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "stratum0",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 9.173640463976774,
+        "velocity_mae_px": 0.4551664414986398,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.5625,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 11.496543161769479,
+        "nontarget_response_error_px": 10.114220609120032,
+        "zero_target_response_error_px": 12.961731049170556,
+        "zero_nontarget_response_error_px": 11.291852337387155
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02167328567192448,
+          "changed_pixel_mse": 0.14563578202623528,
+          "preserved_pixel_mse": 0.010795136770204395,
+          "changed_fraction": 0.0827484130859375,
+          "changed_mae": 0.23956205752996323,
+          "preserved_mae": 0.01770956246811981,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023770589450834722,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1456357820262353,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.021424005643626138,
+          "changed_pixel_mse": 0.14438451297708063,
+          "preserved_pixel_mse": 0.010625707974978723,
+          "changed_fraction": 0.0827484130859375,
+          "changed_mae": 0.23984374220245672,
+          "preserved_mae": 0.018025496588315853,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023770589450834722,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.1443845129770806,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "stratum1",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 9.18410855088875,
+        "velocity_mae_px": 0.6134804114438737,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.21875,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 10.958185114416954,
+        "nontarget_response_error_px": 9.935557385377507,
+        "zero_target_response_error_px": 11.663448786926166,
+        "zero_nontarget_response_error_px": 12.276916879111338
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.024961634295945438,
+          "changed_pixel_mse": 0.14734471358715198,
+          "preserved_pixel_mse": 0.012876646134707374,
+          "changed_fraction": 0.0913543701171875,
+          "changed_mae": 0.2415141379166115,
+          "preserved_mae": 0.020652186050572893,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02761400237689031,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14734471358715207,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.02469779721142681,
+          "changed_pixel_mse": 0.1460494402074354,
+          "preserved_pixel_mse": 0.012715904806347034,
+          "changed_fraction": 0.0913543701171875,
+          "changed_mae": 0.24112302250738818,
+          "preserved_mae": 0.021075512789244317,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.02761400237689031,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.14604944020743538,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "force_delta",
+      "horizon": 128,
+      "group": "stratum2",
+      "episodes": 32,
+      "state": {
+        "position_mae_px": 12.850683305747957,
+        "velocity_mae_px": 0.8459968917346576,
+        "failed_path": 0.0,
+        "wall_path_gt1px": 0.0,
+        "overlap_path_gt0_5px": 0.9375,
+        "missing_fraction": 0.0,
+        "extra_fraction": 0.0,
+        "count_correct": 1.0,
+        "state_strict": 0.0,
+        "click_correct": 1.0,
+        "target_response_error_px": 15.806997973128032,
+        "nontarget_response_error_px": 18.085381136729033,
+        "zero_target_response_error_px": 15.823560343875291,
+        "zero_nontarget_response_error_px": 16.681183739627308
+      },
+      "renderers": {
+        "known": {
+          "image_mse": 0.02099014503818589,
+          "changed_pixel_mse": 0.13427949269260883,
+          "preserved_pixel_mse": 0.009515688312278555,
+          "changed_fraction": 0.09148406982421875,
+          "changed_mae": 0.2331414654508328,
+          "preserved_mae": 0.015749109598023902,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023363770422959323,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13427949269260883,
+          "state_and_pixel_strict": 0.0
+        },
+        "neural": {
+          "image_mse": 0.020884460753637778,
+          "changed_pixel_mse": 0.13329501659832985,
+          "preserved_pixel_mse": 0.009499853388994612,
+          "changed_fraction": 0.09148406982421875,
+          "changed_mae": 0.23310353033354542,
+          "preserved_mae": 0.01612465310872641,
+          "pixel_gate": 0.0,
+          "copy_mse": 0.023363770422959323,
+          "changed_scenes": 32,
+          "changed_scene_changed_pixel_mse": 0.13329501659832985,
+          "state_and_pixel_strict": 0.0
+        }
+      }
+    }
+  ],
+  "seconds": 1.046123499996611
+}

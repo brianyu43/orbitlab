@@ -1,0 +1,84 @@
+{
+  "evaluation_protocol_sha256": "26839de153eafb62022f84fb3f0bf731f12a267c7a31ed75100c94c8532d168f",
+  "task": "Single_Atomic",
+  "runs": {
+    "plain": "7fa2ca65a94e9f6eb34c2b8536f8e63344febfb78e6ba2428d23c9bfb947edc3",
+    "c4": "596a877c2b095022a33608bb450aa96deb1fc984b1e363492ef2978629f1df17",
+    "object": "48e1533d445ea7afc3179452ebee457f06f2f73841a165a5d02a91aeb14dca3c"
+  },
+  "selected_epochs": {
+    "plain": 20,
+    "c4": 20,
+    "object": 20
+  },
+  "validation_metrics": {
+    "plain": {
+      "n": 6400,
+      "image_mse": 0.0019817556621901213,
+      "changed_scene_changed_pixel_mse": 0.020690402960469888,
+      "preserved_pixel_mse": 0.00019891359282217636,
+      "unchanged_scene_mse": 4.2363935521980474e-05,
+      "changed_scenes": 4833,
+      "unchanged_scenes": 1567,
+      "copy_image_mse": 0.018006979307501753,
+      "input_damage_mse": 0.01627547411404498
+    },
+    "c4": {
+      "n": 6400,
+      "image_mse": 0.0011119560297924026,
+      "changed_scene_changed_pixel_mse": 0.010969661596195899,
+      "preserved_pixel_mse": 0.00015652061528005135,
+      "unchanged_scene_mse": 2.549939747268146e-05,
+      "changed_scenes": 4833,
+      "unchanged_scenes": 1567,
+      "copy_image_mse": 0.018006979307501753,
+      "input_damage_mse": 0.016553567062160716
+    },
+    "object": {
+      "n": 6400,
+      "image_mse": 0.0062266811756112265,
+      "changed_scene_changed_pixel_mse": 0.06188738427612257,
+      "preserved_pixel_mse": 0.0008463680937258644,
+      "unchanged_scene_mse": 0.00012110056320558277,
+      "changed_scenes": 4833,
+      "unchanged_scenes": 1567,
+      "copy_image_mse": 0.018006979307501753,
+      "input_damage_mse": 0.012150974606382113
+    }
+  },
+  "copy_validation": {
+    "n": 6400,
+    "image_mse": 0.01800697958220553,
+    "changed_scene_changed_pixel_mse": 0.1854218842718768,
+    "preserved_pixel_mse": 0.0,
+    "unchanged_scene_mse": 0.0,
+    "changed_scenes": 4833,
+    "unchanged_scenes": 1567,
+    "copy_image_mse": 0.018006979307501753,
+    "input_damage_mse": 0.0
+  },
+  "gates": [
+    {
+      "candidate": "c4",
+      "gates": {
+        "image_better_than_plain_and_copy": true,
+        "changed_better_than_plain_and_copy": true,
+        "preserved_damage_not_over5percent_worse": true
+      },
+      "passed": true
+    },
+    {
+      "candidate": "object",
+      "gates": {
+        "image_better_than_plain_and_copy": false,
+        "changed_better_than_plain_and_copy": false,
+        "preserved_damage_not_over5percent_worse": false
+      },
+      "passed": false
+    }
+  ],
+  "selected_candidate": "c4",
+  "confirmation_required_if_resources_allow": true,
+  "confirmation_started": false,
+  "official_test_used": false
+}

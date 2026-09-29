@@ -8,7 +8,13 @@ generate, edit, and predict images. Synthetic scenes make the assumptions and
 failure cases inspectable. This is an ongoing research project, not a
 general-purpose vision model or a reproduction of every method discussed here.
 
-**Public snapshot: 2026-09-29. The follow-up research is incomplete.**
+**Public snapshot: 2026-09-30 KST. Experiments stopped at the user's request; the follow-up research is incomplete.**
+
+The running Multiple Atomic plain/C4 models were stopped after saving their
+5-epoch checkpoints, optimizer/RNG state, and validation results. All experiment
+dispatchers and automatic recovery processes have exited. See the
+[stop record](../research_v3/STOPPED_KO.md) and
+[reproduction boundaries](../research_v3/REPRODUCE_KO.md).
 
 ## Read the evidence
 
@@ -19,8 +25,9 @@ general-purpose vision model or a reproduction of every method discussed here.
 | R1: rendering and pose identifiability | Development evaluation verified; expansion gate failed | [Report](../research_v3/r1/RESULTS_KO.md), [verification](../research_v3/r1/verification.json) |
 | R3: interactions and collisions | Development evaluation verified; expansion gate failed | [Report](../research_v3/r3/RESULTS_KO.md), [verification](../research_v3/r3/verification.json) |
 | R2: learned readers under occlusion | Development evaluation verified; expansion gate failed | [Report](../research_v3/r2/RESULTS_KO.md), [verification](../research_v3/r2/verification.json) |
-| R4: small-shape reconstruction and generation | Training and evaluation in progress; no final result | [Training protocol](../research_v3/r4/training_protocol.json), [evaluation protocol](../research_v3/r4/evaluation_protocol.json) |
-| R5: external and integrated validation | Data preparation and model preflights; primary training not started at this snapshot | [Preflight protocol](../research_v3/r5/model_preflight_v1/protocol.json), [research plan](../completion_v2/NEXT_RESEARCH_PLAN_KO.md) |
+| R4: small-shape reconstruction and generation | Development and full output replay completed; expansion gate failed | [Report](../research_v3/r4/RESULTS_KO.md), [verification](../research_v3/r4/verification.json) |
+| R5: matched disk integration | Retraining and all 57 evaluation conditions verified; expansion gate failed | [Report](../research_v3/r5/disks/RESULTS_KO.md), [closure](../research_v3/r5/disks/closure.json) |
+| R5: external SVIB | 3/18 development runs completed, 2 stopped at 5 epochs; 7/42 test pixel and attribute conditions verified | [Report](../research_v3/r5/external_report/RESULTS_KO.md), [data audit](../research_v3/r5/DATA_AUDIT_KO.md) |
 
 The R1 baseline already achieved 100% geometric-equivalence editing on the two
 held-out renderers in this small development study. The candidate therefore
@@ -39,9 +46,20 @@ recurrent reader improved editing success by only 0.72 percentage points under
 six-object scenes. Its confirmation stage was not triggered. The report separates
 state accuracy from pixel accuracy and retains these negative results.
 
-R4 and R5 source is published as work in progress. R5 training/evaluation scripts
-are drafts, not evidence of completed benchmark runs. R4's original latent caches
-used six CPU threads, while training and primary evaluation use two; a
+R4 replayed 24,576 model reconstructions and 12,288 generated images, but no
+candidate met every development criterion. Matched disk integration retrained
+the perception, force, transition and decoder components on the same data;
+good static detection did not produce reliable long-horizon image prediction.
+
+On the completed external Single Atomic task, C4 reduced pixel error relative
+to plain, yet both-object/all-attribute automatic readout was 10.55% versus
+18.11%. The imperfect reader scored clean targets at 60.78%, so these are not
+independent human success rates. C4 passed the frozen validation gate; its
+required 18 confirmation runs remain unstarted. Missing tasks are not averaged
+away or counted as complete.
+
+R4's original latent caches used six CPU threads, while training and primary
+evaluation use two; a
 [recorded replay correction](../research_v3/r4/pool_verification_attempt_v1/AMENDMENT.json)
 preserves the original caches and checks them using the original thread count.
 

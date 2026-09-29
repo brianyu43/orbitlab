@@ -1,13 +1,13 @@
 {
-  "snapshot_date": "2026-09-29",
-  "scope": "Follow-up source and verified R2 evidence publication; research remains incomplete",
-  "parent_commit": "cb9c250ab946602dbeb7bef4e12adcbc89fad2f0",
-  "new_files": 83,
-  "new_file_bytes": 2350771,
-  "python_files_parsed": 556,
-  "publication_relative_links_verified": 37,
+  "snapshot_date": "2026-09-30 KST",
+  "scope": "User-requested experiment stop and public source-and-evidence snapshot; full research remains incomplete",
+  "parent_commit": "f31f92349f7275fbb8400321b92bacf7048c0b5c",
+  "new_files": 598,
+  "new_file_bytes": 11742837,
+  "python_files_parsed": 597,
+  "publication_relative_links_verified": 66,
   "privacy_scan": {
-    "scope": "83 explicitly selected additions",
+    "scope": "606 staged new or changed files",
     "patterns": [
       "github_token",
       "api_token",
@@ -19,105 +19,14 @@
     "findings": [],
     "limitation": "Pattern screening and scope selection are not proof of absence of all sensitive information."
   },
-  "r2_verified_receipt_and_figure_hashes": [
-    "research_v3/r2/data_verification.json",
-    "research_v3/r2/reader_verification.json",
-    "research_v3/r2/legacy_palette/verification.json",
-    "research_v3/r2/diagnosis/verification.json",
-    "research_v3/r2/decoder/data_verification.json",
-    "research_v3/r2/decoder/verification.json",
-    "research_v3/r2/reader_results.png",
-    "research_v3/r2/reader_results.pdf",
-    "research_v3/r2/decoder_results.png",
-    "research_v3/r2/decoder_results.pdf",
-    "research_v3/r2/failure_examples.png"
-  ],
-  "frozen_current_source_locks": [
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "research_v3/r4_core.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "research_v3/r4_train.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "research_v3/r4_data.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "research_v3/r4_preflight.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "work/orbitlab.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "work/research.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "followup/decoder_study.py"
-    },
-    {
-      "protocol": "research_v3/r4/training_protocol.json",
-      "source": "generation_recovery/models.py"
-    },
-    {
-      "protocol": "research_v3/r4/evaluation_protocol.json",
-      "source": "followup/evaluator_v2.py"
-    },
-    {
-      "protocol": "research_v3/r4/evaluation_protocol.json",
-      "source": "work/generation.py"
-    },
-    {
-      "protocol": "research_v3/r4/evaluation_protocol.json",
-      "source": "generation_recovery/p1_evaluate.py"
-    },
-    {
-      "protocol": "research_v3/r4/evaluation_protocol.json",
-      "source": "generation_recovery/p4_evaluate.py"
-    },
-    {
-      "protocol": "research_v3/r4/evaluation_protocol.json",
-      "source": "generation_recovery/p0_extended.py"
-    },
-    {
-      "protocol": "research_v3/r5/dsprites_audit_protocol.json",
-      "source": "research_v3/r5_audit.py"
-    },
-    {
-      "protocol": "research_v3/r5/dsprites_audit_protocol.json",
-      "source": "research_v3/r5_renderer_diagnosis.py"
-    },
-    {
-      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
-      "source": "research_v3/r5_preflight.py"
-    },
-    {
-      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
-      "source": "research_v3/r5_models.py"
-    },
-    {
-      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
-      "source": "research_v3/r5_data.py"
-    },
-    {
-      "protocol": "research_v3/r4/pool_replay_protocol_v2.json",
-      "source": "research_v3/r4_pool_replay_v2.py"
-    }
-  ],
   "tests": {
     "published_files_only": true,
-    "environment": "Existing Python 3.13 dependencies; no fresh installation or model retraining",
+    "environment": "Existing Python 3.13 dependencies, temporary checkout of staged files; no fresh installation, additional inference or model training",
     "suites": [
       {
         "suite": "tests/test_research.py",
         "exit_code": 0,
-        "output": "test_both_model_widths_and_all_group_elements (test_research.ResearchChecks.test_both_model_widths_and_all_group_elements) ... ok\ntest_data_provenance_and_orbit_disjointness (test_research.ResearchChecks.test_data_provenance_and_orbit_disjointness) ... ok\ntest_fourier_real_pair_and_invariant_decode (test_research.ResearchChecks.test_fourier_real_pair_and_invariant_decode) ... ok\ntest_metrics_identity_and_black_baseline (test_research.ResearchChecks.test_metrics_identity_and_black_baseline) ... ok\ntest_parameter_matching (test_research.ResearchChecks.test_parameter_matching) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.403s\n\nOK\n"
+        "output": "test_both_model_widths_and_all_group_elements (test_research.ResearchChecks.test_both_model_widths_and_all_group_elements) ... ok\ntest_data_provenance_and_orbit_disjointness (test_research.ResearchChecks.test_data_provenance_and_orbit_disjointness) ... ok\ntest_fourier_real_pair_and_invariant_decode (test_research.ResearchChecks.test_fourier_real_pair_and_invariant_decode) ... ok\ntest_metrics_identity_and_black_baseline (test_research.ResearchChecks.test_metrics_identity_and_black_baseline) ... ok\ntest_parameter_matching (test_research.ResearchChecks.test_parameter_matching) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.447s\n\nOK\n"
       },
       {
         "suite": "followup/test_object_world.py",
@@ -127,21 +36,76 @@
       {
         "suite": "followup/test_dynamics_world.py",
         "exit_code": 0,
-        "output": "test_free_flight_and_force (test_dynamics_world.PhysicsChecks.test_free_flight_and_force) ... ok\ntest_joint_rotation_and_fixed_condition_counterexample (test_dynamics_world.PhysicsChecks.test_joint_rotation_and_fixed_condition_counterexample) ... ok\ntest_pair_energy_momentum_and_wall (test_dynamics_world.PhysicsChecks.test_pair_energy_momentum_and_wall) ... ok\ntest_renderer_rotation_and_slot_order (test_dynamics_world.PhysicsChecks.test_renderer_rotation_and_slot_order) ... ok\ntest_unidentifiable_force_decomposition_and_reproducibility (test_dynamics_world.PhysicsChecks.test_unidentifiable_force_decomposition_and_reproducibility) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.113s\n\nOK\n"
+        "output": "test_free_flight_and_force (test_dynamics_world.PhysicsChecks.test_free_flight_and_force) ... ok\ntest_joint_rotation_and_fixed_condition_counterexample (test_dynamics_world.PhysicsChecks.test_joint_rotation_and_fixed_condition_counterexample) ... ok\ntest_pair_energy_momentum_and_wall (test_dynamics_world.PhysicsChecks.test_pair_energy_momentum_and_wall) ... ok\ntest_renderer_rotation_and_slot_order (test_dynamics_world.PhysicsChecks.test_renderer_rotation_and_slot_order) ... ok\ntest_unidentifiable_force_decomposition_and_reproducibility (test_dynamics_world.PhysicsChecks.test_unidentifiable_force_decomposition_and_reproducibility) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.105s\n\nOK\n"
       }
-    ],
-    "r5_draft_cpu_smoke": "plain CPU forward/backward passed\nc4 CPU forward/backward passed\nobject CPU forward/backward passed\n",
-    "r5_primary_training_tested": false
+    ]
   },
-  "status": {
-    "R2": "Verified development gate failed; no confirmation",
-    "R4": "Training and evaluation in progress; no final result",
-    "R5": "Prepared data and completed model preflights; primary training not started"
+  "frozen_training_sources_checked": {
+    "research_v3/v3_common.py": "3b28ab8347d53fd37b77dee30ddc3d256209a60c805a12060c21186fab93c605",
+    "research_v3/r1_core.py": "72c73f9fae9130d58c5f2c607af5b4c29d7b238d4a1d2f58defbd567a691943f",
+    "research_v3/r1_data.py": "9fcf95471405d47725a8298b289f8fa2b46111fd33e126a79299d4446bff7fde",
+    "research_v3/r1_train.py": "f11652e069178ebe1f0156f58e2cf1334e48617e241634a6d0948d45f834a696",
+    "research_v3/r1_evaluate.py": "057944c275d8ff2e3db5aeeddd81d84ecb843adbbb064e99a2817f3f140908a6",
+    "research_v3/r3_physics.py": "f44a4a25df22e5eb05e68ebfa716b1d8bf25e3645b2f66ce89a46ce4e5870032",
+    "research_v3/r3_core.py": "b556d89a7499ae70db888cda9a54ee3d199eea0a5a06fe4762cec19909f42f29",
+    "research_v3/r3_data.py": "bd414c6a44867265605cbc69637b88b96d22c75a215d51352f192fbdf6b6ea60",
+    "research_v3/r3_train.py": "0fd18edb6cac4b9e5ff465b72eb69a5fc3ba46e88d804cb1effaac1afb267f69",
+    "research_v3/r3_evaluate.py": "cbab8b86bd2c498006248ff87f342f394e6fb7693f31cbe62308e15aa83cfb98",
+    "research_v3/r2_core.py": "6dae1f0094fb5acdc0c979865fe67ba20daa4b6778bc7ef2ae819337b1386d65",
+    "research_v3/r2_train.py": "13f1184e4e3267ee85798cee0b098b484bb0474e95441daf4e0f272b4eb740a9",
+    "research_v3/r2_decoder_core.py": "a6364d9f3958e87da266330e6427fa05fa63bb520cbf1d16df30350f3dfd3b9c",
+    "research_v3/r2_decoder_data.py": "1fb09958b4e73adac759292d6e5cfe9fd7829ef1eb05488acb135cd85336b38f",
+    "research_v3/r2_decoder_train.py": "d9ce610fb979b0565034cb5bc9124a211ca1077c58d8a04b56119239d7ef913a",
+    "research_v3/r4_core.py": "0560cc04e389b673aa210f326f022e32e15b652861e0bb08b9532a02ad88e185",
+    "research_v3/r4_train.py": "7139f86da27c41712965f37c24fd0c6b728c06c641da47fda15a6169556c3edd",
+    "research_v3/r4_data.py": "9e472e9419f660761af828568c65204849e811b008ced47074585ba1ebbbd2f9",
+    "research_v3/r4_preflight.py": "bcbc36f6d7395859725c344ff7d5ef81ccff777f4f7217618a9c7de572257c0f",
+    "work/orbitlab.py": "edc097901a1fe12f0584b1ead06b912c717a0a7ea8e93badf99253152efef45c",
+    "work/research.py": "14a8de758883d23831e252e1385221f3864a16f38be96a00450c4c7ced427bab",
+    "followup/decoder_study.py": "cb985f95e762a34ad5b8c9574b9f0b9155faa13d2696e2f9402fd5006e714bae",
+    "generation_recovery/models.py": "9970ac446a88ad4acec3a6dcf07713b8aff562996816dafcb93c8d9714a307ec",
+    "research_v3/r5_disk_core.py": "c978d23ff0e50d88e3591bf6c57fb7be422affd0e470e102226dbf3c52905efe",
+    "research_v3/r5_disk_train.py": "0ea1ca5d2e7c901f8a53149d6f845cbdd3981959b77ed17f1638d780ad8586db",
+    "research_v3/r5_train.py": "f62f7040dcd4d0df974583fa59419635cab6b87fcab0b5447c6de63f03ac5f4b",
+    "research_v3/r5_models.py": "f1b8a9a17f7d0e9df935ce2e8c44967e50f806ea6852c5125801213ad544f5db",
+    "research_v3/r5_data.py": "3f231c6a0dfc80d7554250c606d82e372b6f839c730fec5a7dd462b698279f51",
+    "research_v3/r5_audit.py": "85062aeaa46e2fd871b85e5ebbe80747996595305da0389db92bbaf1b37818d4",
+    "research_v3/r5_partitions.py": "19fb1747e8e499fab9eed49318284276077bd4aa95bc6caeb26a260c088095ec",
+    "research_v3/r5_intake.py": "628f1b41256c5301fad6ffaff1e28109743a25ec894652ed7ccf5207e4603553",
+    "followup/svib_preview_models.py": "85ddc5606df5f98eadd2b0a86d06a14512d654f868905b995e15919804fc48d1",
+    "research_v3/r5_3d_train.py": "8b4d3aee6f2616b0a2603ff9ed2f102b5659769de84832f9e829ce1e554a9e23",
+    "research_v3/r5_3d_data.py": "aa9a7765deccd9b3f0936cee5d6d32c70dd6eec54d22daeb6416a6aea9710ad5",
+    "research_v3/r5_3d_audit_v2.py": "7d540cf8b77d4e26411bb4d5f030d71807aa69557f756ba0bf39120cea0c25f8",
+    "research_v3/r5_3d_partitions.py": "e8370084d439805289c239a87f5a92f4fe0f7ca905e9035687a1ec6846297f34"
+  },
+  "evidence_files_hashed": 366,
+  "report_figure_and_receipt_hashes_verified": true,
+  "diff_whitespace_check": {
+    "passed": true,
+    "CRLF_CSV_records": "Preserved original CSV bytes and recorded hashes; cr-at-eol used for whitespace checking."
+  },
+  "user_stop": {
+    "saved_step_each_partial_model": 9000,
+    "planned_step_each_model": 36000,
+    "primary_completed": 3,
+    "primary_partial": 2,
+    "primary_unstarted": 13,
+    "pixel_units_verified": 7,
+    "pixel_units_required": 42,
+    "attribute_units_verified": 7,
+    "attribute_units_required": 42,
+    "readers_completed": 6,
+    "required_confirmation_runs_started": 0,
+    "required_confirmation_runs_known": 18,
+    "automatic_resume_authorized": false,
+    "full_research_complete": false
+  },
+  "stop_evidence_sha256": {
+    "research_v3/r5/user_stop.json": "4db205808cac2586f6e32d4f9639d450c8a1c217b7b09906c78362e391f5950f",
+    "research_v3/review/stopped_checkpoint_verification.json": "cd5b6d3a8738269f01faacf8e330186d22dcd0bf7c7208f382a5143789e79203",
+    "research_v3/prior_integrity_user_stop.json": "3763950dc8189a6339f948035df706312a98c347da19e804643263158f752811",
+    "research_v3/review/scope_audit_snapshot.json": "070de618e6885ea8302703ceabf1eeb785c57b38a19e7011ae99c3da61546f85"
   },
   "historical_experiment_sources_modified": false,
-  "seconds": 3.1472690105438232,
-  "diff_whitespace_check": {
-    "original_authored_files": "passed",
-    "preserved_upstream_exception": "research_v3/r5/references/svib_README.md:95 contains original trailing whitespace; retained byte-for-byte to preserve its recorded source hash"
-  }
+  "seconds": 2.9872740840000915
 }

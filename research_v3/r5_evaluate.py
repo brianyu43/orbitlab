@@ -12,6 +12,7 @@ from v3_common import HERE,sha,dump,lock,event
 from r5_intake import BASE,TASKS
 from r5_data import Pairs
 from r5_models import make,pixel_metrics,METRIC_NAMES
+import r5_train as training
 from r5_train import (KINDS,EPOCHS,freeze as training_freeze,location,partition,
     context,aggregate_rows,score,BATCH,resource_check,save_torch)
 
@@ -29,6 +30,7 @@ def freeze():
         'scope':'Externalpixelstudy only. Objectattribute readout, allnew3Dtasks, matched moving-disk integration andindependenthuman applicability remainseparate requiredwork.'})
 
 def candidate_selection(task):
+    assert training.SPLIT_SEED==training.DEVELOPMENT,'Lock candidate on development partition only'
     freeze();path=EVAL/task/'development_selection.json';device=torch.device('mps');torch.set_num_threads(2)
     runs={k:json.loads((location(task,k,0)/'run.json').read_text()) for k in KINDS}
     vals={k:json.loads((location(task,k,0)/f'val_epoch{runs[k]["selected_epoch"]}.json').read_text())['metrics'] for k in KINDS}
@@ -51,12 +53,14 @@ def selected_epoch(task,kind,init,mode):
     return run['selected_epoch'] if mode=='validation_selected' else 20
 
 def unit(task,kind,init,mode):
-    return EVAL/task/f'{kind}_s{init}'/mode
+    base=EVAL if training.SPLIT_SEED==training.DEVELOPMENT else BASE/'external/dsprites_hard/confirmation'/f'p{training.SPLIT_SEED}'/'evaluation'
+    return base/task/f'{kind}_s{init}'/mode
 
 def provenance(task,kind,init,mode):
     epoch=selected_epoch(task,kind,init,mode);selection=EVAL/task/'development_selection.json';assert selection.exists()
     return {'evaluation_protocol_sha256':sha(BASE/'dsprites_evaluation_protocol.json'),'selection_sha256':sha(selection),
         'data_manifest_sha256':sha(BASE/'data/dsprites_hard/manifest.json'),'audit_sha256':sha(BASE/'audits/dsprites_hard'/task/'summary.json'),
+        'partition_seed':training.SPLIT_SEED,'partition_sha256':sha(training.prepare_partition(task,training.SPLIT_SEED)),
         'task':task,'kind':kind,'init':init,'mode':mode,'epoch':epoch,'checkpoint_sha256':sha(location(task,kind,init)/f'epoch{epoch}.pt') if epoch is not None else None}
 
 def load(task,kind,init,mode,device):
@@ -87,7 +91,13 @@ def verify(task,kind,init,mode):
     freeze();assert torch.backends.mps.is_available();torch.set_num_threads(2);device=torch.device('mps');folder=unit(task,kind,init,mode);saved=json.loads((folder/'summary.json').read_text());assert saved['provenance']==provenance(task,kind,init,mode)
     for file,key in [('rows.npy','rows_sha256'),('batch_hashes.json','batch_hashes_sha256'),('examples.pt','examples_sha256')]:assert sha(folder/file)==saved[key]
     if (folder/'verification.json').exists():
-        old=json.loads((folder/'verification.json').read_text());assert old['summary_sha256']==sha(folder/'summary.json');return
+        old=json.loads((folder/'verification.json').read_text());assert old['summary_sha256']==sha(folder/'summary.json')
+        cp=folder/'prediction_verification_cache.npy'
+        if cp.exists():
+            assert not old['temporary_cache_removed_after_pass'] and sha(cp)==old['original_temporary_cache_sha256'];cp.unlink()
+        if not old['temporary_cache_removed_after_pass']:
+            old['temporary_cache_removed_after_pass']=True;dump(folder/'verification.json',old)
+        return
     cp=folder/'prediction_verification_cache.npy';assert sha(cp)==saved['cache_sha256'];cached=np.load(cp,mmap_mode='r');model=load(task,kind,init,mode,device);store=Pairs(task);rows=[];maxerr=0.;started=time.perf_counter();bitexact=0
     recorded=json.loads((folder/'batch_hashes.json').read_text())
     for first in range(0,8000,BATCH):
@@ -101,10 +111,10 @@ def verify(task,kind,init,mode):
         else:assert abs(v-recomputed[k])<=1e-6
     store.close();del cached
     receipt={'summary_sha256':sha(folder/'summary.json'),'all_RGBoutputs_replayed':8000,'all_metricrows_recomputed':8000,'max_abs_pixel_error':maxerr,'bitexact_batches':bitexact,'total_batches':250,
-        'original_temporary_cache_sha256':saved['cache_sha256'],'seconds':time.perf_counter()-started,'temporary_cache_removed_after_pass':True,'independent_retraining':False}
-    dump(folder/'verification.json',receipt);cp.unlink();print('R5fullpixelreplay',task,kind,init,mode,maxerr,flush=True)
+        'original_temporary_cache_sha256':saved['cache_sha256'],'seconds':time.perf_counter()-started,'temporary_cache_removed_after_pass':False,'independent_retraining':False}
+    dump(folder/'verification.json',receipt);cp.unlink();receipt['temporary_cache_removed_after_pass']=True;dump(folder/'verification.json',receipt);print('R5fullpixelreplay',task,kind,init,mode,maxerr,flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('stage',choices=['select','evaluate','verify']);p.add_argument('--task',choices=TASKS,required=True);p.add_argument('--kind',choices=[*KINDS,'copy']);p.add_argument('--init',type=int,default=0);p.add_argument('--mode',choices=['validation_selected','fixed20epoch'],default='validation_selected');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('stage',choices=['select','evaluate','verify']);p.add_argument('--task',choices=TASKS,required=True);p.add_argument('--kind',choices=[*KINDS,'copy']);p.add_argument('--init',type=int,default=0);p.add_argument('--mode',choices=['validation_selected','fixed20epoch'],default='validation_selected');p.add_argument('--split-seed',type=int,choices=[training.DEVELOPMENT,*training.CONFIRMATION],default=training.DEVELOPMENT);a=p.parse_args();training.SPLIT_SEED=a.split_seed
     if a.stage=='select':print(candidate_selection(a.task),flush=True)
     else:{'evaluate':evaluate,'verify':verify}[a.stage](a.task,a.kind,a.init,a.mode)

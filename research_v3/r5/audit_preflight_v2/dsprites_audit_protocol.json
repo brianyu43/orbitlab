@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "source_sha256": "b9ae7f2eb8c5c0329cc06164592093911a287aac0a6dd6e2319576f05f153f4b",
+  "intake_manifest_sha256": "dc5f471e4a557cd141677fcda36afdc2fe3db232b2c0df7f1e608d599b31349d",
+  "upstream_sources": {
+    "macros.py": "c004d51ecb1defdb5a0d135c9f0b27ad656c817c0fda91852ad57b9e6b371502",
+    "rule.py": "f9353af42fcf990c6d8eb0412380d2d5e215fff992dcec3ed9f53c25252b40f1",
+    "utils.py": "69d492ebfa448a8d6a2e837bd1275f86ea4746c8552f27fac5e49998de9f42ce",
+    "create_data.py": "6db079e8baabe6a92811a753b0ead190763753234ebf81acdcecb2cff13dd48c",
+    "spriteworld/renderers/pil_renderer.py": "be4ba044a68046ab9d9e6078db8f40c339ff99f7bb6db2f9b1187a31ddab24dc"
+  },
+  "tasks": [
+    "Single_Atomic",
+    "Multiple_Atomic",
+    "Single_Non-Atomic",
+    "Multiple_Non-Atomic"
+  ],
+  "shapes": [
+    "circle",
+    "triangle",
+    "square",
+    "star_4"
+  ],
+  "metadata_colors": [
+    [
+      0,
+      255,
+      0
+    ],
+    [
+      255,
+      0,
+      255
+    ],
+    [
+      0,
+      127,
+      255
+    ],
+    [
+      255,
+      127,
+      0
+    ]
+  ],
+  "sizes": [
+    0.125,
+    0.225,
+    0.325,
+    0.425
+  ],
+  "pixel_policy": "Keep native PNG RGB unchanged; cv2write yields channel-reversed metadata palette. Maskobject0isred and1isblue in stored RGB. Verify nearest palette identity of median opaque-interior RGB; retain channel deviations>2 as antialias diagnostics, not automatic corruption. Never recolor pixels.",
+  "preflight_amendment": "audit_preflight_v1/AMENDMENT.json; exact palette channel tolerance was not valid for independently antialiased RGB and masks; no primary scores used.",
+  "split_seed": 890101,
+  "training": 57600,
+  "validation": 6400,
+  "official_test": 8000,
+  "family_policy": "Whole C4pixel orbit hashes of both source and target; connect any shared image orbit. Same connected component cannot cross new train/validation. Official test retained, overlaps reported.",
+  "split_selection": "Deterministic shuffled source/target-orbit connected components using890101. Allocate complete components to validation up to6400; require exactly6400. No image outcomes, labels or scores used to select membership.",
+  "exposure": "Original project previously used allSingleAtomic64000train and8000test; new models train fresh on57600only. Test is not previously unseen at project level. Other tasks not previously trained.",
+  "rules": "Match published source: ShAASh,MMix2,NShAC,MNMix2. MultipleNonAtomic size uses OTHERobject color+OTHERobject quadrant in the code; also count disagreement with literal paper self-quadrant size formula.",
+  "rotation_audit": "Hypothetical world-space quarter-turn about(.5,.5), not re-rendered official test augmentation. Compare semantic shape/color/size rule outputs; isolate quadrant dependence. Does not claim pixel symmetry of 3Dtasks."
+}

@@ -8,11 +8,14 @@ distribution to the local project; it does not close the active follow-up plan.
 Included are implementation and experiment scripts, selected source snapshots,
 tests, frozen protocols, the small original synthetic dataset, research reports,
 selected figures, completion-v2 aggregates/audits, and verified R1/R3 summaries.
-The subsequent source-and-evidence update includes verified R2 reports,
-aggregates and replay receipts, plus R4/R5 implementation and frozen preparation
-protocols. R4 is running; R5 primary benchmark training has not started at this
-snapshot. R5 training/evaluation drafts have not been validated as complete runs.
-Partial scores are not presented as final findings.
+The 2026-09-30 KST update includes verified R2/R4 and matched-disk reports,
+external Single Atomic results, all six measurement-reader calibrations,
+source/protocol/replay evidence, and the user's requested stop boundary.
+Multiple Atomic plain/C4 models stopped at 5/20 epochs with local resumable
+checkpoints. Other external primary tasks and the required conditional
+confirmations remain unfinished. All experiment and recovery processes have
+exited; no automatic restart is authorized. See
+[the stop record](research_v3/STOPPED_KO.md). Partial scores are not final findings.
 
 `PUBLICATION_MANIFEST.json` records the SHA-256 and size of every other published
 file at the initial-publication commit. It describes that snapshot only.

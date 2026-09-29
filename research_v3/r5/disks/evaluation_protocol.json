@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "source_sha256": "d2703e97d0195ca966e5f0a483084d402a10c0e388c2fdd6bb3aabb931c85c5f",
+  "training_protocol_sha256": "a0556b20053be0030dd1dfd7b8aadab0bf083fa13c57fbd4ffdf3c7496086454",
+  "evaluation_groups": "Reader/force calibration on96valcount2. Integrated development test96/count at2/3/4/6; this is one fresh development dataset, not3independent confirmations.",
+  "factorial": "Three transitions bounded/contact/coarsephysical xtrue/learnedinitialstate xknown/inferrednetforce+drag xknown/neuralrenderer. Sameobservations,requestedimpulse andreferencefuture. Noend-to-endfine-tuning. Both learnedtransitions retrained onshareddata; exactsimulator is anoracle usedforlabels.",
+  "horizons": [
+    1,
+    16,
+    61,
+    128
+  ],
+  "scenarios": [
+    "baseline",
+    "reverse_impulse",
+    "force_delta"
+  ],
+  "inference": "FourRGBframes0..3 only. Predictedpresentprobability>=.5, allup-to6peaks retained, noGTcount. Clickattrue current targetcenter is suppliedexternalcommand; choose nearestpresentprediction. Negate sameclickedimpulse forreversecondition. Forcecondition adds known.04x toestimatedbaselineforce aswell.",
+  "matching": "Initialone-to-one minimumsquaredXY assignment forSCORINGONLY. Matchedinitialdistance>8px countsasmissing. Sameassignment retained throughallfutureframes andcounterfactuals. Neverreorderpredictedslots bytruth. Extraobjects remaininphysics/rendering and reported; zeroobjects getsblankimage andallmissing penalties.",
+  "state_metrics": [
+    "position_mae_px",
+    "velocity_mae_px",
+    "failed_path",
+    "wall_path_gt1px",
+    "overlap_path_gt0_5px",
+    "missing_fraction",
+    "extra_fraction",
+    "count_correct",
+    "state_strict",
+    "click_correct",
+    "target_response_error_px",
+    "nontarget_response_error_px",
+    "zero_target_response_error_px",
+    "zero_nontarget_response_error_px"
+  ],
+  "state_thresholds": "AnytrajectorynonfiniteorabsXY>64px isfailure. Failure/missingobjectposition128px andvelocity16px/frame; cannotdropfrommeans. Initialfalsepositivescountasextra; countmismatchseparatelyreported. Strictallobjectsrequirescorrectcount, eachXYaxis<=1px,eachvelocityaxis<=.5px/frame,radius<=.5px,eachRGBchannel<=20/255,correctclick,no failedpath. Fullpathwall>1px oroverlap>.5px measuredatframeendpoints includinginitialstate; reportpriorprojectioneffects separately throughinitialviolations.",
+  "pixel_metrics": [
+    "image_mse",
+    "changed_pixel_mse",
+    "preserved_pixel_mse",
+    "changed_fraction",
+    "changed_mae",
+    "preserved_mae",
+    "pixel_gate",
+    "copy_mse"
+  ],
+  "pixel_gate": "ChangedMAE<=.05 andpreservedMAE<=.01, sameR2tolerances; semantic/statecriterion remainsseparate. Emptychanged/preservedregion storeszeroerror andzeroarea; aggregateregiondenominators explicitly.",
+  "counterfactual_metric": "Displacementresponse(predictedintervention-predictedbaseline) versusmatchedtrueintervention-truebaseline; targetandnontargetseparate. Missing/failedgets128px; zeroresponsebaseline retained. No identicalimagehumanjudgement claim.",
+  "controls": "Inputcopy for everyfuture; truefuturestate throughknownrenderer (exactpixel uppercontrol) and samelearnedneuraldecoder. Coarsephysicalwithoutlearnedresidual mandatory. Blackbackground/diskshape/sizepriors disclosed; this isnot texturedpolygonintegration.",
+  "gate": "Contactcandidate diagnostic advances only ifcount4step61true-stateknown-force error<=.8bounded, allcount61failed<.01/wall<.01/overlap<.05, count4nontargetreverse-response<=1.05bounded, count2step16everycontactstratum<=1px, andlearnedreader count6missing<=.05. Passing triggersrequirednew3datax3init confirmations, never silentlyclaimed. Failingstopsautomaticexpansionandretainsdiagnosis. No testthreshold/hyperparameter tuning.",
+  "replay": "Storeallnumerictrajectoriesandper-episode rows; everyinference repeated CPU2threads withsamebatchsize. Everyrenderedfloat32image SHA256 recorded andmatched onrepeat; avoidslargeRGBcache. First4exampleimagesretainedperunit. Numericpredictionsbitexact required; metricsatol1e-10. Thisisforwardreplay,notindependentretraining.",
+  "checkpoint_audit": "Verifyeveryfullstepcount, savedoptimizerparameterstepcounts, initialstate, exactsampleorderandRNG, finalprogress/checkpointidentity, shared960trainmanifest.100steppilots separatelyreported."
+}

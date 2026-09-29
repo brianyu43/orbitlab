@@ -1,0 +1,74 @@
+{
+  "protocol_sha256": "015d3c4ca97bd944c400f6d57f01bdcf7aed92477ab99e829a4cdb9dd47d8337",
+  "serial_timed_seconds_sum": 16.699660875005065,
+  "parallel_timed_seconds_max": 10.24916754100559,
+  "estimated_compute_throughput_speedup": 1.6293675372357694,
+  "parallel_total_wall_seconds_including_startup": 14.050141667001299,
+  "runs": {
+    "serial_plain": {
+      "kind": "plain",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 7.833190459001344,
+      "updates_per_second": 25.532380585764294,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.012783908285200596,
+        0.0060447268187999725
+      ]
+    },
+    "serial_object": {
+      "kind": "object",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 8.866470416003722,
+      "updates_per_second": 22.556890241127498,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.015531768091022968,
+        0.014906522817909718
+      ]
+    },
+    "parallel_plain": {
+      "kind": "plain",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 10.011335458002577,
+      "updates_per_second": 19.977354753419004,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.012783908285200596,
+        0.0060447268187999725
+      ]
+    },
+    "parallel_object": {
+      "kind": "object",
+      "timed_updates": 200,
+      "warmup_updates": 20,
+      "seconds": 10.24916754100559,
+      "updates_per_second": 19.513779943573557,
+      "model_and_updates_unchanged": true,
+      "weights_discarded": true,
+      "device": "MPSfloat32",
+      "CPU_threads": 2,
+      "scope": "Residentfourtrainingbatches; excludesPNGloadandtransfer. Samefinitechecks/clip/Adam asprimary loop.",
+      "loss_samples": [
+        0.015531768091022968,
+        0.014906522817909718
+      ]
+    }
+  },
+  "decision_rule": "Useconcurrent2primaryMPSworkers onlyifcompute aggregate>=1.1xandmemorysafe; thenmonitorrealPNG-inclusivejobtiming. No guaranteeentireexperimentfinishesatthisspeedup."
+}

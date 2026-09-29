@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "task_order": [
+    "Single_Atomic",
+    "Multiple_Atomic",
+    "Single_Non-Atomic",
+    "Multiple_Non-Atomic"
+  ],
+  "kinds": [
+    "plain",
+    "c4",
+    "object"
+  ],
+  "development_initialization": 0,
+  "development_partition_seed": 890101,
+  "conditional_confirmation_partition_seeds": [
+    890201,
+    890202,
+    890203
+  ],
+  "conditional_confirmation_initializations": [
+    0,
+    1,
+    2
+  ],
+  "official_data_split": "Hard64000training divided57600train/6400validation by r5_audit.py family partition. Official8000test retained and only scored after validation selection. OriginalSingleAtomic test was already seen by prior project.",
+  "epochs_evaluated": [
+    5,
+    10,
+    20
+  ],
+  "full_epochs": 20,
+  "batch": 32,
+  "updates_each_full_run": 36000,
+  "device": "MPSfloat32,CPU2threads",
+  "optimizer": "Adam lr=.0005; global grad norm clip1; full-image MSE; no augmentation; no learning-rate tuning",
+  "initialization": "950000+init; plain/C4exactsameparametersandinitialweights. Object1081892vsplain1266467parameters; not parameter-matched.",
+  "sampling": "Whole training scenes shuffled each complete epoch, NumPyseed952000+init. All arms share exact20orders; no replacement within an epoch.",
+  "model_information": "Only source RGB input and target RGB image loss for all primary models. No true masks, factors, positions or rule IDs at inference/training. Object arm3learned slots includes background capacity; object correspondence is not assumed.",
+  "selection": "Per-model smallest validation full-image MSE among5/10/20epochs; ties choose earlier epoch. Also report fixed20epoch test as matched-training-budget secondary comparison. Never select by official test.",
+  "development_gate": "Compare validation-selectedC4andobject againstvalidation-selectedplain and inputcopy: fullimageMSE and changed-scenechangedpixelMSE each lower thanboth; preservedpixelMSE<=1.05*plain. Maximizefullimageimprovement; tieskindsorder. Only selectedcandidate+plain receive confirmation: three fresh train/validation partition seeds times three initializations. These are resplits of the SAME official dataset with the same officialtest, not new independent datasets. Gatefailureprecludesautomaticconfirmation. Resource-limited confirmation remains explicitly unfinished.",
+  "reporting": "Full image, changed pixels on changed scenes, preserved pixels, unchanged scene damage, source copy baseline. Attribute readout and integrated disk experiment are additional required work, not satisfied by pixel evaluation alone.",
+  "preflight": "CPU/MPSforwardafter5CPUupdates,100GPUtimingupdatesperarm, allreset beforetraining. Timing evidence in model_preflight_v1; modelsourcesmustmatch.",
+  "caps": {
+    "initial_R5_stage_seconds": 43200,
+    "R5_bytes": 30000000000
+  },
+  "resume": "Atomic optimizer/RNG/checkpointprogress every900updates; exactsavedorders anddata/sourcehashes. Preserve partial runs onfailures.",
+  "sources": {
+    "research_v3/r5_train.py": "f62f7040dcd4d0df974583fa59419635cab6b87fcab0b5447c6de63f03ac5f4b",
+    "research_v3/r5_models.py": "f1b8a9a17f7d0e9df935ce2e8c44967e50f806ea6852c5125801213ad544f5db",
+    "research_v3/r5_data.py": "3f231c6a0dfc80d7554250c606d82e372b6f839c730fec5a7dd462b698279f51",
+    "research_v3/r5_audit.py": "85062aeaa46e2fd871b85e5ebbe80747996595305da0389db92bbaf1b37818d4",
+    "research_v3/r5_partitions.py": "19fb1747e8e499fab9eed49318284276077bd4aa95bc6caeb26a260c088095ec",
+    "research_v3/r5_intake.py": "628f1b41256c5301fad6ffaff1e28109743a25ec894652ed7ccf5207e4603553",
+    "research_v3/r4_core.py": "0560cc04e389b673aa210f326f022e32e15b652861e0bb08b9532a02ad88e185",
+    "research_v3/v3_common.py": "3b28ab8347d53fd37b77dee30ddc3d256209a60c805a12060c21186fab93c605",
+    "followup/svib_preview_models.py": "85ddc5606df5f98eadd2b0a86d06a14512d654f868905b995e15919804fc48d1"
+  },
+  "completed_semantic_audits": {
+    "Single_Atomic": "d669213755a43ecd394dd2bb0ada6db0597505a5ee65cc2141f3310b824374b0",
+    "Multiple_Atomic": "0ff433bf7a3bed80fd96f839af051c5d9d71c5d1bbf814e9f957fbd7b56a648a",
+    "Single_Non-Atomic": "fa64221c08de403dd680e0dd8bdeb177db0df1e101c372b9e44eff6836c8a50c",
+    "Multiple_Non-Atomic": "0e68ed2f4d5db218694259facc6651dd007d6df780d9fdad4d3b033582ecf85e"
+  },
+  "model_preflight_protocol_sha256": "8602f6d1f39c5bd39aaded19f340d28013c2b3f21f9ec0590810c6bb6d16f0fc",
+  "audit_protocol_sha256": "f56529717f167e88519e7b57b4249125c3eef02013ab0743283d763eacd10e11",
+  "intake_manifest_sha256": "dc5f471e4a557cd141677fcda36afdc2fe3db232b2c0df7f1e608d599b31349d"
+}

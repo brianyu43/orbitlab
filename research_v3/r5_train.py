@@ -12,13 +12,21 @@ from r5_intake import BASE,TASKS
 from r5_data import Pairs
 from r5_models import make,pixel_metrics,METRIC_NAMES
 from r4_core import state_hash
+from r5_partitions import DEVELOPMENT,CONFIRMATION,prepare as prepare_partition
 
 KINDS=('plain','c4','object');EPOCHS=(5,10,20);TRAIN_N=57600;BATCH=32;STEPS_EPOCH=1800
 RUNS=BASE/'external/dsprites_hard/runs';SEEDS=(0,1,2)
+SPLIT_SEED=DEVELOPMENT
 
 def freeze():
+    audits={}
+    for task in TASKS:
+        folder=BASE/'audits/dsprites_hard'/task;d=json.loads((folder/'summary.json').read_text())
+        assert d['rule_errors']==0 and d['partition']['train_val_orbit_overlap']==0 and d['protocol_sha256']==sha(BASE/'dsprites_audit_protocol.json')
+        for name,h in d['files'].items():assert sha(folder/name)==h
+        audits[task]=sha(folder/'summary.json')
     return lock(BASE/'dsprites_training_protocol.json',{
-        'version':1,'task_order':list(TASKS),'kinds':list(KINDS),'development_initialization':0,'conditional_confirmation_initializations':[1,2],
+        'version':1,'task_order':list(TASKS),'kinds':list(KINDS),'development_initialization':0,'development_partition_seed':DEVELOPMENT,'conditional_confirmation_partition_seeds':list(CONFIRMATION),'conditional_confirmation_initializations':list(SEEDS),
         'official_data_split':'Hard64000training divided57600train/6400validation by r5_audit.py family partition. Official8000test retained and only scored after validation selection. OriginalSingleAtomic test was already seen by prior project.',
         'epochs_evaluated':list(EPOCHS),'full_epochs':20,'batch':BATCH,'updates_each_full_run':36000,'device':'MPSfloat32,CPU2threads',
         'optimizer':'Adam lr=.0005; global grad norm clip1; full-image MSE; no augmentation; no learning-rate tuning',
@@ -26,24 +34,27 @@ def freeze():
         'sampling':'Whole training scenes shuffled each complete epoch, NumPyseed952000+init. All arms share exact20orders; no replacement within an epoch.',
         'model_information':'Only source RGB input and target RGB image loss for all primary models. No true masks, factors, positions or rule IDs at inference/training. Object arm3learned slots includes background capacity; object correspondence is not assumed.',
         'selection':'Per-model smallest validation full-image MSE among5/10/20epochs; ties choose earlier epoch. Also report fixed20epoch test as matched-training-budget secondary comparison. Never select by official test.',
-        'development_gate':'Compare validation-selectedC4andobject againstvalidation-selectedplain and inputcopy: fullimageMSE and changed-scenechangedpixelMSE each lower thanboth; preservedpixelMSE<=1.05*plain. Maximizefullimageimprovement; tieskindsorder. Only selectedcandidate+plain get two additionalinit runs onthe same officialsplit; these are not new datasets. Gatefailureprecludesautomaticconfirmation.',
+        'development_gate':'Compare validation-selectedC4andobject againstvalidation-selectedplain and inputcopy: fullimageMSE and changed-scenechangedpixelMSE each lower thanboth; preservedpixelMSE<=1.05*plain. Maximizefullimageimprovement; tieskindsorder. Only selectedcandidate+plain receive confirmation: three fresh train/validation partition seeds times three initializations. These are resplits of the SAME official dataset with the same officialtest, not new independent datasets. Gatefailureprecludesautomaticconfirmation. Resource-limited confirmation remains explicitly unfinished.',
         'reporting':'Full image, changed pixels on changed scenes, preserved pixels, unchanged scene damage, source copy baseline. Attribute readout and integrated disk experiment are additional required work, not satisfied by pixel evaluation alone.',
         'preflight':'CPU/MPSforwardafter5CPUupdates,100GPUtimingupdatesperarm, allreset beforetraining. Timing evidence in model_preflight_v1; modelsourcesmustmatch.',
         'caps':{'initial_R5_stage_seconds':43200,'R5_bytes':30000000000},
         'resume':'Atomic optimizer/RNG/checkpointprogress every900updates; exactsavedorders anddata/sourcehashes. Preserve partial runs onfailures.',
-        'sources':{str(p.relative_to(ROOT)):sha(p) for p in [HERE/'r5_train.py',HERE/'r5_models.py',HERE/'r5_data.py',HERE/'r5_audit.py',ROOT/'followup/svib_preview_models.py']},
+        'sources':{str(p.relative_to(ROOT)):sha(p) for p in [HERE/'r5_train.py',HERE/'r5_models.py',HERE/'r5_data.py',HERE/'r5_audit.py',HERE/'r5_partitions.py',HERE/'r5_intake.py',HERE/'r4_core.py',HERE/'v3_common.py',ROOT/'followup/svib_preview_models.py']},
+        'completed_semantic_audits':audits,'model_preflight_protocol_sha256':sha(BASE/'model_preflight_v1/protocol.json'),
         'audit_protocol_sha256':sha(BASE/'dsprites_audit_protocol.json'),'intake_manifest_sha256':sha(BASE/'data/dsprites_hard/manifest.json')})
 
-def location(task,kind,init):return RUNS/task/f'{kind}_s{init}'
+def location(task,kind,init):
+    base=RUNS if SPLIT_SEED==DEVELOPMENT else BASE/'external/dsprites_hard/confirmation'/f'p{SPLIT_SEED}'/'runs'
+    return base/task/f'{kind}_s{init}'
 
 def save_torch(path,value):
     path.parent.mkdir(parents=True,exist_ok=True);temp=path.with_suffix('.tmp');torch.save(value,temp);temp.replace(path)
 
 def context(task,kind,init):
     audit=BASE/'audits/dsprites_hard'/task
-    return {'training_protocol_sha256':sha(BASE/'dsprites_training_protocol.json'),'audit_sha256':sha(audit/'summary.json'),'partition_sha256':sha(audit/'partition.npz'),'task':task,'kind':kind,'initialization':init}
+    return {'training_protocol_sha256':sha(BASE/'dsprites_training_protocol.json'),'audit_sha256':sha(audit/'summary.json'),'partition_sha256':sha(prepare_partition(task,SPLIT_SEED)),'partition_seed':SPLIT_SEED,'task':task,'kind':kind,'initialization':init}
 
-def partition(task):return np.load(BASE/'audits/dsprites_hard'/task/'partition.npz')
+def partition(task):return np.load(prepare_partition(task,SPLIT_SEED))
 
 def aggregate_rows(values):
     v=values.astype(np.float64);changed=v[:,3]>0
@@ -76,6 +87,9 @@ def resource_check():
 
 def train(task,kind,init):
     assert task in TASKS and kind in KINDS and init in SEEDS;freeze();assert torch.backends.mps.is_available(),'MPS required, no silentfallback'
+    if SPLIT_SEED!=DEVELOPMENT:
+        selected=json.loads((BASE/'external/dsprites_hard/evaluation'/task/'development_selection.json').read_text())['selected_candidate']
+        assert selected is not None and kind in ('plain',selected),'No ungated confirmation'
     pre=json.loads((BASE/'model_preflight_v1/protocol.json').read_text());assert pre['model_source_sha256']==sha(HERE/'r5_models.py') and pre['data_source_sha256']==sha(HERE/'r5_data.py')
     torch.set_num_threads(2);device=torch.device('mps');out=location(task,kind,init);ctx=context(task,kind,init)
     if (out/'run.json').exists():
@@ -118,4 +132,4 @@ def train(task,kind,init):
     dump(out/'run.json',result);store.close();event('R5_dsprites_model_trained',task=task,kind=kind,init=init,selected_epoch=chosen,steps=36000);return result
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--task',choices=TASKS,required=True);p.add_argument('--kind',choices=KINDS,required=True);p.add_argument('--init',type=int,default=0);a=p.parse_args();print(train(a.task,a.kind,a.init),flush=True)
+    p=argparse.ArgumentParser();p.add_argument('--task',choices=TASKS,required=True);p.add_argument('--kind',choices=KINDS,required=True);p.add_argument('--init',type=int,default=0);p.add_argument('--split-seed',type=int,choices=[DEVELOPMENT,*CONFIRMATION],default=DEVELOPMENT);a=p.parse_args();SPLIT_SEED=a.split_seed;print(train(a.task,a.kind,a.init),flush=True)
