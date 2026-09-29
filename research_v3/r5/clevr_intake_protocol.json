@@ -1,0 +1,29 @@
+{
+  "source_sha256": "c3aabe291fa36aaa869561ec61d7867b1632ed6f391005f5f9b284d80ca07ff7",
+  "family": "clevr",
+  "task": "Single_Atomic",
+  "difficulty": "Hard",
+  "source": {
+    "id": "1NkbROrTu38_Wydp_3z7v_1AtSkgXEF0s",
+    "advertised_bytes": 13921263003
+  },
+  "origin": "https://systematic-visual-imagination.github.io/",
+  "license": "DatasetCC0, officialpaperAppendixA.6Q4",
+  "selection": "SingleAtomic chosen before3Dmodel scoring; otherthree tasks transmitted but not stored or trained.",
+  "expected_episodes": {
+    "train": 64000,
+    "test": 8000
+  },
+  "files_each": [
+    "source.png",
+    "target.png",
+    "source.json",
+    "target.json",
+    "source_mask.png",
+    "target_mask.png"
+  ],
+  "format": "OriginalPNG/JSONbytes, concatenatedpayload andSQLiteoffset,size,SHA256index; no resize/recolor. RGB conversion only when a later model reads pixels.",
+  "verification": "Hash all HTTParchivebytes; requireContentLength ifprovided; rehash everyretainedpayload fromdisk andcheck contiguousindex. Official publisher provides no checksum here, so hashis local provenance, not an independentpublisherchecksum.",
+  "recovery": "Onconnectionfailure keep partialpayload/index and restart stream frombeginning. Existingmembers mustmatch exactbytes before continuing; never overwrite a completed manifest.",
+  "storage_cap_bytes": 30000000000
+}

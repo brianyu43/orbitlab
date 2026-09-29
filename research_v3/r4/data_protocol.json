@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "source_sha256": "9e472e9419f660761af828568c65204849e811b008ced47074585ba1ebbbd2f9",
+  "renderer_sha256": "edc097901a1fe12f0584b1ead06b912c717a0a7ea8e93badf99253152efef45c",
+  "orbit_hash_source_sha256": "14a8de758883d23831e252e1385221f3864a16f38be96a00450c4c7ced427bab",
+  "development": 889101,
+  "conditional_confirmation": [
+    889201,
+    889202,
+    889203
+  ],
+  "split_sizes": {
+    "train": 1024,
+    "val": 256,
+    "test": 256,
+    "ood": 256
+  },
+  "image_size": 64,
+  "latent_generation_noise_shape": [
+    3072,
+    4,
+    16
+  ],
+  "noise_seed_rule": "data_seed+7200000; same stored float32normal noise for every decoder/representation and initialization",
+  "samples_per_pair": 128,
+  "reference_per_pair": 384,
+  "reference_seed_rule": "data_seed+10000; all24shape/color pairs;384distinct scene families each, quarter turns cycling per pair",
+  "split_rule": "C4pixel-orbit family disjointness from all inspected historical single-object metadata and all new R4splits/reference/seed families. No selection by model or evaluator score.",
+  "small_arrow": "True renderer kind2 and radius<(.13+.11/3). Rotation variants remain one base scene. Generated scale is an evaluator estimate, never a true renderer parameter.",
+  "evaluation_separation": "Development usesval+ood; test prepared but not used for development selection. Confirmation uses newseed test+ood after candidate locking. References supply descriptive diversity only, never training inputs.",
+  "fixed_strict_threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "fixed_diversity_reader_sha256": "d2ac164d03bb516ae67526ff75fa7837ed2c5db1f4a036e7e937811fc3e18c6e",
+  "caps": {
+    "stage_seconds": 43200,
+    "stage_bytes": 30000000000
+  }
+}

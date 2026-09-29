@@ -8,11 +8,17 @@ distribution to the local project; it does not close the active follow-up plan.
 Included are implementation and experiment scripts, selected source snapshots,
 tests, frozen protocols, the small original synthetic dataset, research reports,
 selected figures, completion-v2 aggregates/audits, and verified R1/R3 summaries.
-R2 source and preflights are included; R2 remains incomplete at this publication
-boundary. Partial scores are not presented as final findings.
+The subsequent source-and-evidence update includes verified R2 reports,
+aggregates and replay receipts, plus R4/R5 implementation and frozen preparation
+protocols. R4 is running; R5 primary benchmark training has not started at this
+snapshot. R5 training/evaluation drafts have not been validated as complete runs.
+Partial scores are not presented as final findings.
 
 `PUBLICATION_MANIFEST.json` records the SHA-256 and size of every other published
 file at the initial-publication commit. It describes that snapshot only.
+It remains unchanged and can be checked at commit `cb9c250`.
+`PUBLICATION_LATEST_MANIFEST.json` records the updated distribution, excluding
+itself. `PUBLICATION_LATEST_VALIDATION.json` records the checks for this update.
 
 Private conversation exports, original iCloud documents, participant review
 packets, third-party repository mirrors, environments/caches, live process
@@ -32,6 +38,12 @@ split provenance, metrics, object edits and reference dynamics.
 Later verification receipts describe actual local replays. A clone cannot rerun
 those score checks without the omitted datasets, weights and predictions.
 Historical drivers may import the published source but still need local artifacts.
+In particular, R5's diagnostic renderer imports Spriteworld from the local SVIB
+checkout, which is not vendored in this public repository. Official source URLs
+and the inspected commit are recorded in `research_v3/r5/references/sources.json`.
+That reference receipt describes its original intake time, not live download
+progress. Later CLEVR intake has completed locally; dataset payloads remain
+excluded from this distribution.
 
 Do not regenerate historical splits and call them the same experiment: some
 samplers reject overlaps against earlier scene families not all distributed

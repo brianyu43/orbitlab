@@ -14,6 +14,12 @@ This does not constitute a full Dreamweaver reproduction.
 
 ## Other references
 
+`research_v3/r5/references/svib_README.md` and `svib_LICENSE` preserve the SVIB
+source documentation and CC0 license. The source URL, inspected commit and hashes
+are in [sources.json](research_v3/r5/references/sources.json). The diagnostic
+renderer imports the separately licensed Apache-2.0 Spriteworld dependency from
+the omitted SVIB checkout; Spriteworld code is not included in this update.
+
 SVIB, CLEVR, CLEVRTex, and other research methods are discussed with official
 source links. Their archives and third-party repository mirrors are not in this
 Git distribution. Asset reuse follows the original terms; code licensing is not

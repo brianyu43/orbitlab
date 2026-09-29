@@ -1,0 +1,7 @@
+{
+  "phase": "Before any primary training or benchmark selection",
+  "reason": "Exact per-channel palette tolerance2 incorrectly flags14legitimate antialiased SingleAtomic objects; masks and RGB are filtered separately.",
+  "evidence": "../palette_render_diagnosis.json re-rendered13of14flaggedimages byte-identical;remaining4pixels differ atmost2.",
+  "change": "Retain channel deviations as diagnostics and verify nearest palette identity on median opaque-interior RGB. No source pixels, masks, metadata, membership rules or model scores changed.",
+  "model_training_change": false
+}

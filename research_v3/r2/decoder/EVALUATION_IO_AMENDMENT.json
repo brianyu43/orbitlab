@@ -1,0 +1,27 @@
+{
+  "reason": "Repeated NPZ member indexing decompressed full arrays for every metric row, wasting evaluation time. Arrays are now read once per condition.",
+  "training_affected": false,
+  "threshold_or_model_change": false,
+  "previous_source_archive": "r2/decoder/evaluation_preflight_v1",
+  "previous_outputs_retained": [
+    {
+      "path": "evaluation/copy_input/n2/summary.json",
+      "sha256": "8895252abea60c921afe804049706e305faecfb0e7bc4e246c8296ec35ab3c6f",
+      "has_verification": true
+    },
+    {
+      "path": "evaluation/copy_input/n3/summary.json",
+      "sha256": "a47c7d6579e5e2e7178b39bf442cc0602df62f0dd4ee4c7cc7d38111a18a27ea",
+      "has_verification": true
+    }
+  ],
+  "equivalence_check": {
+    "condition": "copy_input/n2",
+    "all1536predictions_equal": true,
+    "all1536metric_rows_equal": true,
+    "all_summary_metrics_equal": true,
+    "old_summary_sha256": "8895252abea60c921afe804049706e305faecfb0e7bc4e246c8296ec35ab3c6f",
+    "new_summary_sha256": "b09874879b711c1e9c9f3911b6d8d5e0615d090570da168536763eef8eb5b9a9"
+  },
+  "old_protocol_sha256": "cdb620812ef40521441cff0f02c965d03f67f0bb8ffbb144e8aed8fa6188f54f"
+}

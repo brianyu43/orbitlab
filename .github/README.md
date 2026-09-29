@@ -18,8 +18,9 @@ general-purpose vision model or a reproduction of every method discussed here.
 | Completion v2 | Bounded study completed; limitations retained | [English report](../completion_v2/TECHNICAL_REPORT_EN.md), [Korean report](../completion_v2/RESULTS_KO.md), [scope audit](../completion_v2/scope_audit.json) |
 | R1: rendering and pose identifiability | Development evaluation verified; expansion gate failed | [Report](../research_v3/r1/RESULTS_KO.md), [verification](../research_v3/r1/verification.json) |
 | R3: interactions and collisions | Development evaluation verified; expansion gate failed | [Report](../research_v3/r3/RESULTS_KO.md), [verification](../research_v3/r3/verification.json) |
-| R2: learned readers under occlusion | Training/evaluation in progress; no verified final result | [Training protocol](../research_v3/r2/training_protocol.json), [evaluation protocol](../research_v3/r2/evaluation_protocol.json) |
-| R4 / R5 | Planned; not completed | [Research plan](../completion_v2/NEXT_RESEARCH_PLAN_KO.md), [scope ledger](../research_v3/SCOPE_KO.md) |
+| R2: learned readers under occlusion | Development evaluation verified; expansion gate failed | [Report](../research_v3/r2/RESULTS_KO.md), [verification](../research_v3/r2/verification.json) |
+| R4: small-shape reconstruction and generation | Training and evaluation in progress; no final result | [Training protocol](../research_v3/r4/training_protocol.json), [evaluation protocol](../research_v3/r4/evaluation_protocol.json) |
+| R5: external and integrated validation | Data preparation and model preflights; primary training not started at this snapshot | [Preflight protocol](../research_v3/r5/model_preflight_v1/protocol.json), [research plan](../completion_v2/NEXT_RESEARCH_PLAN_KO.md) |
 
 The R1 baseline already achieved 100% geometric-equivalence editing on the two
 held-out renderers in this small development study. The candidate therefore
@@ -31,6 +32,18 @@ position error from 11.57 to 6.02 pixels, but the same coarse physics without
 learning achieved 2.62 pixels. Non-target counterfactual response also worsened.
 Both studies used one development data seed and one initialization. Their
 predeclared three-by-three confirmation stages were not triggered.
+
+R2 replayed all 16,384 reader inferences and 51,200 decoder outputs. The selected
+recurrent reader improved editing success by only 0.72 percentage points under
+50% occlusion, below the required 15-point gain, and missed 88.25% of objects in
+six-object scenes. Its confirmation stage was not triggered. The report separates
+state accuracy from pixel accuracy and retains these negative results.
+
+R4 and R5 source is published as work in progress. R5 training/evaluation scripts
+are drafts, not evidence of completed benchmark runs. R4's original latent caches
+used six CPU threads, while training and primary evaluation use two; a
+[recorded replay correction](../research_v3/r4/pool_verification_attempt_v1/AMENDMENT.json)
+preserves the original caches and checks them using the original thread count.
 
 ![R1 development comparison](../research_v3/r1/results.png)
 ![R3 development comparison](../research_v3/r3/results.png)

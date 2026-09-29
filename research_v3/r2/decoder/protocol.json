@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "sources": {
+    "r2_decoder_core.py": "a6364d9f3958e87da266330e6427fa05fa63bb520cbf1d16df30350f3dfd3b9c",
+    "r2_decoder_data.py": "1fb09958b4e73adac759292d6e5cfe9fd7829ef1eb05488acb135cd85336b38f",
+    "r2_decoder_train.py": "d9ce610fb979b0565034cb5bc9124a211ca1077c58d8a04b56119239d7ef913a"
+  },
+  "reader_protocol_sha256": "cd82a9ff14cffd4130151b63ec8caa32aecb96072511aea77285188def798b38",
+  "data_protocol_sha256": "2d5a5c49b5f2cb85206a3d0dce08065fefca941f55d1a00fd11d82f35f5c8553",
+  "development_seed": 887101,
+  "initialization": 0,
+  "device": "cpu",
+  "threads": 2,
+  "patch": {
+    "steps": 2000,
+    "batch": 64,
+    "optimizer": "AdamW .001 weight_decay .0001, clip1",
+    "input": "Shape/pose/radius one-hot and continuous RGB. Output33x33 RGBA; alpha and RGB are learned. Coordinates place patches using bilinear grid_sample; predicted slot order is used, never GT painter-order repair.",
+    "loss": "4 premultiplied-RGB weighted MSE + weighted alpha BCE; weight1+8*true_alpha"
+  },
+  "editor": {
+    "steps": 4000,
+    "batch": 16,
+    "optimizer": "AdamW .0005 weight_decay .0001, clip1",
+    "input": "Current sourceRGB, learned current/edited premultiplied RGBA foregrounds, external click heatmap, operation one-hot, requested RGB and translation. No GT background, occluder mask, object IDs, true count or target image at inferred-state evaluation.",
+    "training": "Shared editor trained on true current states from1024two-object training clips with identity/recolor/rotate/translate commands. Ground-truth target pixels and masks supervise losses only. Oracle-state to inferred-state shift is explicit; no end-to-end reader fine-tuning.",
+    "loss": "Weighted MSE weights1+12*changed+4*source foreground+4*panel, plus .1 weighted change-mask BCE. Targets preserve the original background and fixed original panel.",
+    "cache": "Frozen patch renders quantized to float16 at both train and test inputs."
+  },
+  "evaluation": "All512validation scenes at counts2/3/4/6, all3edits, each six-reader inferred state and ground-truth-state control. Copy-input baseline. Identity also evaluated for oracle state. Canonical foreground reconstruction/edited foreground are separate diagnostics and do not imply background preservation.",
+  "pixel_metrics": "Whole/changed/preserved/non-target/panel/background MAE, known foreground-alpha IoU for neural patch diagnostic, changed-area fraction. Pixel edit gate: changed MAE<=.05, preserved MAE<=.01, non-target MAE<=.02, panel MAE<=.01. Absent-region errors are0 with zero area recorded; identity excluded from edit aggregates. These pixel tolerances are not semantic state accuracy.",
+  "end_to_end": "Report pixel gate and joint pixel-plus-existing-analytic-state success separately. No perceptual or human-quality claim. Reader state metrics retain their fixed earlier thresholds.",
+  "selection": "No decoder architecture selection or hyperparameter tuning on validation. One fixed development decoder; continue only with explicit new protocol if changed.",
+  "resource_cap": "Stage-local12hours/30GB includes reader work; benchmark100steps per new network before full training."
+}

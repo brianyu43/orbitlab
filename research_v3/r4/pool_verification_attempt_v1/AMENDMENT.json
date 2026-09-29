@@ -1,0 +1,6 @@
+{
+  "issue": "OriginalstandalonepoolswerecomputedwithTorchdefault6threads. Oldverifierset2,producingupto1.9073486328125e-6rawlatentdifference.",
+  "diagnosis": "Exactreproductionwith6threads;2threadscanchangefloat32reductionorder.",
+  "repair": "Replayoriginalpoolswith6threadsandzeroabsolutetolerance;separatelyquantify2threadprimaryevaluationdifference. Originalmodeldataweightsnormalizationunchanged.",
+  "changed_source": "Newr4_pool_replay_v2.pyandresumeorchestrator;originalfrozentraining/evaluationsourcesunchanged"
+}

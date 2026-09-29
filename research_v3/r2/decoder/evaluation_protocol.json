@@ -1,0 +1,31 @@
+{
+  "source_sha256": "80b9ce0bd1546ca8d3d0588e6a77f4619de7703f9690af10fe935007cb041b62",
+  "decoder_protocol_sha256": "5b246c7e4338d69eb07a2be383056048e1a5318bbf6e68fd5ee9491aadb51e02",
+  "arms": [
+    "truth_state",
+    "detector_mask0",
+    "detector_mask1",
+    "slot_mask0",
+    "slot_mask1",
+    "recurrent_mask0",
+    "recurrent_mask1"
+  ],
+  "counts": [
+    2,
+    3,
+    4,
+    6
+  ],
+  "commands": [
+    "color",
+    "rotate",
+    "translate"
+  ],
+  "oracle_identity": true,
+  "copy_input_baseline": true,
+  "prediction_storage": "Save uint8 edited RGB before loading target pixels for scoring. Foreground raster diagnostics are recomputed from model state, with first8scenes saved as examples.",
+  "foreground_score": "Compare learned premultiplied RGBA to true canonical foreground, including alpha IoU. This is separate from full background/panel editing.",
+  "non_target_metric": "Pixel error against the correct target in the originally visible non-target region. Legitimate target-induced overlap is not labeled preservation failure.",
+  "pixel_metrics": "MAE in0..1; changed/preserved use any source-target uint8 difference. Fractional panel/non-target weights retained from stored masks. Empty regions have0error and recorded0area.",
+  "success": "Thresholded pixel gate and joint pixel-and-analytic-state gate are both reported. No semantic equivalence inferred from pixel gate alone."
+}

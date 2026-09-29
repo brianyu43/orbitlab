@@ -1,0 +1,147 @@
+{
+  "snapshot_date": "2026-09-29",
+  "scope": "Follow-up source and verified R2 evidence publication; research remains incomplete",
+  "parent_commit": "cb9c250ab946602dbeb7bef4e12adcbc89fad2f0",
+  "new_files": 83,
+  "new_file_bytes": 2350771,
+  "python_files_parsed": 556,
+  "publication_relative_links_verified": 37,
+  "privacy_scan": {
+    "scope": "83 explicitly selected additions",
+    "patterns": [
+      "github_token",
+      "api_token",
+      "private_key",
+      "aws_access",
+      "private_chat_link",
+      "credential_assignment"
+    ],
+    "findings": [],
+    "limitation": "Pattern screening and scope selection are not proof of absence of all sensitive information."
+  },
+  "r2_verified_receipt_and_figure_hashes": [
+    "research_v3/r2/data_verification.json",
+    "research_v3/r2/reader_verification.json",
+    "research_v3/r2/legacy_palette/verification.json",
+    "research_v3/r2/diagnosis/verification.json",
+    "research_v3/r2/decoder/data_verification.json",
+    "research_v3/r2/decoder/verification.json",
+    "research_v3/r2/reader_results.png",
+    "research_v3/r2/reader_results.pdf",
+    "research_v3/r2/decoder_results.png",
+    "research_v3/r2/decoder_results.pdf",
+    "research_v3/r2/failure_examples.png"
+  ],
+  "frozen_current_source_locks": [
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "research_v3/r4_core.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "research_v3/r4_train.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "research_v3/r4_data.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "research_v3/r4_preflight.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "work/orbitlab.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "work/research.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "followup/decoder_study.py"
+    },
+    {
+      "protocol": "research_v3/r4/training_protocol.json",
+      "source": "generation_recovery/models.py"
+    },
+    {
+      "protocol": "research_v3/r4/evaluation_protocol.json",
+      "source": "followup/evaluator_v2.py"
+    },
+    {
+      "protocol": "research_v3/r4/evaluation_protocol.json",
+      "source": "work/generation.py"
+    },
+    {
+      "protocol": "research_v3/r4/evaluation_protocol.json",
+      "source": "generation_recovery/p1_evaluate.py"
+    },
+    {
+      "protocol": "research_v3/r4/evaluation_protocol.json",
+      "source": "generation_recovery/p4_evaluate.py"
+    },
+    {
+      "protocol": "research_v3/r4/evaluation_protocol.json",
+      "source": "generation_recovery/p0_extended.py"
+    },
+    {
+      "protocol": "research_v3/r5/dsprites_audit_protocol.json",
+      "source": "research_v3/r5_audit.py"
+    },
+    {
+      "protocol": "research_v3/r5/dsprites_audit_protocol.json",
+      "source": "research_v3/r5_renderer_diagnosis.py"
+    },
+    {
+      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
+      "source": "research_v3/r5_preflight.py"
+    },
+    {
+      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
+      "source": "research_v3/r5_models.py"
+    },
+    {
+      "protocol": "research_v3/r5/model_preflight_v1/protocol.json",
+      "source": "research_v3/r5_data.py"
+    },
+    {
+      "protocol": "research_v3/r4/pool_replay_protocol_v2.json",
+      "source": "research_v3/r4_pool_replay_v2.py"
+    }
+  ],
+  "tests": {
+    "published_files_only": true,
+    "environment": "Existing Python 3.13 dependencies; no fresh installation or model retraining",
+    "suites": [
+      {
+        "suite": "tests/test_research.py",
+        "exit_code": 0,
+        "output": "test_both_model_widths_and_all_group_elements (test_research.ResearchChecks.test_both_model_widths_and_all_group_elements) ... ok\ntest_data_provenance_and_orbit_disjointness (test_research.ResearchChecks.test_data_provenance_and_orbit_disjointness) ... ok\ntest_fourier_real_pair_and_invariant_decode (test_research.ResearchChecks.test_fourier_real_pair_and_invariant_decode) ... ok\ntest_metrics_identity_and_black_baseline (test_research.ResearchChecks.test_metrics_identity_and_black_baseline) ... ok\ntest_parameter_matching (test_research.ResearchChecks.test_parameter_matching) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.403s\n\nOK\n"
+      },
+      {
+        "suite": "followup/test_object_world.py",
+        "exit_code": 0,
+        "output": "test_exact_image_and_mask_rotation_including_occlusion_and_boundaries (test_object_world.ObjectWorldChecks.test_exact_image_and_mask_rotation_including_occlusion_and_boundaries) ... ok\ntest_global_rotation_and_world_translation_do_not_commute (test_object_world.ObjectWorldChecks.test_global_rotation_and_world_translation_do_not_commute) ... ok\ntest_local_edits_preserve_other_object_and_color_rotation_commute (test_object_world.ObjectWorldChecks.test_local_edits_preserve_other_object_and_color_rotation_commute) ... ok\ntest_scene_generation_factor_split_and_capacity (test_object_world.ObjectWorldChecks.test_scene_generation_factor_split_and_capacity) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.037s\n\nOK\n"
+      },
+      {
+        "suite": "followup/test_dynamics_world.py",
+        "exit_code": 0,
+        "output": "test_free_flight_and_force (test_dynamics_world.PhysicsChecks.test_free_flight_and_force) ... ok\ntest_joint_rotation_and_fixed_condition_counterexample (test_dynamics_world.PhysicsChecks.test_joint_rotation_and_fixed_condition_counterexample) ... ok\ntest_pair_energy_momentum_and_wall (test_dynamics_world.PhysicsChecks.test_pair_energy_momentum_and_wall) ... ok\ntest_renderer_rotation_and_slot_order (test_dynamics_world.PhysicsChecks.test_renderer_rotation_and_slot_order) ... ok\ntest_unidentifiable_force_decomposition_and_reproducibility (test_dynamics_world.PhysicsChecks.test_unidentifiable_force_decomposition_and_reproducibility) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.113s\n\nOK\n"
+      }
+    ],
+    "r5_draft_cpu_smoke": "plain CPU forward/backward passed\nc4 CPU forward/backward passed\nobject CPU forward/backward passed\n",
+    "r5_primary_training_tested": false
+  },
+  "status": {
+    "R2": "Verified development gate failed; no confirmation",
+    "R4": "Training and evaluation in progress; no final result",
+    "R5": "Prepared data and completed model preflights; primary training not started"
+  },
+  "historical_experiment_sources_modified": false,
+  "seconds": 3.1472690105438232,
+  "diff_whitespace_check": {
+    "original_authored_files": "passed",
+    "preserved_upstream_exception": "research_v3/r5/references/svib_README.md:95 contains original trailing whitespace; retained byte-for-byte to preserve its recorded source hash"
+  }
+}

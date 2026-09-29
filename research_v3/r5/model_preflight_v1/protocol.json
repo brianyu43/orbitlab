@@ -1,0 +1,19 @@
+{
+  "model_source_sha256": "f1b8a9a17f7d0e9df935ce2e8c44967e50f806ea6852c5125801213ad544f5db",
+  "data_source_sha256": "3f231c6a0dfc80d7554250c606d82e372b6f839c730fec5a7dd462b698279f51",
+  "source_sha256": "e290027194434ddaffcf71e7ba882c2680b4459d41b0c40c901b2607ece169d6",
+  "official_intake_sha256": "dc5f471e4a557cd141677fcda36afdc2fe3db232b2c0df7f1e608d599b31349d",
+  "kinds": [
+    "plain",
+    "c4",
+    "object"
+  ],
+  "batch": 32,
+  "steps": 100,
+  "optimizer": "Adam lr=.0005, grad clip1, full image MSE",
+  "device": "MPSfloat32;CPU2threads;actual native128px PNG loading included",
+  "timing_only": "100pilot updates per model, discarded for full experiments; no model selection or scientific scoring. Uses deterministic random official training indices, not test.",
+  "parity": "Five CPUupdates on16officialtrainingpairs to obtain nonidentityweights, then same checkpoint CPUvsMPSforward on8pairs; absolute tolerance2e-4. Separate from timing100steps.",
+  "torch": "2.14.0",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+}

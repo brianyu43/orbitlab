@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "source_sha256": "2733bc3735e38c1d7c846d43292539560d4521591c16da337a8a6f96aee878df",
+  "training_protocol_sha256": "509dbea78b951547518787efb12ca5cd98940382e5b96c73e50bc762f85a7241",
+  "seed": 889101,
+  "init": 0,
+  "splits": [
+    "val",
+    "ood"
+  ],
+  "test_used": false,
+  "roles": [
+    "oracle",
+    "learned",
+    "bridge"
+  ],
+  "reconstruction_units": 24,
+  "generation_units": 4,
+  "reconstruction": "All256base scenes per split, all4rotations. True renderer size thirds. Primary small arrow=kind2andtrue radius<.13+.11/3. Equal scene average across rotations; rotations are not independent scenes.",
+  "success": "Original frozen strict shape screen AND correct shape AND correct color, not independent human evaluation. Identity/clean input ceiling and pixel metrics separately reported.",
+  "generation": "Stored paired3072Gaussian samples(128per24condition), same noise for all candidates;64Eulersteps, guidance1. Base flow shared by standard/edge/coordinate. Generated size/cx/cy/orientation are template-reader estimates.",
+  "diversity": "Historical bins and thresholds unchanged; use all384reference samples/condition versus128generated/condition. Each histogram normalized by its own count. Coverage>=.9,TV<=.2,outside<=.1 means per attribute; accepted subset requires>=32strict samples EACHcondition plus same historical thresholds.",
+  "reference_validation": "Report all reference strict scores; if any clean reference fails strict joint, comparable-reference gate is false. Retain every reference, no outcome filtering or threshold adjustment.",
+  "primary_gate": {
+    "small_arrow_strict_reconstruction_min_each_val_and_ood": 0.8,
+    "generation_strict_gain_balanced_mean_seen_ood": 0.1,
+    "all_image_diversity": true,
+    "strict_subset_diversity": true,
+    "clean_reference_all_strict": true
+  },
+  "selection": "Candidate must meet every gate using learned role only; maximize balanced seen/OOD strict, tie by CANDIDATES order. If no candidate passes, select none and diagnose. No automatic3x3confirmation. Oracle/bridge outcomes never satisfy primary gate.",
+  "oracle_caveat": "Oracle and learned decoders have separately trained weights/input spaces. Bridge is additional factor-supervised readout into same oracle decoder, a fixed-decoder diagnostic but not primary unsupervised performance.",
+  "verification": "Replay every reconstruction and generated image from saved checkpoints at same64batch size, all64flowsteps, every metric row and aggregation. Source/weights/data/noise hash checks. Not independent retraining or a new implementation.",
+  "threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "reader_sha256": "d2ac164d03bb516ae67526ff75fa7837ed2c5db1f4a036e7e937811fc3e18c6e",
+  "dependencies": {
+    "followup/evaluator_v2.py": "4cf5e9251219dc71ae285c8b29f19c924c0117ad13c449c0aedf3759011e2081",
+    "work/generation.py": "186fd6b82e636f24d38e1b95f9f21bca4b556e3bfc8925f9fd4ac6faeae9fd85",
+    "generation_recovery/p1_evaluate.py": "03a340227fe5875290ec96680ae957f33ff61dca3be5b04dc29bb61ecfaca161",
+    "generation_recovery/p4_evaluate.py": "e0275d7993de8951da94e8c111a752cf87d084dfdb08eb4da04b05d83d098b85",
+    "generation_recovery/p0_extended.py": "9641f776e69fa06d08b3989727c758118f0fc0d7e470e7ffa31a3a28380f5050"
+  }
+}
