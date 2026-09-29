@@ -1,0 +1,39 @@
+{
+  "alphas": [
+    "0.0",
+    "0.2",
+    "0.4",
+    "0.6"
+  ],
+  "kinds": [
+    "plain",
+    "c4"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "steps": 2000,
+  "batch": 8,
+  "lr": 0.0005,
+  "gradient_clip": 1.0,
+  "model_seed": 773000,
+  "sampling_seed": 773100,
+  "threads": 2,
+  "loss": "Full-image mean squared error, source RGB -> target RGB.",
+  "data_config_sha256": "714b2d354c86efd613a2e898f9bef21eb1ae3faa81d61776585132ac8c0f72e2",
+  "data_manifest_sha256": "7212d73e41bb50424c0cbe4aa3b5f594a3f5cb748252557addd7c62e9287bf21",
+  "preflight_sha256": "489e65110da7fd274324e44d20ed54020733af08490cb705411956fc3f26701e",
+  "baseline_verification_sha256": "098bb767b16178cb9047cc8fdaf067661e19d1115dc1b7ae65da9bef9935e98f",
+  "sources": {
+    "train_svib_preview.py": "8685687e4d58a7dfd66869913050eadf0bf452c399133d10e7d2a273a4d754c4",
+    "svib_preview_models.py": "85ddc5606df5f98eadd2b0a86d06a14512d654f868905b995e15919804fc48d1",
+    "svib_preview_metrics.py": "56c1c7642064643fec51420e7ba231726a3bfc30e5d2da3e0949f4d95e6992fb",
+    "planning_B06_SVIB_PREVIEW_KO.md": "16fc697d548d4ae4a7f381b13e210a6bbac22788344337be50560cc126d3293a"
+  },
+  "selection": "Fixed final checkpoint for every kind/alpha/seed. No validation/test choice, early stopping or source checkpoint reuse.",
+  "compute": "Same parameters and optimizer steps, different forward compute: C4 averages four rotated applications. Wall times on this shared local host are descriptive.",
+  "scope": "24 small predictors on official 100-pair-per-alpha preview, with 70 training pairs each. No full SVIB benchmark or independent-data replication claim.",
+  "frozen_unix": 1790147460.48256
+}

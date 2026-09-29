@@ -1,0 +1,45 @@
+{
+  "kinds": [
+    "rgb_cnn",
+    "measurement_mlp"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "steps": 4000,
+  "batch": 32,
+  "lr": 0.0005,
+  "model_seed": 996000,
+  "sampling_seed": 996100,
+  "threads": 2,
+  "normalization": "Fixed declared physical scales. No fitted normalization. Measurement features clipped to +/-5; analytic base velocity +/-6px/frame, base force +/-0.2px/frame^2, base drag 0..0.05.",
+  "outputs": "Six color-addressed state proposals and net force/drag. Presence threshold .5. Positive radius/drag via softplus. Distinct observable colors provide track addresses, not hidden persistent IDs.",
+  "loss": {
+    "present_object_five_factor_mse": 1,
+    "presence_bce": 0.2,
+    "normalized_context_mse": 0.2
+  },
+  "priors": "Direct CNN uses four RGB frames and fixed color-addressed supervision. Measurement MLP additionally uses known-palette circle fits and analytic dynamics estimates. Parameter counts and execution devices/time differ.",
+  "data_seeds": [
+    997101,
+    997102
+  ],
+  "parent_config_sha256": "901bbed1d1119d5428452179fdf085013f39bf2fbe4ec890c96f3173422a8cde",
+  "observation_manifest_sha256": "6d4662bf726e798ea53df7811e48af5dc8fc730749c6a5a20eb15fc88c1a7e08",
+  "data_verification_sha256": "13628b474cc823e19fb6ca0fedae472a8fed569eee8d9c9d7694342e079c65e9",
+  "source_sha256": {
+    "dynamics_repeat_observation.py": "267fb82f6007835c9818ac57078c54ab96230663ad7aa83dcf5fc17a4a4f3476",
+    "dynamics_observation_models.py": "33c161f008bdcd4e6d38bed8bf8d02527a61f83c9e95073726353cd32f19f4bd",
+    "train_dynamics_observation.py": "fc855c8a0ef1638635e1cae78c1d17922500ac19e62e90cd98f34051383fa450"
+  },
+  "scope": "Same fixed C04 training protocol on two new train archives, twelve fresh models. Train/val diagnostics only here; frozen heldout and autonomous evaluations remain separate.",
+  "initialization": "Original model and sampling seeds crossed with new data seeds. No old trained weights loaded.",
+  "frozen_unix": 1790141756.784636
+}

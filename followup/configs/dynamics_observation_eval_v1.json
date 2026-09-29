@@ -1,0 +1,59 @@
+{
+  "methods": [
+    "rgb_cnn",
+    "measurement_mlp",
+    "rgb_analytic",
+    "true_positions_analytic"
+  ],
+  "predictors": [
+    "interaction",
+    "wrong_exact",
+    "joint_exact",
+    "inertial",
+    "force_wall"
+  ],
+  "information_controls": [
+    "true_state_true_context",
+    "estimated_state_true_context",
+    "true_state_estimated_context",
+    "estimated_state_estimated_context"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "checkpoint_sha256": {
+    "runs/dynamics_observation_models_v1/rgb_cnn_s0/model.pt": "30ffb82da36b59f6227ae74f1e36007b59546ec013b57821b9846dd4750eb826",
+    "runs/dynamics_observation_models_v1/measurement_mlp_s0/model.pt": "2f8b083bb6ec90a8cc78c3b96b0ad2052c97d55bc1eef450f5123ae893812011",
+    "runs/dynamics_state_study_v1/variable_force/interaction_s0/model.pt": "d817dcd913e0b09ac971978ce0a160b7e62bbd97e55e0af66d94bd1b17108042",
+    "runs/dynamics_state_study_v1/variable_force/wrong_exact_s0/model.pt": "c9655a2609b42d5c2d42b5ba0bd74f8526168a6c32328274cfbe7b176eb8e423",
+    "runs/dynamics_state_study_v1/variable_force/joint_exact_s0/model.pt": "35822fc381461d6f433ed94625d4ac06697b6abe37674e21a457c9327cb9418e",
+    "runs/dynamics_observation_models_v1/rgb_cnn_s1/model.pt": "914c3621752818e4d89db529531c4772911970a63381e1b0b4726fcea6e7b606",
+    "runs/dynamics_observation_models_v1/measurement_mlp_s1/model.pt": "17284753d0dc8c289b85a7a08cfb983624d52aa1dd549d3e6adfbd712699ac71",
+    "runs/dynamics_state_study_v1/variable_force/interaction_s1/model.pt": "a06ed86f3a42366690ba711fe631bb662bfd832db966f155c5503526369a79b5",
+    "runs/dynamics_state_study_v1/variable_force/wrong_exact_s1/model.pt": "fc61bd7776c38cbe9faf5e690e68147b0d60e7cf6013cb9336b3c931ab71d211",
+    "runs/dynamics_state_study_v1/variable_force/joint_exact_s1/model.pt": "cdc417d74dc3c2b86559c83adaf5602d6267bf9465c329b269aaadc1a0da73e5",
+    "runs/dynamics_observation_models_v1/rgb_cnn_s2/model.pt": "fdb13fee7629b8a485f3f0a1bb34923712662e9a0d852c56a0b67a36c1df0997",
+    "runs/dynamics_observation_models_v1/measurement_mlp_s2/model.pt": "e913d42707d06676f9cc2e73f9147c3748f6132571c811166468a83ee058e661",
+    "runs/dynamics_state_study_v1/variable_force/interaction_s2/model.pt": "628b987568a793e11c9cae13734d8235273d7882c35a2400ec3d80c7c990ac6f",
+    "runs/dynamics_state_study_v1/variable_force/wrong_exact_s2/model.pt": "cb6013cc6c6df353ba939654637ac4dc813e5d85e0d38414437f5d9914c7f5c1",
+    "runs/dynamics_state_study_v1/variable_force/joint_exact_s2/model.pt": "3bc50d0557954ff6fe6449c267732ae2280e125c9747641105bc2ef7437c4a2f"
+  },
+  "input_manifest_sha256": "265961ad67ca55849270631ebe95abbaecadd87fc532e97f0b598a7c30d065e6",
+  "sources": {
+    "dynamics_observation_eval.py": "3fd9f8eab7984d1fbd693c36fad02bda096947a1f87da259834378330f8700a7",
+    "dynamics_observation_models.py": "33c161f008bdcd4e6d38bed8bf8d02527a61f83c9e95073726353cd32f19f4bd",
+    "evaluate_dynamics_rgb_baseline.py": "86cc6abddd0a7821822a53f82cd54d545517d1df1dc24d253e049bd235957017",
+    "dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+    "dynamics_physical_baselines.py": "01173074ee5d9c95f4a14d80e66c42faf10347f1677d4fb1f4181a8f23d4b32a"
+  },
+  "data": "All 13 held-out mode/split groups; only t=0..3 observations and the color-addressed impulse feed inference/prediction. No train/val selection here.",
+  "transition_choice": "The previously frozen VARIABLE_FORCE interaction, state-only symmetry and joint symmetry models, same seed as each learned observation head. The same transition weights are used for every environment; actual mode is not an input or model-selection oracle.",
+  "analytic_references": "Inertial and known-force/drag/wall integration, without disk contacts. Analytic estimators and references are not learned. Estimator/reference copies across transition seeds are correlated, not independent training replicates.",
+  "packing": "Top four predicted presence logits, stable tie break by canonical color; restore color order. Analytic score is detected presence. No true count used. Ground-truth-state substitution is explicitly privileged.",
+  "action": "Route the given color/delta command only to a present retained slot of that color; missed target is recorded. No GT ID routing in estimated states.",
+  "output": "Carry inferred/true radius, color and presence; transition predicts position and velocity. Evaluate by persistent observable color address, including missed/extra colors; no post-hoc nearest-position rematching.",
+  "scope": "One initial four-frame window and one subsequent prediction per held-out trajectory. State/context substitution controls, not long autonomous rollout or new data-generation-seed confirmation.",
+  "frozen_unix": 1790139374.931485
+}

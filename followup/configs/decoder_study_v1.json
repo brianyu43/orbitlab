@@ -1,0 +1,30 @@
+{
+  "ae_seeds": [
+    0,
+    1,
+    2
+  ],
+  "roles": [
+    "learned",
+    "oracle"
+  ],
+  "decoders": [
+    "pixel_mean",
+    "logit_mean"
+  ],
+  "steps": 6000,
+  "batch": 32,
+  "lr": 0.001,
+  "init_seed_offset": 86000,
+  "sampling_seed_offset": 87000,
+  "train_n": 1024,
+  "eval_n": 256,
+  "data_seed": 42,
+  "selection": "Fixed final step; no validation/test model selection.",
+  "purpose": "Exploratory mechanism test. The original C4 encoder is frozen and all decoders are freshly initialized.",
+  "matched": "Exact decoder parameter count and initial weights, train scenes, sampled indices, optimizer steps.",
+  "oracle_privilege": "True shape/color/position/radius/global orientation; not an unsupervised model.",
+  "normalization": "Each role normalized by its own train-only group-shared channel mean/std; equivariance retained.",
+  "strict_threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "frozen_unix": 1790131139.8544
+}

@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "r2_core.py": "e99d74017c4bcb27c90003b60f84718e9e3cc486bf02f27874db4affd919d228",
+    "r2_train.py": "13f1184e4e3267ee85798cee0b098b484bb0474e95441daf4e0f272b4eb740a9"
+  },
+  "data_protocol_sha256": "2d5a5c49b5f2cb85206a3d0dce08065fefca941f55d1a00fd11d82f35f5c8553",
+  "arms": [
+    "detector_mask0",
+    "detector_mask1",
+    "slot_mask0",
+    "slot_mask1",
+    "recurrent_mask0",
+    "recurrent_mask1"
+  ],
+  "steps": 4000,
+  "batch": 16,
+  "optimizer": "AdamW lr=.0005 weight_decay=.0001 clip1",
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "capacity": "Six object slots; a separate background attention logit is not an object slot. No GT count, positions, colors, masks or IDs at inference.",
+  "input": "Static readers: current window[0]. Recurrent reader: same four images in past-to-current order. Supervision only for current reference state and, in mask1 arms, current visible masks. No future images.",
+  "supervision": "All arms supervised by current two-object states. Detector also has a center heatmap target derived from the same coordinate labels. mask1 adds visible-mask supervision. Therefore these are supervised perceptual readers, not unsupervised object discovery.",
+  "matching": "Exhaustive ordered assignment of2 ground-truth objects to6 predictions, minimizing state+presence training loss. No true labels enter test inference.",
+  "loss": "shapeCE + quotient poseCE for symmetric shape3 + radiusCE +4*RGBMSE +4*MSE(xy_pixels/8), plus presence BCE. Mask1 adds2*foreground-weighted visible-mask BCE. Detector adds center heatmap MSE weighted toward true centers.",
+  "parameters_and_compute": "Same slot and recurrent parameters, but recurrent processes4 frames and costs more compute. Detector topology differs. Report parameters, updates, seconds,100-step timings; no equal-FLOP or isolated architecture claim.",
+  "state_tolerances": "Each xy axis <=1px; radius exact5..8; shape exact; pose modulo2 only for shape3 else modulo4; RGB each channel <=20/255; presence probability>=.5.",
+  "editing": "Click nearest predicted present center; same assignment retained through recolor,+90degree rotation,+5px x translation. Score target and non-target factors, count and joint success. Known renderer diagnostics separate from any learned pixel editing claims.",
+  "uncertainty": "Shape/pose/radius smallest probability sets with cumulative mass>=.9; position andRGB symmetric intervals calibrated by95th percentile matched-object absolute errors on separate calibration split. Report set sizes,widths,marginal andjoint coverage plus misses. No formal OOD coverage guarantee; these are predictive sets, not exact identifiable-state sets.",
+  "selection": "Compare recurrent to the better detector or slot static model with the SAME mask supervision. Choose recurrent arm maximizing50%-occlusion all-count joint edit improvement; tie mask0 first. Development gate: improvement>=.15, non-target preservation drop<=.02, count6 missing fraction<=.05. If fails, diagnose misses versus attribute errors without automatic3x3 expansion. If passes, fix baseline/candidate and confirm3fresh data x3initializations; every data seed must meet gate.",
+  "decoder_followup": "Regardless of candidate gate, build and evaluate a learned decoder from matched current states to canonical foreground and contrast truth-state and inferred-state decoding. Full background/occluder image editing is a separate unresolved requirement until implemented and verified.",
+  "caps": {
+    "local_seconds": 43200,
+    "disk_bytes": 30000000000
+  },
+  "device": "cpu",
+  "threads": 2
+}

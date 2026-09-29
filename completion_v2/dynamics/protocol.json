@@ -1,0 +1,49 @@
+{
+  "source_sha256": "48dedd32a21c42842f9934e6b40d8ae3bfebc51899fe0c11a9cf93c597c50aef",
+  "development_data": "followup/data/dynamics_world_v1",
+  "confirmation_data_seeds": [
+    882201,
+    882202,
+    882203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "training_variants": [
+    "one",
+    "multi",
+    "multi_bounded"
+  ],
+  "inference_controls": [
+    "one_bounded",
+    "multi_projected"
+  ],
+  "steps": 4000,
+  "batch_episodes": 32,
+  "multistep_horizon": 8,
+  "optimizer": "AdamW .001, weight_decay .0001, grad clip 1",
+  "input": "Known states, per-object action and net force/drag. Pooled three environments. RGB initial estimates evaluated separately.",
+  "bounds": "Position clipped to physical walls given object radius; velocity norm capped at 1.5 times maximum training velocity norm. Inactive slots zero. No test statistics.",
+  "loss": "Mean squared normalized xy/velocity over active slots and rollout steps; no teacher forcing within multistep segment.",
+  "evaluation_horizons": [
+    1,
+    16,
+    61
+  ],
+  "metrics": [
+    "position MAE",
+    "velocity MAE",
+    "nonfinite path rate",
+    "finite blow-up rate",
+    "wall penetration",
+    "target and nontarget counterfactual errors"
+  ],
+  "comparison": "Same updates/initialization/sample start indices, different compute per update; both time and step counts reported.",
+  "selection": "Validation only; minimum mean 16-step position error among multi and multi_bounded. Report every arm; no test reselection.",
+  "dependencies": {
+    "dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+    "dynamics_world.py": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36"
+  }
+}

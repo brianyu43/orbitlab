@@ -1,0 +1,64 @@
+{
+  "sources": {
+    "v3_common.py": "3b28ab8347d53fd37b77dee30ddc3d256209a60c805a12060c21186fab93c605",
+    "r1_core.py": "72c73f9fae9130d58c5f2c607af5b4c29d7b238d4a1d2f58defbd567a691943f",
+    "r1_data.py": "9fcf95471405d47725a8298b289f8fa2b46111fd33e126a79299d4446bff7fde",
+    "r1_train.py": "f11652e069178ebe1f0156f58e2cf1334e48617e241634a6d0948d45f834a696",
+    "r1_evaluate.py": "057944c275d8ff2e3db5aeeddd81d84ecb843adbbb064e99a2817f3f140908a6"
+  },
+  "dependencies": {
+    "work/orbitlab.py": "edc097901a1fe12f0584b1ead06b912c717a0a7ea8e93badf99253152efef45c",
+    "followup/object_world.py": "71c75a410f9db550a245d9d328cd34b4df1b1b8dfd20fb1ee8faabd518493aee"
+  },
+  "development_seed": 886101,
+  "confirmation_seeds": [
+    886201,
+    886202,
+    886203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "arms": [
+    "binary_full",
+    "binary_quotient",
+    "alpha_full",
+    "alpha_quotient",
+    "rgb_full",
+    "rgb_quotient"
+  ],
+  "renderers": [
+    "pil4_lanczos",
+    "symmetric4_lanczos",
+    "pil8_box"
+  ],
+  "training_renderer": "pil4_lanczos",
+  "train_scenes_per_seed": 1024,
+  "evaluation_scenes_per_split": 128,
+  "splits": [
+    "train",
+    "val",
+    "test",
+    "ood"
+  ],
+  "training_steps": 6000,
+  "batch": 64,
+  "optimizer": "AdamW lr=.001 weight_decay=.0001 gradient_clip=1",
+  "loss": "shape CE + pose CE or half-turn quotient log-sum-probability for shape 3 + radius CE + 4*MSE(center_offset/8)",
+  "matching": "All arms have 3 input channels and exactly the same architecture and parameter count; binary and intensity are repeated across channels. Same batches, initial weights, train scenes and optimizer updates.",
+  "priors": "Known six-color palette and distinct object colors; RGB-derived masks and bounding-box crop; supervised shape/pose/size/center labels. Analytic edit controller and known renderer. Not unsupervised perception.",
+  "renderers_detail": "Original PIL supersampling4 Lanczos; same raster explicitly averaged with its half-turn for geometrically symmetric shape3; independent supersampling8 BOX raster. All poses are exact rot90 of their canonical raster.",
+  "split_unit": "Whole source vector scene and all edit/rotation/renderer variants; reject canonical geometric source/target family overlap across old and new scenes.",
+  "training_scope": "New train data per confirmation seed. Perceptual readers trained on seen factor pairs. OOD places one object in a held-out shape-color pair.",
+  "metrics": "Raw strict label accuracy is descriptive; primary editing respects geometric half-turn equivalence for shape3. Exact raster equivalence, identifiable pose, shape/color/position/size, selection and non-target preservation are separate.",
+  "template_reference": "Exhaustive known-renderer crop template matching; renderer identity supplied only to this diagnostic nonlearned reference. Not an equal-information learned competitor.",
+  "development_selection": "All six arms reported. Relative to alpha_full, select maximum mean quotient-edit success on both unseen renderers, then minimum worst drop, then arm order. Advance only if gain>=.05 and drop<=.05 on BOTH unseen renderers for both val and OOD. No development test use.",
+  "confirmation_rule": "If development gate passes, baseline and selected candidate are retrained on all 3 fresh datasets x 3 initializations, reporting both unseen renderers and seen renderer. If it fails, no confirmatory robustness claim and no automatic repeat expansion; retain full six-arm development diagnosis.",
+  "primary_claim": "Renderer generalization, not semantic pose identifiability from identical pixels.",
+  "resource_cap": {
+    "local_seconds": 43200,
+    "disk_bytes": 30000000000
+  }
+}

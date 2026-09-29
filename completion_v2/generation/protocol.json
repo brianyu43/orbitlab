@@ -1,0 +1,42 @@
+{
+  "development_seed": 880101,
+  "confirmation_seeds": [
+    880201,
+    880202,
+    880203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "ae_steps": 6000,
+  "decoder_steps": 6000,
+  "flow_steps": 16000,
+  "batch_decoder": 32,
+  "batch_flow": 128,
+  "conditions": [
+    "uniform_flow/standard_decoder",
+    "stratified_flow/standard_decoder",
+    "uniform_flow/area_edge_decoder",
+    "stratified_flow/area_edge_decoder"
+  ],
+  "strata": "shape,color,true renderer radius thirds; sample each nonempty stratum equally",
+  "decoder_intervention": "Per-image foreground MSE + 0.1 background MSE + 0.25 foreground-normalized gradient MSE; same samples and initialization as standard.",
+  "generation_steps": 64,
+  "guidance": 1.0,
+  "samples_per_pair": 128,
+  "reference_per_pair": 384,
+  "threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "selection": "Development only: require all-image and strict-subset diversity; maximize mean seen/OOD strict pass. If no candidate passes, retain best strict pass as diagnostic-only and report failed milestone; never relax thresholds.",
+  "confirmation_primary": "Paired comparison against uniform_flow/standard_decoder at equal steps. Preserve old strict/diversity criteria; report no-success if candidate fails.",
+  "new_source_sha256": "bc30f73df39145edbf9f145861c4e4ba485ae7a1461b195eb8672371a5e3d6b0",
+  "dependencies": {
+    "generation_recovery/p1_train.py": "30662ed6b6adf26f61ac9183e897c72cea3afc201a06189a764913ce47822214",
+    "generation_recovery/p4_prepare.py": "9e605127ee396fcdc2b582fe987b433b1314fbcd9d8b5db1dc3af44421367dcd",
+    "generation_recovery/models.py": "9970ac446a88ad4acec3a6dcf07713b8aff562996816dafcb93c8d9714a307ec",
+    "followup/decoder_study.py": "cb985f95e762a34ad5b8c9574b9f0b9155faa13d2696e2f9402fd5006e714bae",
+    "work/orbitlab.py": "edc097901a1fe12f0584b1ead06b912c717a0a7ea8e93badf99253152efef45c",
+    "work/research.py": "14a8de758883d23831e252e1385221f3864a16f38be96a00450c4c7ced427bab"
+  }
+}

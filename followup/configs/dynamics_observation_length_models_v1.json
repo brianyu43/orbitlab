@@ -1,0 +1,58 @@
+{
+  "kinds": [
+    "rgb_cnn",
+    "measurement_mlp"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "steps": 4000,
+  "batch": 32,
+  "lr": 0.0005,
+  "model_seed": 996000,
+  "sampling_seed": 996100,
+  "threads": 2,
+  "normalization": "Fixed declared physical scales. No fitted normalization. Measurement features clipped to +/-5; analytic base velocity +/-6px/frame, base force +/-0.2px/frame^2, base drag 0..0.05.",
+  "outputs": "Six color-addressed state proposals and net force/drag. Presence threshold .5. Positive radius/drag via softplus. Distinct observable colors provide track addresses, not hidden persistent IDs.",
+  "loss": {
+    "present_object_five_factor_mse": 1,
+    "presence_bce": 0.2,
+    "normalized_context_mse": 0.2
+  },
+  "data_seeds": [
+    640031,
+    997101,
+    997102
+  ],
+  "lengths": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "input_config_sha256": "27ac65daab965ade6ae7c9c09e35a289a09fc12fa2bbf056fb61c97b31407e1e",
+  "evidence_sha256": {
+    "data/dynamics_observation_length_v1/input_manifest.json": "0686f99f1fe718dff5e27b996fad3c9f6ebe81475ac9876997144934cc4a5df6",
+    "reports/dynamics_observation_length_v1/input_verification.json": "e0e9ad11b1f288026450d6a48207122670d1f13bc1d1c42b627fcd50fa4eedb8",
+    "reports/dynamics_observation_length_v1/model_preflight.json": "3ffd14c38b139de1485be1c6318d253ea6bbee0820cdd188e5d2559e348c62f0"
+  },
+  "source_sha256": {
+    "train_observation_length.py": "a9c0f43761f7cb6d2e04decefdf8d92ce54fa6397a4f434f67be08b3e591fd91",
+    "dynamics_observation_length_models.py": "8e14a38aa6fed4ab3763ceca00c6a3a1175ff7cf6962750c51fdc3a0afc8f4c6",
+    "dynamics_observation_length_reference.py": "d88a1a4839f3d77265983e58d69abdf6e36de9077f4e25bfb3db22ee757db56c",
+    "dynamics_observation_models.py": "33c161f008bdcd4e6d38bed8bf8d02527a61f83c9e95073726353cd32f19f4bd",
+    "planning_C07_OBSERVATION_LENGTH_KO.md": "48e72a3cbed864bba1e84064a6c2d2d771feb17854b97fb9258df01d2bd5e9c6"
+  },
+  "training": "768 pooled train episodes per data seed. Predict t=7 state/context; no hidden frames, future frames, true count/ID/mask or mode input. Same initial weights and sampling order across L.",
+  "selection": "All final 4000-step checkpoints evaluated. No length/checkpoint/seed selection from validation or heldout performance.",
+  "priors": "CNN uses last L RGB frames and availability flags. MLP also uses known-palette circle measurements and visible-only free-flight estimates. Same capacity within architecture across L.",
+  "scope": "Train and validation diagnostics at t=7; heldout substitutions, autonomous forecasts and cross-data paired length analysis remain separate.",
+  "frozen_unix": 1790145291.628468
+}

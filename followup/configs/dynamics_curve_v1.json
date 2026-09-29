@@ -1,0 +1,30 @@
+{
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "kinds": [
+    "interaction",
+    "wrong_exact",
+    "joint_exact"
+  ],
+  "seed": 0,
+  "batch": 64,
+  "lr": 0.001,
+  "hidden": 48,
+  "threads": 2,
+  "model_code_sha256": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+  "data_manifest_sha256": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128",
+  "checkpoints": [
+    1000,
+    6000,
+    12000
+  ],
+  "parent_config_sha256": "a37f7815ecf64e3c3fc2fddecabc133def7ad0f9c571b949dc4e7e956fcfb853",
+  "runner_sha256": "30fb29a04764a237510128c1320625436e5856ae0c7ed3d71c7fdcc1509d5514",
+  "evaluator_sha256": "8e2b61f2f3ffc19df18cfea176daae637aa7a2abda41496855993658621e52c5",
+  "training": "Fresh deterministic replay from the same initial weights. Verify equality to the prior uniform pilot at 1k; continue without reset to 6k/12k.",
+  "selection": "All fixed checkpoints, one initialization, train and validation only; no test selection.",
+  "frozen_unix": 1790135361.20685
+}

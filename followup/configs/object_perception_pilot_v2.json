@@ -1,0 +1,24 @@
+{
+  "kinds": [
+    "flat",
+    "slot"
+  ],
+  "seed": 0,
+  "steps": 3000,
+  "batch": 16,
+  "lr": 0.0004,
+  "warmup_steps": 100,
+  "slots": 5,
+  "dim": 32,
+  "data_manifest_sha256": "6b9f1eef6ceb4b8d1ca86dbfe404b301cb806bad9ae89a361851cb41cb8b8b1a",
+  "previous_pilot_sha256": "c864cc61f97f911cc203ed39910984fd9d7c6f48743e1bb7865e35737ad5b3b5",
+  "changes": [
+    "Linear RGB outputs before mask mixture, as in reference model.",
+    "Mean foreground and background RGB error receive equal weight per image."
+  ],
+  "rationale": "V1 converged to all-black images in both models: validation foreground IoU zero. Preserve and report those results.",
+  "information": "Training sees RGB only; foreground weight is derived from input brightness, not object labels/masks.",
+  "comparison": "Same fixed steps, images, sampling and encoder/decoder per model; parameter and wall time budgets differ.",
+  "boundary": "One-seed validation-only development; two stabilization changes together, not isolated causal effects.",
+  "frozen_unix": 1790133125.387286
+}

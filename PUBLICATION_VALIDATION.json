@@ -1,0 +1,132 @@
+{
+  "snapshot_date": "2026-09-29",
+  "scope": "Initial public source-and-evidence distribution; not full research completion",
+  "export_file_count_before_receipts": 981,
+  "export_bytes_before_receipts": 24372780,
+  "new_document_relative_links_verified": 22,
+  "tests": {
+    "tested_from_published_files_only": true,
+    "dependencies": "Existing local Python 3.13 environment; no fresh dependency installation claimed",
+    "suites": [
+      {
+        "suite": "tests/test_research.py",
+        "exit_code": 0,
+        "output": "test_both_model_widths_and_all_group_elements (test_research.ResearchChecks.test_both_model_widths_and_all_group_elements) ... ok\ntest_data_provenance_and_orbit_disjointness (test_research.ResearchChecks.test_data_provenance_and_orbit_disjointness) ... ok\ntest_fourier_real_pair_and_invariant_decode (test_research.ResearchChecks.test_fourier_real_pair_and_invariant_decode) ... ok\ntest_metrics_identity_and_black_baseline (test_research.ResearchChecks.test_metrics_identity_and_black_baseline) ... ok\ntest_parameter_matching (test_research.ResearchChecks.test_parameter_matching) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.455s\n\nOK\n"
+      },
+      {
+        "suite": "followup/test_object_world.py",
+        "exit_code": 0,
+        "output": "test_exact_image_and_mask_rotation_including_occlusion_and_boundaries (test_object_world.ObjectWorldChecks.test_exact_image_and_mask_rotation_including_occlusion_and_boundaries) ... ok\ntest_global_rotation_and_world_translation_do_not_commute (test_object_world.ObjectWorldChecks.test_global_rotation_and_world_translation_do_not_commute) ... ok\ntest_local_edits_preserve_other_object_and_color_rotation_commute (test_object_world.ObjectWorldChecks.test_local_edits_preserve_other_object_and_color_rotation_commute) ... ok\ntest_scene_generation_factor_split_and_capacity (test_object_world.ObjectWorldChecks.test_scene_generation_factor_split_and_capacity) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.041s\n\nOK\n"
+      },
+      {
+        "suite": "followup/test_dynamics_world.py",
+        "exit_code": 0,
+        "output": "test_free_flight_and_force (test_dynamics_world.PhysicsChecks.test_free_flight_and_force) ... ok\ntest_joint_rotation_and_fixed_condition_counterexample (test_dynamics_world.PhysicsChecks.test_joint_rotation_and_fixed_condition_counterexample) ... ok\ntest_pair_energy_momentum_and_wall (test_dynamics_world.PhysicsChecks.test_pair_energy_momentum_and_wall) ... ok\ntest_renderer_rotation_and_slot_order (test_dynamics_world.PhysicsChecks.test_renderer_rotation_and_slot_order) ... ok\ntest_unidentifiable_force_decomposition_and_reproducibility (test_dynamics_world.PhysicsChecks.test_unidentifiable_force_decomposition_and_reproducibility) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.131s\n\nOK\n"
+      }
+    ],
+    "all_suites_passed": true,
+    "python_files_parsed": 523,
+    "seconds": 2.5883188247680664
+  },
+  "models_and_protocols": {
+    "six_r2_reader_forward_checks": [
+      "detector_mask0",
+      "detector_mask1",
+      "slot_mask0",
+      "slot_mask1",
+      "recurrent_mask0",
+      "recurrent_mask1"
+    ],
+    "source_and_dependency_locks_checked": [
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "research_v3/v3_common.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "research_v3/r1_core.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "research_v3/r1_data.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "research_v3/r1_train.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "research_v3/r1_evaluate.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "work/orbitlab.py"
+      },
+      {
+        "protocol": "research_v3/r1/protocol.json",
+        "source": "followup/object_world.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "research_v3/r3_physics.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "research_v3/r3_core.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "research_v3/r3_data.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "research_v3/r3_train.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "research_v3/r3_evaluate.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "followup/dynamics_world.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "followup/dynamics_models.py"
+      },
+      {
+        "protocol": "research_v3/r3/protocol.json",
+        "source": "followup/dynamics_rgb_baseline.py"
+      },
+      {
+        "protocol": "research_v3/r2/data_protocol.json",
+        "source": "research_v3/r2_world.py"
+      },
+      {
+        "protocol": "research_v3/r2/data_protocol.json",
+        "source": "research_v3/r2_data.py"
+      },
+      {
+        "protocol": "research_v3/r2/data_protocol.json",
+        "source": "research_v3/r1_core.py"
+      },
+      {
+        "protocol": "research_v3/r2/training_protocol.json",
+        "source": "research_v3/r2_core.py"
+      },
+      {
+        "protocol": "research_v3/r2/training_protocol.json",
+        "source": "research_v3/r2_train.py"
+      }
+    ],
+    "r2_evaluator_and_training_protocol_hashes_match": true
+  },
+  "privacy_scan": {
+    "scope": "Text files selected for initial publication",
+    "patterns": "GitHub/OpenAI-style tokens, private keys, AWS access identifiers, credential assignments, personal email patterns, private chat links",
+    "finding": "No remaining matches after omitting the two execution-plan documents containing private chat links",
+    "limitation": "Pattern screening and file selection are not a proof that all possible sensitive information is absent"
+  },
+  "historical_experiment_files_modified": false,
+  "omitted_artifacts": "See PUBLICATION.md"
+}

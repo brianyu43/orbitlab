@@ -1,0 +1,21 @@
+{
+  "input_manifest_sha256": "265961ad67ca55849270631ebe95abbaecadd87fc532e97f0b598a7c30d065e6",
+  "source_sha256": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523",
+  "palette_sha256": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+  "known_priors": "Six renderer colors, circular radial alpha, fixed black background, equal masses, distinct colors per scene, eight substeps/frame. Not learned visual concepts or discovered physics.",
+  "image_only": "Color identity is an observable track label. No true count, IDs, states, modes, contexts, events or future pixels enter measurement or fitting.",
+  "circle_fit": "RGB projection on each known palette ray. Squared RGB residual <=4, alpha>.05 for initial mass; detect if alpha mass>=12. Fit center and continuous radius in a 21x21 neighborhood, radius bounds [2,8], center +/-2px, max 30 evaluations.",
+  "dynamics_fit": "Three position increments from four frames. Shared scalar decay and two force intercepts fit by centered least squares over all complete tracks and both adjacent-increment pairs. Decay clipped to [exp(-.05),1], force not clipped.",
+  "contact_policy": "No GT event filtering. Free-flight equations applied to all episodes; past-contact strata are used only for scoring. No complete track => zero context; missing penultimate observation => zero last displacement.",
+  "identification": "Zero design variance does not identify drag; fallback decay=1 is a convention, not recovery of true drag.",
+  "features": [
+    "x",
+    "y",
+    "radius",
+    "present",
+    "alpha_mass",
+    "fit_rms",
+    "fit_converged"
+  ],
+  "frozen_unix": 1790138719.426647
+}

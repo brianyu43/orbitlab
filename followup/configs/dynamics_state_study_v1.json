@@ -1,0 +1,55 @@
+{
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "kinds": [
+    "flat",
+    "object",
+    "interaction",
+    "augmented",
+    "wrong_exact",
+    "joint_exact",
+    "relaxed"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "steps": 12000,
+  "batch": 64,
+  "lr": 0.001,
+  "hidden": 48,
+  "threads": 2,
+  "evaluation_splits": [
+    "test",
+    "attribute_ood",
+    "count3",
+    "count4",
+    "force_ood"
+  ],
+  "force_ood_modes": [
+    "variable_force"
+  ],
+  "reused_seed_zero_checkpoints": {
+    "isotropic/interaction": "7a837e07fe115d255dd749c59ceee052a46b26839f13bc4c2239d4d0b7536a5f",
+    "isotropic/wrong_exact": "263581df8f21c0f51c54e1a9f554f3c7836fdf26ca597f7233fe6e05159f4fb0",
+    "isotropic/joint_exact": "d6a1f03b3a1b3b06de2867384e0027b22faf7e8e83cb8b21a590d787ddcf0621",
+    "fixed_gravity/interaction": "27f3c8ed4086b48c5e6ab9cb5adfde2facc171d0fa19fac98c0ac74a71e967b1",
+    "fixed_gravity/wrong_exact": "b21a80969c6bc039581974655147c3b14e79079443bf5a2b8a0f60ae2d12b5f5",
+    "fixed_gravity/joint_exact": "8086db9f7872223d470a4da9f7ad7c22f59e806ef459fcd004797da7021ad415",
+    "variable_force/interaction": "d817dcd913e0b09ac971978ce0a160b7e62bbd97e55e0af66d94bd1b17108042",
+    "variable_force/wrong_exact": "c9655a2609b42d5c2d42b5ba0bd74f8526168a6c32328274cfbe7b176eb8e423",
+    "variable_force/joint_exact": "35822fc381461d6f433ed94625d4ac06697b6abe37674e21a457c9327cb9418e"
+  },
+  "model_sha256": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+  "runner_sha256": "197e8609e0bea0213ec285292e80eabe966a80aed88d2513a38a7d2471bdec65",
+  "data_manifest_sha256": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128",
+  "selection": "Common fixed 12k budget, not best per-model validation checkpoint. Uniform train transitions. Three initializations on one data-generation seed.",
+  "primary": "Mean per-episode one-step velocity MAE in pixels/frame; position MAE and contact/noncontact/pair/wall-only strata are also reported.",
+  "scope": "True state and known net acceleration/drag at every step. Held-out one-step generalization, not autonomous rollout or image-based prediction.",
+  "budgets": "Same steps, batch and loss; parameter counts and wall time differ. Four interaction symmetry controls share raw weights and training samples.",
+  "frozen_unix": 1790135788.7158332
+}

@@ -1,0 +1,358 @@
+{
+  "frozen_unix": 1790123646.823554,
+  "data_seed": 42,
+  "resolution": 64,
+  "latent_dim": 64,
+  "ae_batch": 32,
+  "final_step_rule": "3000 fixed steps, except explicitly time-matched runs; no test-based tuning",
+  "calibration_evidence": [
+    "runs/calibration_aug_s0/run.json",
+    "runs/calibration_equivariant_s0/run.json"
+  ],
+  "wall_budget_seconds": 26.938,
+  "flow": {
+    "steps": 4000,
+    "batch": 128,
+    "sample_n": 576,
+    "ode_steps": [
+      0,
+      16,
+      32,
+      64
+    ],
+    "training_seeds": [
+      0,
+      1,
+      2
+    ],
+    "sample_seed_offset": 53000
+  },
+  "entry_gate": {
+    "validation_mse_lt_black_ratio": 0.5,
+    "foreground_mae_max": 0.1,
+    "mask_iou_min": 0.7,
+    "reconstructed_shape_accuracy_min": 0.9,
+    "reconstructed_color_accuracy_min": 0.9
+  },
+  "tasks": [
+    {
+      "id": "primary_aug_n1024_s0",
+      "family": "primary",
+      "model": "aug",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_aug_n1024_s0"
+    },
+    {
+      "id": "primary_equivariant_n1024_s0",
+      "family": "primary",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_equivariant_n1024_s0"
+    },
+    {
+      "id": "primary_aug_n1024_s1",
+      "family": "primary",
+      "model": "aug",
+      "n": 1024,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_aug_n1024_s1"
+    },
+    {
+      "id": "primary_equivariant_n1024_s1",
+      "family": "primary",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_equivariant_n1024_s1"
+    },
+    {
+      "id": "primary_aug_n1024_s2",
+      "family": "primary",
+      "model": "aug",
+      "n": 1024,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_aug_n1024_s2"
+    },
+    {
+      "id": "primary_equivariant_n1024_s2",
+      "family": "primary",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/primary_equivariant_n1024_s2"
+    },
+    {
+      "id": "diagnostic_plain_n1024_s0",
+      "family": "diagnostic",
+      "model": "plain",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/diagnostic_plain_n1024_s0"
+    },
+    {
+      "id": "diagnostic_invariant_n1024_s0",
+      "family": "diagnostic",
+      "model": "invariant",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/diagnostic_invariant_n1024_s0"
+    },
+    {
+      "id": "data_aug_n256_s0",
+      "family": "data",
+      "model": "aug",
+      "n": 256,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n256_s0"
+    },
+    {
+      "id": "data_equivariant_n256_s0",
+      "family": "data",
+      "model": "equivariant",
+      "n": 256,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n256_s0"
+    },
+    {
+      "id": "data_aug_n256_s1",
+      "family": "data",
+      "model": "aug",
+      "n": 256,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n256_s1"
+    },
+    {
+      "id": "data_equivariant_n256_s1",
+      "family": "data",
+      "model": "equivariant",
+      "n": 256,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n256_s1"
+    },
+    {
+      "id": "data_aug_n256_s2",
+      "family": "data",
+      "model": "aug",
+      "n": 256,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n256_s2"
+    },
+    {
+      "id": "data_equivariant_n256_s2",
+      "family": "data",
+      "model": "equivariant",
+      "n": 256,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n256_s2"
+    },
+    {
+      "id": "data_aug_n4096_s0",
+      "family": "data",
+      "model": "aug",
+      "n": 4096,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n4096_s0"
+    },
+    {
+      "id": "data_equivariant_n4096_s0",
+      "family": "data",
+      "model": "equivariant",
+      "n": 4096,
+      "seed": 0,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n4096_s0"
+    },
+    {
+      "id": "data_aug_n4096_s1",
+      "family": "data",
+      "model": "aug",
+      "n": 4096,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n4096_s1"
+    },
+    {
+      "id": "data_equivariant_n4096_s1",
+      "family": "data",
+      "model": "equivariant",
+      "n": 4096,
+      "seed": 1,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n4096_s1"
+    },
+    {
+      "id": "data_aug_n4096_s2",
+      "family": "data",
+      "model": "aug",
+      "n": 4096,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_aug_n4096_s2"
+    },
+    {
+      "id": "data_equivariant_n4096_s2",
+      "family": "data",
+      "model": "equivariant",
+      "n": 4096,
+      "seed": 2,
+      "width": 16,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/data_equivariant_n4096_s2"
+    },
+    {
+      "id": "parameter_equivariant_n1024_s0",
+      "family": "parameter",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 0,
+      "width": 31,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/parameter_equivariant_n1024_s0"
+    },
+    {
+      "id": "parameter_equivariant_n1024_s1",
+      "family": "parameter",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 1,
+      "width": 31,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/parameter_equivariant_n1024_s1"
+    },
+    {
+      "id": "parameter_equivariant_n1024_s2",
+      "family": "parameter",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 2,
+      "width": 31,
+      "steps": 3000,
+      "seconds": 0,
+      "out": "runs/parameter_equivariant_n1024_s2"
+    },
+    {
+      "id": "time_aug_n1024_s0",
+      "family": "time",
+      "model": "aug",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_aug_n1024_s0"
+    },
+    {
+      "id": "time_equivariant_n1024_s0",
+      "family": "time",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 0,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_equivariant_n1024_s0"
+    },
+    {
+      "id": "time_aug_n1024_s1",
+      "family": "time",
+      "model": "aug",
+      "n": 1024,
+      "seed": 1,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_aug_n1024_s1"
+    },
+    {
+      "id": "time_equivariant_n1024_s1",
+      "family": "time",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 1,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_equivariant_n1024_s1"
+    },
+    {
+      "id": "time_aug_n1024_s2",
+      "family": "time",
+      "model": "aug",
+      "n": 1024,
+      "seed": 2,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_aug_n1024_s2"
+    },
+    {
+      "id": "time_equivariant_n1024_s2",
+      "family": "time",
+      "model": "equivariant",
+      "n": 1024,
+      "seed": 2,
+      "width": 16,
+      "steps": 100000,
+      "seconds": 26.938,
+      "out": "runs/time_equivariant_n1024_s2"
+    }
+  ]
+}

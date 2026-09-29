@@ -1,0 +1,9 @@
+{
+  "adapter_sha256": "c2f973591c0fcbd08b684eb43b05658ee6a31ac803df4e79cbde5c777e45c311",
+  "probe_sha256": "5c752e3694126470f6c199f856d4761bb9f4cf064bc26c10416d4a1ee8b18c87",
+  "base_protocol_sha256": "301e0f0ab9766be971093678b7c9c5de321650292d178c1017d675abbb7d17be",
+  "scope": "New confirmation training only. Development stays CPU. AE/decoder MPS FP32 with differentiable CPU output bridge; sampling, flow, evaluation CPU.",
+  "reason": "Measured AE step approximately 0.051s vs observed CPU 0.12s under concurrent workload. Forward and gradient parity passed; no convergence equivalence claim.",
+  "fairness": "Baseline and candidate share same AE/normalization; both decoder arms trained on MPS. Flow arms remain CPU. Time measurements reflect concurrent workloads.",
+  "confirmation_scores_seen_before_amendment": false
+}

@@ -1,0 +1,45 @@
+{
+  "data_seeds": [
+    43001,
+    43002,
+    43003
+  ],
+  "init_seeds": [
+    0,
+    1,
+    2
+  ],
+  "train_n": 1024,
+  "evaluation_n": 256,
+  "ae_steps": 6000,
+  "ae_lr": 0.001,
+  "ae_batch": 32,
+  "ae_sampling_seed_offset": 100000,
+  "flow_steps": 4000,
+  "flow_lr": 0.001,
+  "flow_batch": 128,
+  "flow_init_seed_offset": 81000,
+  "flow_sampling_seed_offset": 82000,
+  "flow_noise_seed_offset": 951000,
+  "sample_n": 1920,
+  "ode_steps": 64,
+  "modes": [
+    "plain_fixed",
+    "equivariant_fixed",
+    "plain_time"
+  ],
+  "primary": "strict_accepted_and_joint under the locked evaluator screen; not human semantic success",
+  "secondary": [
+    "shape_correct",
+    "color_correct",
+    "joint_correct",
+    "legacy_valid_and_joint"
+  ],
+  "threshold_path": "reports/evaluator_calibration_v1/locked_threshold.json",
+  "threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "ae_gate": "Record val foreground MAE<=.10, IoU>=.70, shape/color>=.90. Retain all prespecified runs even if a gate fails; report the gate and interpret as diagnostic.",
+  "selection": "Fixed final steps; no tuning or seed replacement after confirmation test results.",
+  "time_control": "plain_time uses the corresponding 4000-step equivariant flow wall time. Synchronize each step in all flow modes.",
+  "independence": "Three entirely fresh data seeds; original data-seed-42 results are exploratory, not one of these confirmation seeds.",
+  "frozen_unix": 1790130823.869793
+}

@@ -1,0 +1,41 @@
+{
+  "kinds": [
+    "rgb_cnn",
+    "measurement_mlp"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "steps": 4000,
+  "batch": 32,
+  "lr": 0.0005,
+  "model_seed": 996000,
+  "sampling_seed": 996100,
+  "threads": 2,
+  "inputs_manifest_sha256": "265961ad67ca55849270631ebe95abbaecadd87fc532e97f0b598a7c30d065e6",
+  "measurement_manifest_sha256": "42a6160df4ddc7d9dbea385bb8c04f35ff4f5aec599808b8779e98d25a9fe1d6",
+  "sources": {
+    "dynamics_observation_models.py": "33c161f008bdcd4e6d38bed8bf8d02527a61f83c9e95073726353cd32f19f4bd",
+    "train_dynamics_observation.py": "fc855c8a0ef1638635e1cae78c1d17922500ac19e62e90cd98f34051383fa450",
+    "dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523"
+  },
+  "training": "Pool the 768 initial four-frame train windows across three environments. No mode input, no future frames, one window per original episode. Supervise t=3 states and constant net acceleration/drag using train labels only.",
+  "selection": "Common fixed 4000-step budget; evaluate train/val only before held-out protocol. No best-checkpoint/seed selection. Three initializations per architecture.",
+  "normalization": "Fixed declared physical scales. No fitted normalization. Measurement features clipped to +/-5; analytic base velocity +/-6px/frame, base force +/-0.2px/frame^2, base drag 0..0.05.",
+  "outputs": "Six color-addressed state proposals and net force/drag. Presence threshold .5. Positive radius/drag via softplus. Distinct observable colors provide track addresses, not hidden persistent IDs.",
+  "loss": {
+    "present_object_five_factor_mse": 1,
+    "presence_bce": 0.2,
+    "normalized_context_mse": 0.2
+  },
+  "priors": "Direct CNN uses four RGB frames and fixed color-addressed supervision. Measurement MLP additionally uses known-palette circle fits and analytic dynamics estimates. Parameter counts and execution devices/time differ.",
+  "claim_boundary": "Supervised synthetic-video state/environment inference. Not unsupervised discovery, autonomous rollout, or independent data-seed confirmation.",
+  "frozen_unix": 1790138965.8304331
+}

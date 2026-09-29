@@ -1,0 +1,77 @@
+{
+  "seed": 995031,
+  "evaluation_n": 128,
+  "splits": [
+    "test",
+    "ood",
+    "count3",
+    "count4",
+    "occlusion"
+  ],
+  "kinds": [
+    "flat",
+    "slot"
+  ],
+  "head_seeds": [
+    0,
+    1,
+    2
+  ],
+  "epsilon_seed": 995100,
+  "batch": 16,
+  "checkpoints": {
+    "runs/object_perception_curve_v1/flat_s0_step12000/model.pt": "cd9723828ec665ebbf837006c1e9296d7870bd95a2b4854e3721e5f8f6210b08",
+    "runs/object_readout_v1/flat_s0/model.pt": "d88acc0ec1aa50fd75befcd41498074a9af91bf347f2b086d286662e729a82e4",
+    "runs/object_readout_v1/flat_s1/model.pt": "e55259611e12ce066752a170fd80099722fc2fae258b7daecfdf993cf2791486",
+    "runs/object_readout_v1/flat_s2/model.pt": "60b7221153aaff65e62fdda1c81ef1b2c38e01190fd06799f4317d26a84cb7e7",
+    "runs/object_perception_curve_v1/slot_s0_step12000/model.pt": "cfec9aefe416792ffd4449673ec0876f85202eebcdad8484d8509fea4c589e14",
+    "runs/object_readout_v1/slot_s0/model.pt": "fe74280ea27b13f8b3cf68b1e279538949d88c177c822badea2bd7a5710781b3",
+    "runs/object_readout_v1/slot_s1/model.pt": "7858a05b255d9aa70d65f7cc3b357cbfd49336215b89eb7e4a25760c91b0cb02",
+    "runs/object_readout_v1/slot_s2/model.pt": "d0a00e154212dc186aaeb54f9720f6c280381a08162b291b3343e412e1c68226",
+    "runs/object_oracle_study_v1/object_s0/model.pt": "8eb3bfe53abf0530dba4ae80aaf04a95fc7639caac7dd08048631744339ebff3",
+    "runs/object_oracle_study_v1/object_s1/model.pt": "0cc415e32e5acde8cd43386975ef0da5578adfaa185002fc8c3538b44c6b3dd2",
+    "runs/object_oracle_study_v1/object_s2/model.pt": "e86901ae41328ec6e8b28fe1b31b7b1a9ddc3a56cf3987cfd615e89036ad0ec6"
+  },
+  "sources": {
+    "object_edit_confirmation.py": "67f96ff885778abff872b92c6c768d8e827249bf3c77cfc0302c1d20c7a585a9",
+    "object_image_edit.py": "a81cebe9b7549c172399b3b6e622cfc73d3196c4d4fb4dff03fc083289d240ed",
+    "object_world.py": "71c75a410f9db550a245d9d328cd34b4df1b1b8dfd20fb1ee8faabd518493aee",
+    "object_tasks.py": "e851fe94478ac929fcc5d5aa49cbde00a5aedc66b24ab2c93fec07720d95250f",
+    "object_state_readout.py": "af169dcdb14602573eb7c16b5725f3813e36d6388f9b1825d1d66cd2f2aec266",
+    "object_oracle_study.py": "6ff2a0742d9d51a9a201e2befe99e7dc85f6b79aa505d96357d29fe0e132d98e",
+    "object_perception.py": "92ee34e8ae833128bae39112dd7a05ec2b692adc2733b47eb5ba242fc7291459",
+    "object_perception_v2.py": "194d6b4ad3e05b49df8a249271c706ab5fe8914c4dda2f8b24ecb6011935c803",
+    "cache_object_slots.py": "0813cbb5c5a1b579938ac970c582f0b66dce344e4e0eede865a0dc83ebebc397"
+  },
+  "prior_manifests": {
+    "data/object_world_v1/manifest.json": "6b9f1eef6ceb4b8d1ca86dbfe404b301cb806bad9ae89a361851cb41cb8b8b1a",
+    "data/object_edit_tasks_v1/manifest.json": "9f239e26765e268686354e6bc17ce8629ffef90a4a446b07cb4d37be254c486c"
+  },
+  "head_selection": "Frozen final 6000-step supervised heads; one fixed encoder per architecture. No new training or test selection.",
+  "source_selection": "Fresh deterministic candidates. Every object must have a visible hard pixel. Reject source/target C4 orbit overlap with all prior object scenes/edits and any other new source family.",
+  "commands": "For source i, target i modulo object count. Seen recolor, +90 degree rotation, 5px horizontal translation (+x if x<=47 else -x), sequential recolor then rotation. Novel recolor if it changes color and no other object uses that color.",
+  "layout": "All source and edited scenes except occlusion are nonoverlapping. Occlusion edits may legitimately change visibility; non-target factors remain identical.",
+  "click": "Hard-visible target pixel nearest the centroid of its hard-visible pixels; row-major tie break. Annotation supplies only (x,y) pixel, no center, mask, ID or count to the RGB model.",
+  "capacity": "Decode five slots. Keep top four by predicted presence logit, stable ties by original slot index, then restore original slot order. Threshold presence sigmoid>=0.5. Record discarded positive detections.",
+  "selection": "Closest present predicted center to the click; ties follow retained original slot order. No present slot: leave state unchanged and score target selection as failure.",
+  "controllers": [
+    "identity",
+    "analytic",
+    "learned_object_same_seed"
+  ],
+  "oracle_controls": [
+    "true_state_true_id_analytic",
+    "true_state_true_id_object_seed_0_1_2",
+    "true_state_click_analytic"
+  ],
+  "composition": "Reuse selected predicted slot across commands, no intermediate truth or rematching.",
+  "rendering": "Render predicted states only. Painter order is retained predicted slot order, never reordered by evaluation matching. Round/clamp only for raster output: center -32..95, radius 1..12. Raw states remain scored.",
+  "metrics": "Initial geometry-only matching fixed after edits. Separate GT target/untouched/non-target/count/full-state success from command-following and preservation relative to the predicted source. End-to-end success additionally requires correct selection. Image errors also reported against literal input-image passthrough.",
+  "tolerances": {
+    "xy_each_axis_pixels": 1,
+    "radius_pixels": 0.5,
+    "presence_threshold": 0.5
+  },
+  "uncertainty": "Base source scenes, not individual commands, are bootstrap units. Three head/controller seeds on a single new data-generation seed and single encoder seed per kind.",
+  "frozen_unix": 1790137564.3677819
+}

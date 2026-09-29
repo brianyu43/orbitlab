@@ -1,0 +1,40 @@
+{
+  "seed": 942301,
+  "train_n": 1024,
+  "evaluation_n": 128,
+  "max_objects": 4,
+  "splits": [
+    "train",
+    "val",
+    "test",
+    "ood",
+    "count3",
+    "count4",
+    "occlusion"
+  ],
+  "held_out_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      3,
+      3
+    ]
+  ],
+  "layout": "Integer centers in 12..51, radius 5..8, exact local C4 poses. Distinct colors per scene before intervention.",
+  "depth": "Persistent ID ascending is painter order. Higher IDs may occlude lower IDs.",
+  "masks": "Amodal and visible alpha masks plus segmentation; privileged labels, not image-only model inputs.",
+  "actions": "One target at a time. Color/pose/translation; composed color+pose is reserved for evaluation.",
+  "ood": "First object uses a held-out shape-color pair; others seen. count3/count4 and occlusion use seen pairs.",
+  "selection": "Deterministic candidates; reject cross-split source and target orbit duplicates.",
+  "frozen_unix": 1790132178.243107
+}

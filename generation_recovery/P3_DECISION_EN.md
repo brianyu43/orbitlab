@@ -1,0 +1,7 @@
+# P3 Branch Decision (After Development Results, Before Additional Training)
+
+P1's best latent-space configuration (F3, guidance 2.0, logit mean) reached 32.50% on seen combinations and 20.31% on excluded combinations, but failed the size-diversity criterion. The P0 small-sample memorization diagnostic succeeded. The P2 direct-pixel U-Net completed 4,000 steps, but its strict-pass rates on 24 conditions × 8 diagnostic samples were 3.75% for seen and 3.13% for excluded combinations. Full evaluation of the pixel path and a C4 extension are therefore lower priorities for now.
+
+We select **one training-duration axis** from the planned P3 options. Keeping the same 1,024 training base images, AE, decoder, and flow architecture as P1, we continue both F0 and F3 flows from 4,000 to 16,000 steps. Extending the paired F0 control is necessary to separate changes in F3 from the effect of additional training alone. Both models resume P1's optimizer and sample/noise/time RNG states. Evaluation reuses the development protocol and generation noise. F3 guidance is fixed at the development-selected value of 2.0. We will not search other step counts or guidance values.
+
+Questions set before the additional training: Do strict success and size diversity improve together for F0 and F3? Does only F3 improve? Do both remain nearly unchanged? In every case, a result on this one data seed is development evidence, not confirmation. If the size guard still fails, do not start the P4 success confirmation.

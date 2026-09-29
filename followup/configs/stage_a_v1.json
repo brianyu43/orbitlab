@@ -1,0 +1,48 @@
+{
+  "frozen_unix": 1790129809.998364,
+  "purpose": "Exploratory diagnostics and matched-flow intervention on the original three frozen C4 AEs.",
+  "audit_seed": 9212301,
+  "audit_n_per_split": 128,
+  "fresh_probe_seed": 9212302,
+  "fresh_probe_n_per_split": 256,
+  "old_train_probe_n": 256,
+  "flow_modes": [
+    "plain",
+    "augment",
+    "equivariant"
+  ],
+  "ae_seeds": [
+    0,
+    1,
+    2
+  ],
+  "flow_init_seed_offset": 81000,
+  "flow_sampling_seed_offset": 82000,
+  "flow_augmentation_seed_offset": 83000,
+  "flow_eval_seed_offset": 84000,
+  "flow_steps": 4000,
+  "flow_batch": 128,
+  "flow_lr": 0.001,
+  "flow_eval_n": 576,
+  "flow_eval_steps": [
+    16,
+    32,
+    64
+  ],
+  "template_validity_thresholds": [
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "primary_template_threshold": 0.65,
+  "human_review_n_per_model_seed_split": 20,
+  "review_shuffle_seed": 9212399,
+  "checkpoint_selection": "fixed final step; no test-driven model selection",
+  "same_ae_comparison": "All three flow modes receive identical normalized C4 latent pool, labels, base minibatches/noise/t, initial raw weights. Augmentation rotates BOTH target and noise using a separate RNG.",
+  "limits": [
+    "Single original training data seed for A07; A09 adds data seeds.",
+    "Diagnostic fresh test becomes development data once inspected.",
+    "Automatic scores are not human-validated generation success."
+  ]
+}

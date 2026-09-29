@@ -1,0 +1,27 @@
+{
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "seed": 0,
+  "steps": 1000,
+  "batch": 64,
+  "lr": 0.001,
+  "hidden": 48,
+  "device": "cpu",
+  "threads": 2,
+  "data_manifest_sha256": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128",
+  "model_code_sha256": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+  "kinds": [
+    "interaction",
+    "wrong_exact",
+    "joint_exact"
+  ],
+  "parent_config_sha256": "8d8ff207c3ef25710283d2cadd828ac86d9180df0e0d27b9f5beafb6ec2bd86f",
+  "code_sha256": "f72956faad877bfa97a7d4879506252a23e65fbc0f408605321eb72f8fd2c168",
+  "evaluator_code_sha256": "8e2b61f2f3ffc19df18cfea176daae637aa7a2abda41496855993658621e52c5",
+  "change": "The second half of every minibatch is drawn from all train transitions rather than the contact subset.",
+  "selection": "Same 1000 steps, one initialization, validation-only cause diagnostic. No test or long-rollout claim.",
+  "frozen_unix": 1790134822.458557
+}

@@ -1,0 +1,68 @@
+{
+  "sources": {
+    "r3_physics.py": "f44a4a25df22e5eb05e68ebfa716b1d8bf25e3645b2f66ce89a46ce4e5870032",
+    "r3_core.py": "968a8d0f38683548c3376b2b8f64c2b8b1daabcf1b2715caee39384b0a59e8e3",
+    "r3_data.py": "29735d4cd00b8deedcf8805bfe6af81ad1980843f9f85ce58c5f2b7e3e2330db",
+    "r3_train.py": "0fd18edb6cac4b9e5ff465b72eb69a5fc3ba46e88d804cb1effaac1afb267f69",
+    "r3_evaluate.py": "cbab8b86bd2c498006248ff87f342f394e6fb7693f31cbe62308e15aa83cfb98"
+  },
+  "dependencies": {
+    "followup/dynamics_world.py": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+    "followup/dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+    "followup/dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523"
+  },
+  "development_seed": 888101,
+  "confirmation_seeds": [
+    888201,
+    888202,
+    888203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "training_steps": 2000,
+  "batch_episodes": 32,
+  "train_episodes": 384,
+  "train_frames": 20,
+  "training_count": 2,
+  "evaluation_episodes_per_count": 96,
+  "counts": [
+    2,
+    3,
+    4,
+    6
+  ],
+  "horizons": [
+    1,
+    16,
+    61,
+    128
+  ],
+  "stratification": "Equal quotas of no contact / wall only / pair contact within the first 16 forecast frames. Report actual per-horizon contact categories as well. Training is similarly stratified within first16 frames.",
+  "arms": [
+    "one",
+    "multi",
+    "multi_bounded",
+    "mean",
+    "local_mean",
+    "contact_residual"
+  ],
+  "optimizer": "AdamW .001 weight_decay .0001 clip1",
+  "multistep_horizon": 8,
+  "inputs": "True initial state at observed frame3 and supplied action; net force+drag either true or estimated from four RGB observations. Learned transitions train with true force. RGB context estimator knows circle shape, palette, and discrete physics. Initial state remains true in the estimated-force condition to isolate force error.",
+  "architecture": "one/multi/multi_bounded reproduce previous joint-C4 sum-message architecture with no count hardcoding. mean changes only message sum to degree mean. local_mean additionally uses a proximity gate. All these models share parameter counts; contact_residual has a declared different physical prior and parameter count.",
+  "local_gate": "Pair center distance <= radius_i+radius_j+6 pixels at current input, multiplied before degree averaging. No truth contact events.",
+  "contact_prior": "Equal masses, known force/drag, reflective walls and pair elastic impulse/projection; a coarse one-substep differentiable solver plus learned bounded per-object velocity residual applied before solver. Exact eight-substep simulator is an oracle, not a learned competitor. Coarse solver without learned residual is mandatory control.",
+  "counterfactuals": "Same observed initial state with negated target impulse (target/nontarget response and zero-response control), and same impulse with x net external force increment .04. Force changes supplied for known-force; estimated baseline force receives the same known intervention delta.",
+  "bounds": "multi_bounded clips xy to radius-specific walls and velocity to 1.5*maximum train norm; other neural arms have no feedback clamp. contact residual amplitude .15px/frame per axis and post-step physical projection; stability must not be credited to learning.",
+  "development_selection": "Compare candidate mean/local_mean/contact_residual at 16 and61 steps, including all failures. Choose smallest mean failure-penalized position MAE across counts. Advance baseline+candidate only if candidate beats bounded mean61-step error by at least20% at count4, has <1% failed paths, <1% wall paths, <5% overlap paths at every count, and non-target impulse-response error <=1.05*bounded count4. Candidate must also have <=1px mean16-step error in each count2 contact stratum. Otherwise diagnose and stop expansion.",
+  "confirmation_gate": "All three dataset seeds must meet the same count4 61-step criteria after averaging three initializations; no failed seeds discarded.",
+  "failure_definition": "Nonfinite path or any center coordinate absolute value>64px is failure. Mean position error across all paths uses128px for failure; velocity uses16px/frame. Raw finite-only metrics also reported. All denominators include all96episodes.",
+  "contact_metric": "Near contact if distance <= radii_sum+.5px; first contact timing capped at horizon+1 if absent. Compare near-contact traces at frame endpoints; this is not simulator substep impulse timing.",
+  "caps": {
+    "local_seconds": 43200,
+    "disk_bytes": 30000000000
+  }
+}

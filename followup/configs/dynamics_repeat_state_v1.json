@@ -1,0 +1,53 @@
+{
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "kinds": [
+    "flat",
+    "object",
+    "interaction",
+    "augmented",
+    "wrong_exact",
+    "joint_exact",
+    "relaxed"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "steps": 12000,
+  "batch": 64,
+  "lr": 0.001,
+  "hidden": 48,
+  "threads": 2,
+  "evaluation_splits": [
+    "test",
+    "attribute_ood",
+    "count3",
+    "count4",
+    "force_ood"
+  ],
+  "force_ood_modes": [
+    "variable_force"
+  ],
+  "data_seeds": [
+    997101,
+    997102
+  ],
+  "model_seed_base": 765000,
+  "sampling_seed_base": 765100,
+  "augmentation_seed_base": 765200,
+  "parent_config_sha256": "901bbed1d1119d5428452179fdf085013f39bf2fbe4ec890c96f3173422a8cde",
+  "data_manifest_sha256": "ebcae534e0f9519d051c12794445bab6d5de596fff5743662cecd43f4460901f",
+  "data_verification_sha256": "278277c25d94867d941780df5197f1b0107ba15731f905bbc11931e85a815255",
+  "source_sha256": {
+    "dynamics_repeat_state.py": "beddaafe6967a6f3def988167647168f945a16933f16e5fc84d22d9f2d49c841",
+    "dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+    "dynamics_state_study.py": "197e8609e0bea0213ec285292e80eabe966a80aed88d2513a38a7d2471bdec65"
+  },
+  "scope": "All 126 models start from their original protocol initialization, trained only on the corresponding NEW train archive. Uniform teacher-forced transitions. No old checkpoint reuse or tuning on new heldout outcomes.",
+  "frozen_unix": 1790141511.586215
+}

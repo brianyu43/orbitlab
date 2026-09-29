@@ -1,0 +1,72 @@
+{
+  "alphas": [
+    "0.0",
+    "0.2",
+    "0.4",
+    "0.6"
+  ],
+  "methods": [
+    "identity",
+    "train_target_mean",
+    "plain",
+    "c4"
+  ],
+  "splits": [
+    "train",
+    "val",
+    "test_id",
+    "heldout"
+  ],
+  "categories": [
+    "all",
+    "changed",
+    "unchanged"
+  ],
+  "metrics": [
+    "pixel_mse",
+    "image_squared_error_sum",
+    "identity_pixel_mse",
+    "foreground_pixel_mse",
+    "changed_pixel_mse",
+    "unchanged_pixel_mse",
+    "pixel_mse_minus_identity",
+    "lower_pixel_mse_than_identity"
+  ],
+  "comparisons_left_minus_right": [
+    [
+      "c4",
+      "plain"
+    ],
+    [
+      "plain",
+      "identity"
+    ],
+    [
+      "c4",
+      "identity"
+    ],
+    [
+      "plain",
+      "train_target_mean"
+    ],
+    [
+      "c4",
+      "train_target_mean"
+    ]
+  ],
+  "aggregation": "Equal weight across three fixed initializations per scene, then mean across unique scenes. Baselines have one deterministic result.",
+  "interval": "1000 bootstrap resamples of scene averages, RNG 9123. Conditional on this shared preview/test and fitted models; not independent-dataset uncertainty.",
+  "pairing": "Subtract on identical scene and initialization; deterministic baselines broadcast. Empty change regions remain missing.",
+  "selection": "All four alpha levels, all three initializations, all four partitions and both learned models; no result-based selection.",
+  "compute": "Report actual recorded training seconds and all-100-image CPU forward times; no equal-compute or isolated timing claim.",
+  "scope": "Small published preview only. No full SVIB, LPIPS or semantic Shape-Swap accuracy claim.",
+  "source_sha256": "f918860f77700914b6475a4cad0dffac1272c5b022c95956b3a6d62240ed39fb",
+  "model_config_sha256": "54f9fa3c50056a365a464c0e56a8879a001abd1f391c32f7d9ed6adce3a53e9a",
+  "preflight": {
+    "all_passed": true,
+    "scene_then_seed_weighting_checked": true,
+    "empty_group_and_paired_baseline_broadcast_checked": true,
+    "source_sha256": "f918860f77700914b6475a4cad0dffac1272c5b022c95956b3a6d62240ed39fb"
+  },
+  "frozen_unix": 1790148027.641471
+}

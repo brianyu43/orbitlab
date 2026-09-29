@@ -1,0 +1,72 @@
+{
+  "status": "frozen_before_confirmation_data",
+  "selection": {
+    "baseline": "F0 concat conditional latent flow 4000 steps + logit mean decoder",
+    "candidate": "same architecture and initialization continued to 16000 steps + same decoder",
+    "guidance": 1.0,
+    "solver": "Euler",
+    "solver_steps": 64,
+    "max_candidates": 1
+  },
+  "confirmation_seeds": [
+    770201,
+    770202,
+    770203
+  ],
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "initialization_seed_offsets": [
+    0,
+    1000,
+    2000
+  ],
+  "noise_seeds": {
+    "770201": 990201,
+    "770202": 990202,
+    "770203": 990203
+  },
+  "samples_per_pair": 128,
+  "reference_per_pair": 384,
+  "n_pairs": 24,
+  "n_samples_per_model_path": 3072,
+  "metric": "strict accepted AND requested shape/color joint match",
+  "success_thresholds": {
+    "seen_absolute": 0.3,
+    "ood_absolute": 0.2,
+    "paired_seen_gain_pp": 10,
+    "paired_ood_gain_pp": 5,
+    "no_seed_regression_below_pp": -2,
+    "seen_and_ood_color_min": 0.95,
+    "diversity_coverage_min": 0.9,
+    "diversity_tv_max": 0.2,
+    "diversity_outside_max": 0.1,
+    "strict_subset_min_per_pair": 32
+  },
+  "threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "source_sha256": {
+    "p4_prepare.py": "9e605127ee396fcdc2b582fe987b433b1314fbcd9d8b5db1dc3af44421367dcd",
+    "p4_train.py": "74d1034406bf1fd6bd30799bf5c16a06941ce30ef3a91fae89ce5c5cfcaa88bb",
+    "p4_evaluate.py": "e0275d7993de8951da94e8c111a752cf87d084dfdb08eb4da04b05d83d098b85",
+    "p1_train.py": "30662ed6b6adf26f61ac9183e897c72cea3afc201a06189a764913ce47822214",
+    "p3_steps_train.py": "da482b5f0f00ca7824517703b041925ac265311e4f3d5d56d1fe4f71f4b3e24a",
+    "p1_evaluate.py": "03a340227fe5875290ec96680ae957f33ff61dca3be5b04dc29bb61ecfaca161",
+    "models.py": "9970ac446a88ad4acec3a6dcf07713b8aff562996816dafcb93c8d9714a307ec",
+    "work/orbitlab.py": "edc097901a1fe12f0584b1ead06b912c717a0a7ea8e93badf99253152efef45c",
+    "work/research.py": "14a8de758883d23831e252e1385221f3864a16f38be96a00450c4c7ced427bab",
+    "followup/decoder_study.py": "cb985f95e762a34ad5b8c9574b9f0b9155faa13d2696e2f9402fd5006e714bae",
+    "followup/evaluator_v2.py": "4cf5e9251219dc71ae285c8b29f19c924c0117ad13c449c0aedf3759011e2081",
+    "diversity_reader": "d2ac164d03bb516ae67526ff75fa7837ed2c5db1f4a036e7e937811fc3e18c6e",
+    "P3_DECISION_KO.md": "3bfac7b66bf9060e40dd7442df9e26cdca772ef7731a65a75a10e449dcb0500b"
+  },
+  "development_evidence_sha256": {
+    "p1_summary": "64ab525ea99657f6b1cdf8f854b37424cab5a1e20064decd961312f80998f2a0",
+    "p3_F0_16k": "5f2ea57a5c97f79fc06372ee93beb8f2f4c64dc9e9f045defe02f8b0fcafedf0",
+    "p3_verification": "01ac116385c3be66f99b63820e68e0c53f59ac20bf26ca50a836c331a3ecc646",
+    "p2_pixel_pilot": "c9960cd6a72835492dff6dc50da3f239a290850a4267f4263d6c972fe6290bf5"
+  },
+  "confirmation_data_prepared_or_viewed_at_lock": false,
+  "claim_limit": "Three fresh synthetic data seeds and three initializations, not human validation or task generalization."
+}

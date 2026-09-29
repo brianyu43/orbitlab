@@ -1,0 +1,31 @@
+{
+  "kinds": [
+    "flat",
+    "slot"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "steps": 6000,
+  "batch": 128,
+  "lr": 0.001,
+  "threads": 2,
+  "slot_cache_manifest_sha256": "54572417997cc52f9f7e6f314e71b9c0f74cf4837c98e99edaabb3ecf05a1262",
+  "model_sha256": "af169dcdb14602573eb7c16b5725f3813e36d6388f9b1825d1d66cd2f2aec266",
+  "runner_sha256": "446e2d0c128286d4adf0cb8cfeab286e03afe4c52a0f91c8dbdead1eb70d8b96",
+  "training": "Shared 32-128-128-16 MLP. Train-only feature means/stds. Two-object set loss with learned presence for five predicted slots.",
+  "loss_weights": {
+    "shape_ce": 1,
+    "color_ce": 1,
+    "xy_mean_square": 20,
+    "radius_square": 5,
+    "pose_mean_square": 1,
+    "presence_bce": 1
+  },
+  "inference": "Only frozen RGB slot features; no true count or assignment. Presence sigmoid >= .5; shape/color/C4 pose decoded by argmax.",
+  "selection": "Fixed final 6000 steps, train/validation evaluation only. Heads vary across three seeds, encoder initialization remains one.",
+  "claim_boundary": "Supervised state readout, not label-free concept discovery, end-to-end editing or independent test confirmation.",
+  "frozen_unix": 1790136534.4574358
+}

@@ -1,0 +1,186 @@
+{
+  "version": "generation_recovery_plan_v1",
+  "created_date": "2026-09-23",
+  "status": "draft_not_run",
+  "scope": "Conditional single-shape generation with categorical shape/color inputs",
+  "new_training_executed": false,
+  "primary_metric": "strict_accepted_and_joint",
+  "threshold_source": "followup/reports/evaluator_calibration_v1/locked_threshold.json",
+  "threshold_sha256": "6a8b120fdcbc2ac483db87a9b09163af04d9e19295744830531cb6ef4c1f359a",
+  "data": {
+    "image_size": 64,
+    "shape_classes": 4,
+    "color_classes": 6,
+    "seen_combinations": 20,
+    "excluded_combinations": [[0, 0], [1, 1], [2, 2], [3, 3]],
+    "development_data_seed": null,
+    "confirmation_data_seeds": null,
+    "seed_lock_required_before_execution": true,
+    "train_base_images": 1024,
+    "init_seeds": [0, 1, 2],
+    "previous_confirmation_seeds_now_observed": [43001, 43002, 43003],
+    "orbit_and_image_disjointness_required": true,
+    "normalization": "train-only channel statistics shared across four C4 slots",
+    "selection_split": "development validation",
+    "final_test_selection_allowed": false,
+    "composition_claim": "Combinations excluded from model training; the original held-out pattern has been observed during prior research."
+  },
+  "flow_variants": [
+    {"id": "F0", "conditioning": "input_concat", "condition_dropout": 0.0, "guidance_scales": [1.0]},
+    {"id": "F1", "conditioning": "film_each_hidden_layer", "condition_dropout": 0.0, "guidance_scales": [1.0]},
+    {"id": "F2", "conditioning": "input_concat", "condition_dropout": 0.1, "guidance_scales": [1.0, 1.5, 2.0, 3.0]},
+    {"id": "F3", "conditioning": "film_each_hidden_layer", "condition_dropout": 0.1, "guidance_scales": [1.0, 1.5, 2.0, 3.0]}
+  ],
+  "guidance": {
+    "formula": "v_null + s * (v_cond - v_null)",
+    "ordinary_conditional_s": 1.0,
+    "official_flow_matching_cfg_scale_conversion": "s = 1 + cfg_scale",
+    "requires_trained_null_condition": true,
+    "dropout_rng_separate_from_training_noise_rng": true,
+    "selection_on_validation_only": true
+  },
+  "decoders": ["pixel_mean", "logit_mean"],
+  "training_defaults": {
+    "ae_steps": 6000,
+    "ae_batch": 32,
+    "ae_lr": 0.001,
+    "decoder_steps": 6000,
+    "decoder_batch": 32,
+    "decoder_lr": 0.001,
+    "flow_steps": 4000,
+    "flow_batch": 128,
+    "flow_lr": 0.001,
+    "flow_hidden_layers": 2,
+    "flow_width": 256,
+    "ema_first_ablation": false,
+    "local_training_cap_seconds_per_model": 1800,
+    "over_cap_status": "budget_limited"
+  },
+  "stages": [
+    {
+      "id": "P0",
+      "depends_on": [],
+      "status": "planned",
+      "max_small_diagnostic_fits": 2,
+      "tiny_ae_train_n": 64,
+      "tiny_fit_strict_diagnostic_target": 0.95,
+      "fp32_c4_max_abs_error_target": 0.00001,
+      "validation_samples_per_combination": 32,
+      "solver_diagnostics": [
+        {"method": "euler", "steps": 64, "velocity_evaluations": 64},
+        {"method": "heun", "steps": 32, "velocity_evaluations": 64},
+        {"method": "euler", "steps": 256, "velocity_evaluations": 256}
+      ],
+      "scope": ["saved-result replay", "label and scale audit", "C4 numerical checks", "tiny-set fit", "solver sensitivity", "latent diagnostics", "known-renderer screen"]
+    },
+    {
+      "id": "P1",
+      "depends_on": ["P0"],
+      "status": "planned",
+      "initial_init_seeds": [0],
+      "initial_ae_fits": 1,
+      "initial_decoder_fits": 2,
+      "initial_flow_fits": 4,
+      "initial_total_fits": 7,
+      "max_total_fits_with_three_initializations": 21,
+      "validation_samples_per_combination": 80,
+      "reuse_same_generated_latents_across_decoders": true,
+      "same_initial_weights_required_within_architecture": true,
+      "parameter_and_wall_time_reporting_required": true,
+      "additional_init_screen": {
+        "paired_seen_validation_strict_gain_pp_min": 5.0,
+        "excluded_validation_max_regression_pp": 2.0,
+        "color_and_all_generation_diversity_guards_required": true,
+        "insufficient_strict_subset_diversity_blocks_development_repeats": false
+      }
+    },
+    {
+      "id": "P2",
+      "depends_on": ["P0", "P1"],
+      "status": "conditional_planned",
+      "trigger": "A direct pixel baseline is needed to distinguish the compression path from broader generation failures.",
+      "architecture_draft": {"type": "conditional_unet_flow", "channels": [32, 64, 64], "resblocks_per_level": 2, "attention": false},
+      "training_steps_proposal": 4000,
+      "batch_requires_memory_preflight": true,
+      "condition_dropout_initial": 0.0,
+      "modes": ["plain_with_c4_data", "exact_c4_average"],
+      "first_pilot_fits": 1,
+      "max_model_fits": 6,
+      "comparison": "Report matched training wall time within the U-Net pair, plus end-to-end cost versus latent models."
+    },
+    {
+      "id": "P3",
+      "depends_on": ["P1"],
+      "optional_prior_stages": ["P2"],
+      "status": "conditional_planned",
+      "max_additional_fits_total": 6,
+      "branches": [
+        {"id": "spatial_broadcast", "trigger": "poor reconstruction from real encoded images", "max_fits": 3},
+        {"id": "decoder_noise_robustness", "trigger": "good reconstruction but generated-code mismatch", "normalized_noise_sigmas": [0.01, 0.03], "max_fits": 6},
+        {"id": "one_axis_scaling", "trigger": "overfit or insufficient optimization evidence", "choices": ["1024 to 4096 base images at fixed steps", "4000 to 16000 steps at fixed data"], "max_fits": 3},
+        {"id": "capacity_matched_concat", "trigger": "FiLM benefit needs a capacity control", "max_fits": 3}
+      ],
+      "automatic_spatial_latent_or_kl_expansion": false
+    },
+    {
+      "id": "P4",
+      "depends_on": ["P1"],
+      "optional_prior_stages": ["P2", "P3"],
+      "status": "conditional_planned",
+      "trigger": "At least one candidate selected and full execution protocol locked before new tests.",
+      "max_candidates": 2,
+      "baseline_models": 1,
+      "fresh_data_seed_count": 3,
+      "initialization_count": 3,
+      "max_pipeline_paths": 27,
+      "samples_per_combination": 128,
+      "sample_n_per_pipeline": 3072,
+      "seen_n_per_pipeline": 2560,
+      "excluded_n_per_pipeline": 512,
+      "same_noise_only_for_matching_dimensions": true,
+      "failed_run_replacement_allowed": false,
+      "inference_comparison": ["selected quality setting with measured cost", "same measured time budget as the reference baseline"]
+    }
+  ],
+  "proposed_first_milestone": {
+    "is_forecast_or_achieved_result": false,
+    "seen_strict_min": 0.30,
+    "excluded_strict_min": 0.20,
+    "paired_seen_improvement_pp_min": 10.0,
+    "paired_excluded_improvement_pp_min": 5.0,
+    "per_data_seed_max_regression_pp": 2.0,
+    "color_accuracy_each_split_min": 0.95,
+    "diversity_guards_required": true,
+    "human_validation_claim_allowed": false
+  },
+  "diversity_guard_draft": {
+    "reference": "fresh renderer images with matched per-condition sample counts",
+    "marginal_bins": {"center": [3, 3], "radius": 3, "orientation": 4},
+    "reference_occupied_bin_coverage_min": 0.90,
+    "marginal_total_variation_max": 0.20,
+    "measure_on": ["all generations", "strict passing generations"],
+    "strict_subset_min_n_per_condition": 32,
+    "insufficient_subset_status": "diversity_unverified",
+    "final_distribution_unit": "per data seed, pool the three initializations without counting them as independent data",
+    "final_milestone_requires_strict_subset_diversity_verification": true,
+    "bin_edges_and_reader_validation_lock_required": true,
+    "postselection_of_primary_metric_denominator_allowed": false
+  },
+  "resources": {
+    "training_preflight_steps": 100,
+    "generation_preflight_per_combination": 8,
+    "remote_compute_included": false,
+    "external_uploads_included": false,
+    "whole_pipeline_runtime_estimate_available": false,
+    "store_all_images_as_individual_png": false,
+    "formats": ["chunked tensors or NPZ", "row-level metrics", "selected PNG contact sheets", "checkpoint and provenance hashes"]
+  },
+  "required_before_execution_lock": [
+    "Fresh development and confirmation seeds, validated against existing images and C4 orbits",
+    "Validated diversity reader and exact bin edges",
+    "Concrete FiLM parameter counts and RNG mapping",
+    "Pixel U-Net batch and memory preflight if P2 is entered",
+    "Validation selection rule and final solver/guidance/checkpoint settings",
+    "New source directory and replay commands that cannot overwrite historical reports"
+  ]
+}

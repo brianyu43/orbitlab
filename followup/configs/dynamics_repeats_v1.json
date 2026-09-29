@@ -1,0 +1,90 @@
+{
+  "original_data_seed": 640031,
+  "new_data_seeds": [
+    997101,
+    997102
+  ],
+  "generator": {
+    "seed": 640031,
+    "modes": [
+      "isotropic",
+      "fixed_gravity",
+      "variable_force"
+    ],
+    "sizes": {
+      "train": 256,
+      "val": 64,
+      "test": 128,
+      "attribute_ood": 128,
+      "count3": 64,
+      "count4": 64,
+      "force_ood": 128
+    },
+    "force_ood_modes": [
+      "variable_force"
+    ],
+    "observation_frames": 4,
+    "train_future_frames": 16,
+    "eval_future_frames": 61,
+    "max_objects": 4,
+    "physics": {
+      "substeps": 8,
+      "contact_sweeps": 32,
+      "overlap_tolerance": 1e-07
+    },
+    "code_sha256": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+    "builder_sha256": "a83fec45bc67e3dee0d875346486815d0eec37d575817d50488779a74acf5d47",
+    "actions": "One velocity impulse at t=3. Counterfactual negates that impulse, keeps the initial state and context.",
+    "counterfactual_splits": [
+      "test",
+      "force_ood"
+    ],
+    "splitting": "Each seeded initial scene and its complete trajectory, rotations, windows and action counterfactuals form one split group.",
+    "training_limit": "Train archives contain 4 past frames plus 16 future frames only. Evaluation archives contain 4 past plus 61 future frames.",
+    "representation": "Continuous equal-mass disks; different visual primitives from B-stage polygons. Color has no physical effect.",
+    "condition": "Gravity and wind are constant accelerations; only their sum and drag are identifiable from state trajectories.",
+    "claim_boundary": "A custom discrete simulator dataset, not real physics validation or a public benchmark.",
+    "frozen_unix": 1790134224.015965
+  },
+  "initialization_seeds": [
+    0,
+    1,
+    2
+  ],
+  "state_model_seed_base": 765000,
+  "state_sampling_seed_base": 765100,
+  "state_augmentation_seed_base": 765200,
+  "observation_model_seed_base": 996000,
+  "observation_sampling_seed_base": 996100,
+  "prior_sha256": {
+    "configs/dynamics_world_v1.json": "dbc287413d5032d058aaab69e9060a26209cb66208fca893d74adbd968e54bee",
+    "configs/dynamics_state_study_v1.json": "e4f01d5b1627c86c46f43c1851b1d529f47633e1186961cd4ca834936fe13955",
+    "configs/dynamics_observation_models_v1.json": "890d61e4f37cf8e35ef1bf2418a36cf4b45f0c7a517111044a635fab0f07fd16",
+    "configs/dynamics_observation_eval_v1.json": "126fa7b701399a7af6c0e8b35dd1ec87a73d26fb0d089d7f46ee7060fbda98ae",
+    "configs/dynamics_autonomous_v1.json": "d59b734f5d05696498c128364ac8b944fea8bd03506cb6d4111d3c101204345d",
+    "data/dynamics_world_v1/manifest.json": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128"
+  },
+  "source_sha256": {
+    "dynamics_repeat_data.py": "94ae8772fc33002ad4ea797769b2a25b0a084dbba837794cb66c9368e981432e",
+    "dynamics_world.py": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+    "build_dynamics_data.py": "a83fec45bc67e3dee0d875346486815d0eec37d575817d50488779a74acf5d47",
+    "dynamics_models.py": "39d3ff91cf60a794b8d49c263fd0d4aa2ba6ef584863e7ee6b0de44ddf4adc1c",
+    "dynamics_observation_models.py": "33c161f008bdcd4e6d38bed8bf8d02527a61f83c9e95073726353cd32f19f4bd",
+    "dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523",
+    "dynamics_autonomous.py": "502c3eead6594d8a083a7458aa1c5fa094254504d4b606a57aab4e2ec02f0686",
+    "dynamics_autonomous_metrics.py": "9a70b4eaf57673eca667fce43399c0b407ec9241fa5857cab792041144ccc921",
+    "planning_C07_EXECUTION_KO.md": "5bff388f12f80386edfeaf8e09a8ed04e932b20f46b87ca82ab916e1e69b2823"
+  },
+  "replication": "Two new generation seeds crossed with the SAME three initialization/sampling seeds. Same data sizes, modes, splits, physics, action time, model architectures and fixed training budgets. New models train from scratch; no old-data checkpoint transfer.",
+  "state_scope": "All three modes and seven state predictors at 12000 steps, 64 transitions/batch, Adam .001, hidden 48, uniform sampling and slot permutations. 126 new trainings.",
+  "observation_scope": "Both RGB CNN and measured-input MLP at 4000 steps, batch32 Adam .0005, pooled train across modes; 12 new trainings. Same known renderer/physics priors and fixed scales.",
+  "evaluation_scope": "C03 teacher-forced one-step; C04 four-frame state/context substitutions; C05/C06 61-step recurrence and same-past opposite action. Same metrics and numerical-failure policy, every seed retained.",
+  "primary_comparisons": [
+    "joint_exact versus wrong_exact and interaction one-step velocity error by mode/split/contact stratum",
+    "Autonomous position/velocity errors, numerical failures and geometry violations by horizon/input/split",
+    "Target and nontarget counterfactual response versus zero-response control"
+  ],
+  "independence": "Data seed is the independent replication unit. Initialization seeds are crossed and paired across datasets/models, not additional independent datasets. No favorable-seed selection.",
+  "not_yet_this_dataset": "Observation-length and missing-context experiments use separate later frozen protocols, retaining C07.4/C07.5 scope.",
+  "frozen_unix": 1790141357.275615
+}

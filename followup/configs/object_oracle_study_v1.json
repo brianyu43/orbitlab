@@ -1,0 +1,30 @@
+{
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "kinds": [
+    "flat",
+    "object"
+  ],
+  "steps": 6000,
+  "batch": 128,
+  "lr": 0.001,
+  "device": "cpu",
+  "data_manifest_sha256": "9f239e26765e268686354e6bc17ce8629ffef90a4a446b07cb4d37be254c486c",
+  "parameters_each": 34991,
+  "information": "True shape/color/center/radius/local pose/presence per slot, target mask, same command. No image perception.",
+  "matching": "Exact parameter counts; same sampled task indices and slot permutations, optimizer, loss and steps. Architecture-specific initial weights.",
+  "permutation": "Shuffle all four slots including padding on every training batch; both target positions and occupied positions get training exposure.",
+  "output": "Both predict unrestricted residuals for every slot. No analytic preservation gate in either learned model.",
+  "composition": "Apply learned primitive transition twice without teacher forcing. No composed training tasks.",
+  "metrics": "Target operation success; target untouched factors; non-target factors; empty slot presence; joint scene success.",
+  "tolerances": {
+    "position_pixels": 1,
+    "radius_pixels": 0.5,
+    "presence_threshold": 0.5
+  },
+  "selection": "Fixed final step, no test selection. Three initializations on one source dataset; developmental experiment.",
+  "frozen_unix": 1790132444.8986712
+}

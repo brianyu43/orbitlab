@@ -1,0 +1,42 @@
+{
+  "seed": 640031,
+  "modes": [
+    "isotropic",
+    "fixed_gravity",
+    "variable_force"
+  ],
+  "sizes": {
+    "train": 256,
+    "val": 64,
+    "test": 128,
+    "attribute_ood": 128,
+    "count3": 64,
+    "count4": 64,
+    "force_ood": 128
+  },
+  "force_ood_modes": [
+    "variable_force"
+  ],
+  "observation_frames": 4,
+  "train_future_frames": 16,
+  "eval_future_frames": 61,
+  "max_objects": 4,
+  "physics": {
+    "substeps": 8,
+    "contact_sweeps": 32,
+    "overlap_tolerance": 1e-07
+  },
+  "code_sha256": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+  "builder_sha256": "a83fec45bc67e3dee0d875346486815d0eec37d575817d50488779a74acf5d47",
+  "actions": "One velocity impulse at t=3. Counterfactual negates that impulse, keeps the initial state and context.",
+  "counterfactual_splits": [
+    "test",
+    "force_ood"
+  ],
+  "splitting": "Each seeded initial scene and its complete trajectory, rotations, windows and action counterfactuals form one split group.",
+  "training_limit": "Train archives contain 4 past frames plus 16 future frames only. Evaluation archives contain 4 past plus 61 future frames.",
+  "representation": "Continuous equal-mass disks; different visual primitives from B-stage polygons. Color has no physical effect.",
+  "condition": "Gravity and wind are constant accelerations; only their sum and drag are identifiable from state trajectories.",
+  "claim_boundary": "A custom discrete simulator dataset, not real physics validation or a public benchmark.",
+  "frozen_unix": 1790134224.015965
+}

@@ -1,0 +1,710 @@
+{
+  "data_seeds": [
+    640031,
+    997101,
+    997102
+  ],
+  "lengths": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "anchor": 7,
+  "observed_carrier_frames": 8,
+  "train_future_frames": 16,
+  "eval_future_frames": 61,
+  "generator": {
+    "seed": 640031,
+    "modes": [
+      "isotropic",
+      "fixed_gravity",
+      "variable_force"
+    ],
+    "sizes": {
+      "train": 256,
+      "val": 64,
+      "test": 128,
+      "attribute_ood": 128,
+      "count3": 64,
+      "count4": 64,
+      "force_ood": 128
+    },
+    "force_ood_modes": [
+      "variable_force"
+    ],
+    "observation_frames": 4,
+    "train_future_frames": 16,
+    "eval_future_frames": 61,
+    "max_objects": 4,
+    "physics": {
+      "substeps": 8,
+      "contact_sweeps": 32,
+      "overlap_tolerance": 1e-07
+    },
+    "code_sha256": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+    "builder_sha256": "a83fec45bc67e3dee0d875346486815d0eec37d575817d50488779a74acf5d47",
+    "actions": "One velocity impulse at t=3. Counterfactual negates that impulse, keeps the initial state and context.",
+    "counterfactual_splits": [
+      "test",
+      "force_ood"
+    ],
+    "splitting": "Each seeded initial scene and its complete trajectory, rotations, windows and action counterfactuals form one split group.",
+    "training_limit": "Train archives contain 4 past frames plus 16 future frames only. Evaluation archives contain 4 past plus 61 future frames.",
+    "representation": "Continuous equal-mass disks; different visual primitives from B-stage polygons. Color has no physical effect.",
+    "condition": "Gravity and wind are constant accelerations; only their sum and drag are identifiable from state trajectories.",
+    "claim_boundary": "A custom discrete simulator dataset, not real physics validation or a public benchmark.",
+    "frozen_unix": 1790134224.015965
+  },
+  "groups": [
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/isotropic/train/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/train/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/isotropic/val/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/val/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/isotropic/test/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/test/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/isotropic/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_world_v1/isotropic/count3/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/count3/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "isotropic",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_world_v1/isotropic/count4/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/isotropic/count4/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/train/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/train/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/val/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/val/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/test/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/test/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/count3/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/count3/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "fixed_gravity",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_world_v1/fixed_gravity/count4/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/fixed_gravity/count4/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/variable_force/train/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/train/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/variable_force/val/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/val/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/variable_force/test/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/test/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/variable_force/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_world_v1/variable_force/count3/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/count3/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_world_v1/variable_force/count4/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/count4/records.json"
+    },
+    {
+      "data_seed": 640031,
+      "mode": "variable_force",
+      "split": "force_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_world_v1/variable_force/force_ood/trajectories.npz",
+      "source_records": "data/dynamics_world_v1/variable_force/force_ood/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/train/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/val/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/test/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/count3/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "isotropic",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/isotropic/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/isotropic/count4/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/train/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/val/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/test/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count3/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "fixed_gravity",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count4/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/train/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/val/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/test/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/count3/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/count4/records.json"
+    },
+    {
+      "data_seed": 997101,
+      "mode": "variable_force",
+      "split": "force_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997101/world/variable_force/force_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997101/world/variable_force/force_ood/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/train/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/val/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/test/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/count3/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "isotropic",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/isotropic/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/isotropic/count4/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/train/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/val/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/test/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count3/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "fixed_gravity",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count4/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "train",
+      "episodes": 256,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/train/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/train/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "val",
+      "episodes": 64,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/val/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/val/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "test",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/test/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/test/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "attribute_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/attribute_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/attribute_ood/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "count3",
+      "episodes": 64,
+      "n_objects": 3,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/count3/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/count3/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "count4",
+      "episodes": 64,
+      "n_objects": 4,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/count4/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/count4/records.json"
+    },
+    {
+      "data_seed": 997102,
+      "mode": "variable_force",
+      "split": "force_ood",
+      "episodes": 128,
+      "n_objects": 2,
+      "source_path": "data/dynamics_repeats_v1/d997102/world/variable_force/force_ood/trajectories.npz",
+      "source_records": "data/dynamics_repeats_v1/d997102/world/variable_force/force_ood/records.json"
+    }
+  ],
+  "source_files": {
+    "data/dynamics_world_v1/manifest.json": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128",
+    "data/dynamics_world_v1/isotropic/train/trajectories.npz": "2198312496983fd3fc4494b731258bd89160ce9fb4657a7a3f84a5b34e7ea18a",
+    "data/dynamics_world_v1/isotropic/train/records.json": "10b131e86a4b1dad16601bb13abe0614b71cdfc5c23c4936a2aed3633b68ecfe",
+    "data/dynamics_world_v1/isotropic/val/trajectories.npz": "5866328128954c18cf039ebd4c1b739e4a4faea203d709568661fc3b6b003b77",
+    "data/dynamics_world_v1/isotropic/val/records.json": "c56d5c7ec361310c8bb475a3df07600e267bd4107776ae0570235271374b8396",
+    "data/dynamics_world_v1/isotropic/test/trajectories.npz": "a31ed0e2f8b89918e5c5a886358932b6f51e4c9d385ee86b7304a9816e95c65f",
+    "data/dynamics_world_v1/isotropic/test/records.json": "8eaf80c5f548f8283bb3cb7596ee543ac8d0fadfb44633c67a50ea758659b427",
+    "data/dynamics_world_v1/isotropic/attribute_ood/trajectories.npz": "5b2b6b532217fb8d5c53563de886066827cee30beb4113f8dc85d46f78805aec",
+    "data/dynamics_world_v1/isotropic/attribute_ood/records.json": "ecb030d96af3650d6635e96e627827502b2b2cb06bd852c6f8b44017ca402aa0",
+    "data/dynamics_world_v1/isotropic/count3/trajectories.npz": "9c0ffca6e3061e4f8c5cb5a9805c306febcff22df8c9bc4ac3901f9439192c44",
+    "data/dynamics_world_v1/isotropic/count3/records.json": "d9adcb2ade233e7148728e609f6c10ff02506a6d590dc758505093dd7e66f492",
+    "data/dynamics_world_v1/isotropic/count4/trajectories.npz": "a531768832bc2210cce97198088abf7ce8145ffb30c6552c90e818ed2f10586c",
+    "data/dynamics_world_v1/isotropic/count4/records.json": "cb8d57b12f0dfcf09e4099b88e69a7315d1c81f070178ed8b02e5e606cfdad15",
+    "data/dynamics_world_v1/fixed_gravity/train/trajectories.npz": "08d8064d51a9b6823853db90c8ce6f21ceabc88ac44c9a647e32f53aa547af71",
+    "data/dynamics_world_v1/fixed_gravity/train/records.json": "6ea0bccd00468c3249d5c002d95339950e92ea99bec18d05715f2d66fd5df3db",
+    "data/dynamics_world_v1/fixed_gravity/val/trajectories.npz": "28f2429c109181fdc2e1f656c7f58045c0071a30b101856216e51cb929029808",
+    "data/dynamics_world_v1/fixed_gravity/val/records.json": "60d36cf1a16dab0b7aaf5cac6ee5f90a03367dde17fc9403275cd9eabc51db88",
+    "data/dynamics_world_v1/fixed_gravity/test/trajectories.npz": "acbc0f0fa649c00dfa4ab51daf28f9f2bdd286de27415c772393aec84a0c19fb",
+    "data/dynamics_world_v1/fixed_gravity/test/records.json": "cbfef74a520b22c12e0f6827406d4f1107abf8e486c7fb2d7c3a27397b3bf122",
+    "data/dynamics_world_v1/fixed_gravity/attribute_ood/trajectories.npz": "5d40774a25cde5927b31d603f9c580433196176977d39b88e13138c23a133a01",
+    "data/dynamics_world_v1/fixed_gravity/attribute_ood/records.json": "33aad161b7a2c6a173a64056ad884f97abb75d0b989f357333163118de30d0c3",
+    "data/dynamics_world_v1/fixed_gravity/count3/trajectories.npz": "8ba9dfefef943f942fcdfde57a703c818a910ced9d75b64c68b0d947f18aaf71",
+    "data/dynamics_world_v1/fixed_gravity/count3/records.json": "0a998f586d0369c0e59d54d8aa55fe9b28e3cd1ec0a139aee55a5a7733299e57",
+    "data/dynamics_world_v1/fixed_gravity/count4/trajectories.npz": "701b321cd5ac0000246837d262d4e1d9262b78ade6cd958213be3b82f99900a6",
+    "data/dynamics_world_v1/fixed_gravity/count4/records.json": "bf67ad6fd23ee905b6eaad3531023dca1f31e6681fd350bb414080061ec4106e",
+    "data/dynamics_world_v1/variable_force/train/trajectories.npz": "9c5b011f6f3c75ee017cf33ae1a7ccfd20e0e7274a6ad8480b312f2208c1dca5",
+    "data/dynamics_world_v1/variable_force/train/records.json": "13078f2822779a4862b3e61f70ba3b8fda904cd002102ec6f274a1e9b520c45e",
+    "data/dynamics_world_v1/variable_force/val/trajectories.npz": "5a42ef9bb86bd694ea7ecc8c62b53c00633cf6d4ba7f4a73d2a7392d2ae461a2",
+    "data/dynamics_world_v1/variable_force/val/records.json": "3e3cf6839bcc7f88b8caa4ba15610b4b7d2a5281b357b3145ddf0eba599b1344",
+    "data/dynamics_world_v1/variable_force/test/trajectories.npz": "e4238fe655bb9930d4186de5c4db7c16335bbe37648335102b65251430dfb03e",
+    "data/dynamics_world_v1/variable_force/test/records.json": "a0dd3938314bd81c40aae24bc02df8ee622af8c413c05ca5b89ce49ad913e66a",
+    "data/dynamics_world_v1/variable_force/attribute_ood/trajectories.npz": "070d6c71477cf2acda8b7433845a8c55d773f844b2a48e2bef36f42c4e2705de",
+    "data/dynamics_world_v1/variable_force/attribute_ood/records.json": "b7cc9624086aed578c65781cf0322ee34637a30daa76e9ebd685668889a33333",
+    "data/dynamics_world_v1/variable_force/count3/trajectories.npz": "5bd71a3c86f2fe3e258d305e8fb1b321bda534e8ff8500c908f57ae86bb23741",
+    "data/dynamics_world_v1/variable_force/count3/records.json": "304159993255c439e8ba16a78c91200011f76be8c0286a1ed86b6d41d936634f",
+    "data/dynamics_world_v1/variable_force/count4/trajectories.npz": "59cc5193978c3ed1e29d7454640579d207d9ff3639f427d3fadc86db617aec97",
+    "data/dynamics_world_v1/variable_force/count4/records.json": "47deb045fabf43c3ea723ddcd2a662ddf63a08807c0994035848f7ee16c7c7ef",
+    "data/dynamics_world_v1/variable_force/force_ood/trajectories.npz": "4499887846ae16b0fdd951289e44512b9c48934d243f592437380c60640a1f84",
+    "data/dynamics_world_v1/variable_force/force_ood/records.json": "eac884949a3e6b5c8c1c6ec8560ea9be3ba5639883f3814099611697e0697635",
+    "data/dynamics_repeats_v1/d997101/world/manifest.json": "053ad27ca92dca11bc78c0423ce396f3d999fccf2958d4191c9207d405f632bc",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/train/trajectories.npz": "d30140719b32f7dbd43640ce74691f77d75ce204f104258b8e5b7f116b37b457",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/train/records.json": "2b0b0b7602a12e5022dfabbd1231092a8a55f6780fb8f14590b12302e1b0b051",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/val/trajectories.npz": "86702455e31babde421e7ace9017a14286ef6406ba405113214948b0270fdf70",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/val/records.json": "d1b7e58e7e3bb1c90c35fc2b5aefe5e78469e06ab6ba65e218134e617b2f7d8e",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/test/trajectories.npz": "316873b5ab686b8d2597e6e531aed6235ff3db3435802fd7b0c24cb1be65b73b",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/test/records.json": "b5841a5815c9fd988ffc47dc2a4c489c74a5730d4466f89cd510061f0e8e48fa",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/attribute_ood/trajectories.npz": "be418add5d4f902db2ea2b2a3eba105a35b993ea9275ee3c37785b941051fe7a",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/attribute_ood/records.json": "399efc662ecc558eccaa0773a012fa40d43f01540cc7cbea87a78b67e3a946af",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/count3/trajectories.npz": "d7acc4b65f576b585868f0a9111a4a1e10abcf15d27d9b67952f86d780259c85",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/count3/records.json": "6546281cbef7385c2369cf1c8677e228639e6fc8342a2344f3dcbe879e014460",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/count4/trajectories.npz": "fd9fbc14be7c2fecc25d3004ad570a2c1831fce4a804e9f02e60e2fcc2e4ffbf",
+    "data/dynamics_repeats_v1/d997101/world/isotropic/count4/records.json": "d53dec0b3f5b0791f93f10eda253452a4045b28389c66ee3dcb9186e8d986c04",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/train/trajectories.npz": "96b8eff9ccf129b59fd138bfce132beb384ab9752caf6390cfc49e2bf8cfc95d",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/train/records.json": "77c8a66797892d8fec2677cd15075c928ef697e99881dd1aa5d0f1703dc27945",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/val/trajectories.npz": "58bdaccd07c91a0a7f09052de20cd361b085b8fd5c81966eeae73298cf7a6bef",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/val/records.json": "75f7c54dc70fe6f18d8bf627c2a7ee3744ecebe92ff3678713b893f7056eeec4",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/test/trajectories.npz": "4e88f507045740b8d00b5aa095ed5830d09d8c7e797a16e5fb32c1f56153ed9d",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/test/records.json": "c5ee7d22266413be6753620430beaf0354f5fb158c03f3636a973375576d8d6b",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/attribute_ood/trajectories.npz": "90ab53741c90f2749402a347883299dd765c1f5d6948a0e98e26d033573211eb",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/attribute_ood/records.json": "c693925be13eda11680c7db9bcccf6d504515dc0e1f47a5285fe2c732ccecb82",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count3/trajectories.npz": "dfb22c75b15e0a35b6a064a555e8df4f7d3afa054dd7520ebeacd47c3153dfa4",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count3/records.json": "8297d21020d1f724c1e608617d8c6cc5f19122bc8365563e88869923931ae43d",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count4/trajectories.npz": "15b3c1e1015cf75196b4d71d7e6b236d771e595495d6fe25f7f471c07fe1251b",
+    "data/dynamics_repeats_v1/d997101/world/fixed_gravity/count4/records.json": "94dbdb11116c20899395c426c7ea6a85ad812cbfb2e938a91cd68257daa29cb4",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/train/trajectories.npz": "4a7aca43ea5cff4a1b2c028202accd05bd8da6127d6627cce9f8d77752d00446",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/train/records.json": "405fed92703973349ade98683b74ab4f07f589d0d8c5bd0eef8941c322cea24a",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/val/trajectories.npz": "a4c7480e9912758d435f316568f3d92570d337136d0d6d4f1a7c8f5315ca22e2",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/val/records.json": "4b24b3e69ebab06967a9713963a43363bd9405e72ea5316cbaec1ca73eef9c5e",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/test/trajectories.npz": "18931e79c97b4205caf439e844d6fb04c39517494d81abffe75a89fc0936ee84",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/test/records.json": "5b8e9bda8d468e46b3468615d8bcd11c99bc8e4a380a63064b2f776e075d1cdd",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/attribute_ood/trajectories.npz": "194a083090953d788646a8acb4041c75e7e39d3bdc0a9dc980e0f436e9fc6735",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/attribute_ood/records.json": "2e60d6af1000c271517de50efffec05e74ab25b9ef4abeb696d5f56270e6db2f",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/count3/trajectories.npz": "a141d516bb3a73d91471ec77a242ce9ac99e99a59c9d674a4877e1d362adfe90",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/count3/records.json": "8ba83109b4def17b28337389ca657e657b94283456dd96a6177561b5663f2484",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/count4/trajectories.npz": "348c2c93afdb6d1d17472b24a77450f88a9c777af767ec7cdd2143ef5817d0d5",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/count4/records.json": "f5640feccaecc10841bf22b40fbcc97266c4f619d76668e62f1903034efd6abc",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/force_ood/trajectories.npz": "643326b5300d56faf8aa92f3feab8896100b3841d7d985edd49183090b8cd25c",
+    "data/dynamics_repeats_v1/d997101/world/variable_force/force_ood/records.json": "a06557adbf10ab1634d5a26dd5c3388459ad601c179fc29c9b656daad991396c",
+    "data/dynamics_repeats_v1/d997102/world/manifest.json": "2101023922f2809864bc05a3a565e7676f16a0b3eacd194b50e9974e8d967324",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/train/trajectories.npz": "446a8dd5d5ea4c2e002fae79e2a7d6876abcb7e6e73b7e180c93c5597197daf6",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/train/records.json": "21a37e3a3dd8db5027e30ad6dfb1597afbce8e8944d06e05ef5843152f1ca2ae",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/val/trajectories.npz": "f5cac4709d19c9d068770190517de485fac3bcd06aae1b4b8c38b463d558a9a2",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/val/records.json": "170c75ee8fb9398e67f3cda66e089f3eeeb5f632aa9a0810709cb76765ba52b5",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/test/trajectories.npz": "965bd653536c47555b956f5ff471c869fb3f457f5395143149eecf6588131e6a",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/test/records.json": "6fe7eec4d2bb4a7043e0d4159838577a808e510b4864ae0213960db9864d8c42",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/attribute_ood/trajectories.npz": "cce5c49c1da07c80c90ab6198c670991500f80f7701ad1446030f976a7a7d919",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/attribute_ood/records.json": "44835469d0f89b1fe388c1d370e689ad05520ebbae8bfbd7670b2a0f37d0eb51",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/count3/trajectories.npz": "1cd2ca08e098530b256a5aedb60c7bde1344258ca8fb0e1dea7ccaa05edd6d1a",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/count3/records.json": "1cdd8b068dd4dc412ecfbbaa1cbfe3a964f6111f43a1685e1fad23afd98b447c",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/count4/trajectories.npz": "c087e2de3ba8ec4740757fc9592bf95c64b361e3382e9d0851c2eeecf1ef2dd7",
+    "data/dynamics_repeats_v1/d997102/world/isotropic/count4/records.json": "fea29665704b4964da399333383b9889b1f3efaa68f82a90723ab534c66559d8",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/train/trajectories.npz": "785d1bc3569b795a3b1e2b03f67bbdd5d4877998cc14595a545e510e28e18815",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/train/records.json": "7ba25168f5bd79bfd3ad1a9dfed18edd46750d8f26b210ac19099e584eafc220",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/val/trajectories.npz": "f006efe48666a9f974ffe260da2fbaf1a6cdcf77942b1e83e9465ea86871a68d",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/val/records.json": "77bfd07dfe648bc804a63970008fb061ee998b3dc596481e17157a7ea3c2da53",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/test/trajectories.npz": "769fd201f946173ded5f6b2cb12d953a428ab2520ac32d0128c30668cd47c13a",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/test/records.json": "d81c4040b6fb0f6ec3e7bb7461de447614535441174a941fa3ff309b9a22f3b4",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/attribute_ood/trajectories.npz": "47a6bd1393be7196ce3064b239b18a2b51f0e152d029b108c57fded035a9c03e",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/attribute_ood/records.json": "1e0f062d59e9cadacbd899905dd272970ab602b8012e9412bafa2d4241b9510b",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count3/trajectories.npz": "04a5177e872bbf5749a9fc0add411033320d7778997d933d3b1739af5e5b5d90",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count3/records.json": "754044336e469c309975e0e9c61947feebc9710b179774fee48f0c4f97b4d997",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count4/trajectories.npz": "030e9510a01f050bcb7539d339c54d17fa6393d085d132235a5501c0a7374119",
+    "data/dynamics_repeats_v1/d997102/world/fixed_gravity/count4/records.json": "a87cd9ae0abad82f5ea3665d86740ffa9d43897f4bc7f4bc38239c861da0a544",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/train/trajectories.npz": "d0953f45cc67e995eb03e0b029020b1a6624e5e49cef4ba0bd9701a975e3da67",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/train/records.json": "30392f2a03f02f286d412c559950c11c81236ad9110cabea527da3abcca26c47",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/val/trajectories.npz": "39e0642c67df2504b709468c3571651aa8486bafc4a6f8ccccaef45e6a82d16e",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/val/records.json": "d3c092f28d723e3b9ea0a0a16d89ddead22362b9a0c474d0e06e167e9a75d8f3",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/test/trajectories.npz": "dd3150417f57e7c744412f4f8f361c9ac86dc5d29c791ee510a3753417a20ae6",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/test/records.json": "c753352de1102b12d92aebf9668c04260c5606cb8c4e96e5ad307a8088861d4a",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/attribute_ood/trajectories.npz": "87a75dd8f68b96a4bdd11e6ac1f40918b958b7c3ee29d0470e8bd576805f6f17",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/attribute_ood/records.json": "a370c2ba0f1d74b7484e6d319eaa337177bab3f0d3625b3f590156d278feabdd",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/count3/trajectories.npz": "4ce54de0409d3a069ac9d4ad6cacfa6cc556803f4cbe7296fb07ee70175d1359",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/count3/records.json": "7d2a1379b959e305b4df9edeab4e48bbc96c3ae9c91689f0e13ba6006fb7f9f3",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/count4/trajectories.npz": "1bffd51088e1c9582c08418dc39126eae189e9d434bac422558e9b8d845f057f",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/count4/records.json": "d5abb0e288067ecffaef82717d13c4a84b522b7c5b3207ebdcf092648ee1458b",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/force_ood/trajectories.npz": "a21d19806bfa59ebcc4eec70f575e6022f024771c1077dd6041ef56d7b1fb93b",
+    "data/dynamics_repeats_v1/d997102/world/variable_force/force_ood/records.json": "db8e8d5b6872cc50df4821298ee5b12e248e1051edc902885ca527750703911b"
+  },
+  "source_sha256": {
+    "dynamics_observation_length_data.py": "3c751f3193ac67bfda44649f87dc9cd2a8a5918f21fd9db03938a1d53f7e351f",
+    "dynamics_observation_length_reference.py": "d88a1a4839f3d77265983e58d69abdf6e36de9077f4e25bfb3db22ee757db56c",
+    "dynamics_world.py": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+    "build_dynamics_data.py": "a83fec45bc67e3dee0d875346486815d0eec37d575817d50488779a74acf5d47",
+    "dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523",
+    "planning_C07_OBSERVATION_LENGTH_KO.md": "48e72a3cbed864bba1e84064a6c2d2d771feb17854b97fb9258df01d2bd5e9c6"
+  },
+  "reference_protocol": {
+    "length1": "Last-frame position/radius/presence; zero velocity and context.",
+    "length2": "Last observed displacement as velocity; zero context.",
+    "length4_8": "Shared decay and force fit over complete visible tracks, same centered least-squares equations as C04, clipped decay exp(-.05)..1, unbounded force.",
+    "zero_design": "Fallback decay=1, not identified drag.",
+    "contact": "No GT event filtering; past contact only for scoring."
+  },
+  "frozen_unix": 1790144584.009797,
+  "scope": "Reuse original independent initial draws and partitions, move impulse to transition 7 and rerun dynamics. Paired observation-length study, not three extra independent datasets. Every length shares t=7 state/action/future."
+}

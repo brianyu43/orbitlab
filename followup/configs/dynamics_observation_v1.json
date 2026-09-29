@@ -1,0 +1,27 @@
+{
+  "observation_times": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "predicted_time": 4,
+  "action_transition": 3,
+  "input_files": {
+    "observations.npz": [
+      "images"
+    ],
+    "commands.npz": [
+      "target_color",
+      "delta_velocity"
+    ]
+  },
+  "command": "At t=3, change the velocity of the object with the named color by delta_velocity. Colors are distinct within each scene. Color is observable; persistent IDs/count/states/context are not provided.",
+  "labels": "Past state t=0..3 and next state t=4, true net acceleration/drag, past contact events, next contact events, target ID: supervision/scoring and explicitly privileged controls only.",
+  "comparison": "Same four frames across methods. No mode name is a model input. All train groups may be pooled; held-out groups remain separate.",
+  "readout_scope": "This intake contains one initial observation window per original trajectory. No extra future training windows are implied.",
+  "source_manifest_sha256": "9992a43da33d666ba0acfb34bc8368fb92757f49995f4ab2d628273b428f2128",
+  "simulator_sha256": "9bf7df464230f2457d728c6aea21c165c4ea26e0e432d617373812af2a2a1d36",
+  "source_sha256": "f23918f24d46a0855e5df7aee20eaf41d441d3650a02bd9177774e0f8784522a",
+  "frozen_unix": 1790138709.138518
+}

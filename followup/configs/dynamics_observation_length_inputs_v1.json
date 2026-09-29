@@ -1,0 +1,30 @@
+{
+  "parent_sha256": "f38681fdde8ec1bfe959557678c8c49c39efcc475b4112b8b4f7a6999e29fd35",
+  "world_manifest_sha256": "ff0c3b4c93ca6a35dfa880156706421dcdba05f34572630ebc854bc1960eb5e6",
+  "world_verification_sha256": "4b66bb35d7c11163de8bf40234c4e61c43b214b379c133c37ceef621aee76e51",
+  "source_sha256": {
+    "prepare_observation_length_inputs.py": "9bb0b8f07f4c55254ac6b7fe8ce1d6dc75fc09d9962ac1bcc4bc4414e4811b92",
+    "dynamics_observation_length_reference.py": "d88a1a4839f3d77265983e58d69abdf6e36de9077f4e25bfb3db22ee757db56c",
+    "dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523",
+    "evaluate_dynamics_rgb_baseline.py": "86cc6abddd0a7821822a53f82cd54d545517d1df1dc24d253e049bd235957017"
+  },
+  "input_files": {
+    "observations.npz": [
+      "images"
+    ],
+    "commands.npz": [
+      "target_color",
+      "delta_velocity"
+    ]
+  },
+  "lengths": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "known_priors": "Known six colors, circle alpha, eight-substep free-flight equations. Measurements are independent per frame; a shorter reference slices visible measurements before fitting.",
+  "stratification": "Past-contact scoring uses the visible L-1 transitions, empty at L=1. All-episode paired length contrasts are primary. No GT event filter enters estimation.",
+  "privileged_control": "Exact-position analytic estimates saved only under reports, excluded from learned estimator inputs.",
+  "frozen_unix": 1790144994.384518
+}

@@ -1,0 +1,11 @@
+# Perception interpretation amendment
+
+The original frozen perception protocol incorrectly described zigzag poses separated by 180 degrees as raster-symmetric. Direct tests of `local_alpha(3, radius, 0)` versus pose 2 found unequal alpha rasters for every radius 5–8 (maximum difference 0.3019608). The binary crop preprocessing discarded the distinguishing differences for radii 6–8 in the centered diagnostic; radius 5 retained six binary pixel differences. Thus raw RGB pose information is not intrinsically absent.
+
+Original checkpoints and strict evaluation results remain intact. Their modulo-two training loss deliberately does not learn the four-way zigzag label. `perception_symmetry_audit.py` and its existing output fields containing “unobservable” must be read only as a post-hoc **geometric-equivalence** diagnostic; the word “unobservable” is withdrawn. Equivalent success is not strict pose success and does not prove an information-theoretic limit.
+
+A follow-up frozen before its new evaluation compares binary versus palette-projected intensity 33×33 crops, both trained with full four-way pose supervision, identical architecture, steps and paired seeds. Three initializations share the original training data. Fresh evaluation seeds 885201–885203 exclude previous source and target orbits. This tests whether retaining raster detail recovers pose, not a claim of learning general object semantics. The palette and distinct-color priors and known rendering/controller assumptions remain.
+
+## Initial global/crop comparison also changes loss units
+
+The original global reader normalizes absolute xy targets by 31.5; crop readers normalize xy offsets by 8. Both use a numeric coordinate loss coefficient of 4. Therefore the crop coordinate penalty per squared pixel error is (31.5/8)^2 = 15.50390625 times the global penalty. The global/crop contrast jointly changes alignment, spatial sampling and pixel-scale loss weight. It is a system-level comparison, not an isolated causal estimate of cropping. The fresh binary/alpha follow-up uses scale 8 in both arms and does not have this particular confound. Future architectural comparisons must match coordinate losses in physical pixel units or add a loss-matched global control.

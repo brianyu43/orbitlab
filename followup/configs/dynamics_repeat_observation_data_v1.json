@@ -1,0 +1,27 @@
+{
+  "data_seeds": [
+    997101,
+    997102
+  ],
+  "parent_sha256": "901bbed1d1119d5428452179fdf085013f39bf2fbe4ec890c96f3173422a8cde",
+  "data_manifest_sha256": "ebcae534e0f9519d051c12794445bab6d5de596fff5743662cecd43f4460901f",
+  "data_verification_sha256": "278277c25d94867d941780df5197f1b0107ba15731f905bbc11931e85a815255",
+  "source_sha256": {
+    "dynamics_repeat_observation_data.py": "7749b76df8462a100200fd41cdc9889511041ca9f5ea98f006c3cbfeb158bd86",
+    "dynamics_rgb_baseline.py": "17458f740f8cb80e8879e0960a5ea72b3c6bcf2c60439ef34dcb777263603523",
+    "evaluate_dynamics_rgb_baseline.py": "86cc6abddd0a7821822a53f82cd54d545517d1df1dc24d253e049bd235957017"
+  },
+  "input_archives": {
+    "observations.npz": [
+      "images"
+    ],
+    "commands.npz": [
+      "target_color",
+      "delta_velocity"
+    ]
+  },
+  "measurement_priors": "Unchanged known palette/circle renderer and free-flight eight-substep kinematics. No true state/count/context/event input. Not learned concepts or physics.",
+  "privileged_control": "True-position analytic control saved separately under reports; never included in learned estimator inputs.",
+  "normalization": "The original fixed physical scales/clipping, no fitted train/test normalizer.",
+  "frozen_unix": 1790141551.9192462
+}

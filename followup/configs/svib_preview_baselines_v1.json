@@ -1,0 +1,19 @@
+{
+  "data_config_sha256": "714b2d354c86efd613a2e898f9bef21eb1ae3faa81d61776585132ac8c0f72e2",
+  "data_verification_sha256": "7ad5b7f795ee9870fdcdab2929925acf490c4f0869be4b3ddce49071102df08d",
+  "sources": {
+    "svib_preview_baselines.py": "3988789cac41eeb2d36a874cbe1e4b0ba4a2f15c7e769fb1917d3c9f4b2667ee",
+    "svib_preview_metrics.py": "56c1c7642064643fec51420e7ba231726a3bfc30e5d2da3e0949f4d95e6992fb"
+  },
+  "baselines": [
+    "identity",
+    "train_target_mean"
+  ],
+  "source_normalization": "PIL uint8 RGB -> torch float32 /255, matching official ToTensor scale.",
+  "pixel_metric": "Float64 squared differences of the float32 normalized images/predictions. Pixel MSE and per-image squared-error sum, with exact factor 49152.",
+  "region_metrics": "Target-derived changed pixels and source/target nonblack union are scoring only. Empty changed region stays missing.",
+  "comparison": "Same-scene difference to identity; strict improvement threshold -1e-12 is numerical, not semantic success.",
+  "LPIPS": "Not executed in this preview experiment; no official full-metric replication claim.",
+  "evaluation": "All examples retained, no drop_last or max_images truncation. Same 100 external test examples reused across alpha.",
+  "frozen_unix": 1790147174.792636
+}

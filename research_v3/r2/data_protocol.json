@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "sources": {
+    "r2_world.py": "19bb1262d0e98458a5580caf519b4678642a036d166be9a8831320138f21447d",
+    "r2_data.py": "0ca1fda20a76c9287c22197b0a017ef865b8f3f90307fa7dfacc39ada7fd6640",
+    "r1_core.py": "72c73f9fae9130d58c5f2c607af5b4c29d7b238d4a1d2f58defbd567a691943f"
+  },
+  "development": 887101,
+  "confirmation": [
+    887201,
+    887202,
+    887203
+  ],
+  "train_clips": 1024,
+  "calibration_clips": 128,
+  "eval_counts": [
+    2,
+    3,
+    4,
+    6
+  ],
+  "clips_per_visual_condition": 16,
+  "visual_cross": "same/different RGB x palette/continuous RGB x black/textured background x 0/.25/.5/.75 current-target occlusion",
+  "window": "4 frames stored current,t-1,t-2,t-3; both static models see current reference window[0]; temporal model receives only past+current observations, processed oldest-to-current. No future frame.",
+  "occluder": "Moving opaque panel; targeted alpha-mass occlusion at current frame, progressively less in earlier frames, no panel at t-3. Records actual visible fractions for every object. Temporal disocclusion opportunity is deliberately favorable and not representative of all occlusions.",
+  "objects": "Four polygons, known geometrically symmetric shape3 rendered symmetrically, radii5..8, integer velocity -1..1 per axis, nonoverlapping >.05 object supports in all four frames. Panel may also affect other objects, retained in visibility labels.",
+  "labels": "Current per-object state and current amodal/visible masks are stored separately from RGB inputs. All learned readers will get only RGB at inference. Mask supervision is an explicit experiment axis; state supervision is disclosed for all supervised readers.",
+  "split": "Whole vector scene/velocity/color C4 family split; backgrounds, occlusion and frames stay with the family. Never count frames as independent scenes.",
+  "planned_model_comparison": "Learned center detector+crop, six-slot single-frame reader, six-slot recurrent reader; with/without current-mask auxiliary supervision. Known-palette legacy reader only a domain-limited diagnostic, not an upper bound on continuous/same-color scenes.",
+  "scoring_plan": "Object count, miss/merge, click-target selection, current-state and edit success by actual occlusion, non-target factors. Geometric pose equivalence for shape3. Probability-set coverage will be reported with calibration scope and width, not as a proof of recovered hidden state.",
+  "rendering_scope": "Known-renderer state-edit diagnostics first. Learned pixel decoder and background/occluder preservation require separate evaluation; no GT background will be quietly passed to a claimed image-only edit model."
+}

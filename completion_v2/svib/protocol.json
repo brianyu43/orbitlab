@@ -1,0 +1,36 @@
+{
+  "source_sha256": "b7e58729d81e205b57408841ce96ebfce08e9c4363a2ba0650cd0036be4d084b",
+  "model_source_sha256": "85ddc5606df5f98eadd2b0a86d06a14512d654f868905b995e15919804fc48d1",
+  "data_manifest_sha256": "5dcc04f6323a0de968318ff57567dad0e2aecb6881add108a81ce1d09dcf0308",
+  "task": "Official Hard dSprites Single Atomic, shape swap",
+  "train_n": 64000,
+  "test_n": 8000,
+  "resolution": 128,
+  "kinds": [
+    "plain",
+    "c4"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "epochs": 5,
+  "batch": 32,
+  "steps": 10000,
+  "optimizer": "Adam .0005, grad_clip 1",
+  "sampling": "Deterministic shuffled complete epochs, seed 883100+init; paired between arms",
+  "initialization": "883000+init paired between arms",
+  "checkpoint_selection": "Fixed last checkpoint, no test tuning",
+  "device": "mps",
+  "cpu_threads": 2,
+  "loss": "Full-image MSE",
+  "metrics": [
+    "full image MSE",
+    "changed pixel MSE",
+    "preserved pixel MSE",
+    "foreground MSE",
+    "identity MSE"
+  ],
+  "limits": "Full representative official data split, not full 12-task suite or published model reproduction. Fixed five epochs, not a claim of convergence. Same parameters/updates but different C4 compute."
+}

@@ -1,0 +1,25 @@
+{
+  "kinds": [
+    "flat",
+    "slot"
+  ],
+  "seed": 0,
+  "steps": 1000,
+  "batch": 16,
+  "lr": 0.0004,
+  "warmup_steps": 100,
+  "slots": 5,
+  "dim": 32,
+  "attention_iterations": 3,
+  "evaluation_splits": [
+    "val"
+  ],
+  "data_manifest_sha256": "6b9f1eef6ceb4b8d1ca86dbfe404b301cb806bad9ae89a361851cb41cb8b8b1a",
+  "purpose": "Development pilot to measure runtime, optimize feasibility and inspect collapse. No B04 completion from this pilot.",
+  "training_information": "Only RGB input as reconstruction target. Foreground loss weight derived from RGB intensity; no renderer masks or factors.",
+  "loss": "Original OrbitLab image-weighted MSE: 1+4*(max target channel > .05). Not the unweighted paper loss.",
+  "comparison": "Same encoder/decoder, slot capacity, training images and steps; routing differs. Flat model has more parameters; not matched time or parameter budget.",
+  "selection": "Fixed final pilot step, validation only. Test and count/occlusion splits reserved for locked full study.",
+  "reference": "https://arxiv.org/html/2006.15055v2",
+  "frozen_unix": 1790132813.156471
+}

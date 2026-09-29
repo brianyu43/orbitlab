@@ -1,0 +1,23 @@
+# C04: Estimate object state and environment from past videos
+
+2026-09-23. This is the execution plan written after completing a one-step comparison of C03's correct state status. Subsequently, the C04 learning/hold-up evaluation and prediction replay for the following 1–6 were completed. The execution results were recorded in the [Video Estimation Report](reports/dynamics_observation_eval_v1/RESULTS_EN.md). The long-term/behavior change connection for 7 remains as a follow-up task for C05/C06. Existing dynamic data, 63 state prediction models, and results are retained.
+
+## Comparison questions  Can the final state and identifiable parts of the environment be estimated using only four past RGB observations such as
+
+? The effect of C03, which provides the correct state at every instant, is evaluated separately to determine whether it leads to video input and continuous prediction. Since the sum of gravity and a constant wind acceleration appears in the observation, it is not claimed that both causes have been identified separately.
+
+## Detailed execution sequence
+
+1. **Input contract and leakage inspection.** Verify the four observation points and the time when the behavior applies to the existing data using code and playback. Future frames/states, the number of correct answers, ID, speed, and environment of the test are excluded from inference input. Since behavior is observable commands, we fix the stage at which it is provided.
+2. **Image reference line.** Using only RGB values, estimate the color, center, and size of the candidate circular object and create a correspondence between the four previous images. It does not provide the number of objects and IDs as the answer. Separate records are kept for merging and tracking failures due to overlapping/contact. It explicitly states that it is a reference line based on the circular and color rules of the renderer.
+3. **State reading learning.** Implement an image/short sequence reader that uses the train's properties as a supervisory signal. Separate empty spaces, position, speed, size, color, and count, and do not select based on future or hold conditions. Do not assume that the reading of existing shapes works directly in circular motion video as well.
+4. **Environmental inference and identification limits.** Compares inference tools that use only the same four observations. Checks whether the information of the sum and resistance coefficients is sufficient, and separates conditions that are difficult to distinguish due to collisions, short observations, or nearly constant speeds. Separates visual error and condition inference error by using a control group that only infers the environment from the correct location/speed.
+5. **Component-level comparison.** Connect the correct state+correct environment, estimated state+correct environment, correct state+estimated environment, and estimated state+estimated environment to the same fixed transition. Correct provision is used only for the explicit diagnosis comparison group.
+6. **Evaluation and playback.** Each individual factor of the state, target response, environmental error, and one-step output error are reported separately. Objects, properties, and external force conditions different from the learning process are also evaluated using the same input length and slot capacity. Scenes/trajectories are re-sampled in units of reconstruction, and predictions, normalization, data exposure, and model hashes are verified.
+7. **C05/C06 connection.** Connects the actual estimated final state and environment as a single initial input and predicts a long future by continuing it autonomously. Behavioral changes are compared using different commands from the same past. No new correct state, environment, or object response is provided during rollout.
+
+## Fixed points before implementation
+
+After verifying the actual data loader, set the model capacity, supervision signals, train/validation split, learning budget, number of initializations, and past observation input formats and evaluation metrics in the configuration file. Record the rules for the image-based baseline and the physical prior knowledge of the learning model separately. After selecting good test results, do not call this document a pre-planning document.
+
+The answer state data and models of the dynamics are used as input contract verification and development materials. The final independent data repetition and observation length/condition missing experiment maintain the range of C07. Even if this step fails, it does not reduce the requirements for other external tasks and literature comparison.

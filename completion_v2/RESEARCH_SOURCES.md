@@ -1,0 +1,13 @@
+# Primary-source intake for the next research plan
+
+Checked 2026-09-29. These are source notes, not claims that OrbitLab reproduces the methods. Paper abstracts and official project descriptions were read; full implementation-level comparisons remain explicitly distinguishable.
+
+- [SVIB official project](https://systematic-visual-imagination.github.io/): 12 tasks across dSprites, CLEVR and CLEVRTex; each named difficulty training split has 64,000 episodes and the common test split 8,000. This execution downloaded the official approximately 2 GB Hard dSprites archive and packed Single Atomic at original 128px. Other tasks in the archive are not represented by Single Atomic results.
+- [SVIB official implementation](https://github.com/systematic-visual-imagination/svib): upstream generation/training/evaluation implementation. Local copy was inspected. The new local small-model experiment is not a reproduction of every published baseline's training budget.
+- [Dreamweaver, arXiv:2501.14174v5](https://arxiv.org/abs/2501.14174v5): raw-video object/attribute representations using recurrent block-slot units and a multiple-future-frame objective. This establishes that combining objects, attributes and multi-frame prediction alone is not a new contribution. Relevant future comparison: remove OrbitLab's known-palette prior and test learned object routing under matched supervision.
+- [Aether, arXiv:2310.20679v2](https://arxiv.org/abs/2310.20679v2): separates equivariant local interactions from global latent field effects. Relevant comparison: observed versus inferred force information, not a claim that introducing an external force into an equivariant model is novel.
+- [Beyond Myopic World Models, arXiv:2608.07420](https://arxiv.org/abs/2608.07420): current primary-source candidate on long-horizon direct prediction. Its full methods and evidence must be checked before using it as a matched implemented comparator; no numerical performance claim is taken from the search result.
+
+The next-stage proposal should specify an input-information budget, known renderer/physics assumptions, geometric pose equivalence versus raster observability, and autonomous horizon failure criteria. It should not equate an improved synthetic diagnostic with general visual understanding or a complete learned world model.
+
+- [KAIST MLML research](https://mlml.kaist.ac.kr/research) and [official homepage](https://mlml.kaist.ac.kr/), checked 2026-09-29: structured representation, world-model learning/planning and compositional generalization are explicitly named; Dreamweaver is highlighted. This supports topical alignment only, not lab interest, novelty endorsement or acceptance odds.

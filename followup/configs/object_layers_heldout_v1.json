@@ -1,0 +1,51 @@
+{
+  "scope": "heldout",
+  "splits": [
+    "test",
+    "ood",
+    "count3",
+    "count4",
+    "occlusion"
+  ],
+  "models": {
+    "flat": {
+      "path": "runs/object_perception_curve_v1/flat_s0_step12000/model.pt",
+      "sha256": "cd9723828ec665ebbf837006c1e9296d7870bd95a2b4854e3721e5f8f6210b08"
+    },
+    "slot": {
+      "path": "runs/object_perception_curve_v1/slot_s0_step12000/model.pt",
+      "sha256": "cfec9aefe416792ffd4449673ec0876f85202eebcdad8484d8509fea4c589e14"
+    }
+  },
+  "batch": 16,
+  "epsilon_seed": 988000,
+  "brightness_threshold": 0.05,
+  "variants": {
+    "flat": [
+      "decoder_native",
+      "decoder_rgb_foreground",
+      "contribution_rgb_foreground"
+    ],
+    "slot": [
+      "decoder_native",
+      "decoder_rgb_foreground",
+      "contribution_rgb_foreground",
+      "attention_native",
+      "attention_rgb_foreground"
+    ]
+  },
+  "foreground": "Input RGB max-channel > .05, same as the existing training loss; no true segmentation.",
+  "attention": "Bilinear upsample final encoder-to-slot attention from 32px to 64px, align_corners=False.",
+  "contribution": "Hard assignment by max positive RGB channel times decoder alpha, with the same RGB foreground mask.",
+  "matching": "Native outputs match all five learned slots; foreground variants exclude the explicit background label from matching.",
+  "selection": "Fixed 12k checkpoint; report all variants and component baseline. No label-driven thresholds, checkpoint or variant selection.",
+  "data_manifest_sha256": "6b9f1eef6ceb4b8d1ca86dbfe404b301cb806bad9ae89a361851cb41cb8b8b1a",
+  "source_hashes": {
+    "object_perception.py": "92ee34e8ae833128bae39112dd7a05ec2b692adc2733b47eb5ba242fc7291459",
+    "object_perception_v2.py": "194d6b4ad3e05b49df8a249271c706ab5fe8914c4dda2f8b24ecb6011935c803",
+    "object_component_diagnostic.py": "f305d42b2346302bc2365a2b35d44a86fba5ea6bbdec80d07f56e779b2cdef49"
+  },
+  "runner_sha256": "52e55a49d800a9f1ca070d1aeec285431f812e6534e58dbaac5d4bf941e36778",
+  "frozen_unix": 1790135412.527034,
+  "claim_boundary": "Single initialization. Diagnoses image segmentation; no causal factor separation or end-to-end edit accuracy inferred."
+}

@@ -1,0 +1,45 @@
+{
+  "source_sha256": "04436a8b802b3291578f964a021eeb84df8c1dfb3669b172d4727841a63ed601",
+  "arms": [
+    "global",
+    "crop"
+  ],
+  "training_steps": 6000,
+  "batch": 64,
+  "optimizer": "AdamW lr .001 weight_decay .0001",
+  "initializations": [
+    0,
+    1,
+    2
+  ],
+  "confirmation_seeds": [
+    881201,
+    881202,
+    881203
+  ],
+  "splits": [
+    "test",
+    "ood",
+    "count3",
+    "count4",
+    "occlusion"
+  ],
+  "scenes_per_split": 128,
+  "train_data": "followup/data/object_world_v1/train; same 1024 scenes for both arms",
+  "input_prior": "Known six RGB palette directions; distinct colors in source scenes; foreground max>13; each color >=3 pixels. No GT masks, centers or count at inference.",
+  "crop": "33x33 mask centered on RGB-mask bounding-box midpoint, zero padded. Predicted center offset is learned.",
+  "global": "Same RGB-derived mask resized from 64x64 to 33x33; predicts absolute center. Same CNN and parameter count.",
+  "targets": "Supervised shape, pose, radius 5..8 and xy. Zigzag pose loss modulo 2 due 180-degree raster symmetry.",
+  "scoring": "Original strict factor checks retained, including pose; also report observationally-equivalent zigzag pose separately. No target-dependent inference.",
+  "controllers": [
+    "analytic",
+    "learned_object_seed_matched"
+  ],
+  "limits": "Shared original training dataset; three new evaluation seeds do not imply three independent training datasets. Palette-assisted, synthetic domain only.",
+  "dependencies": {
+    "object_world.py": "71c75a410f9db550a245d9d328cd34b4df1b1b8dfd20fb1ee8faabd518493aee",
+    "object_image_edit.py": "a81cebe9b7549c172399b3b6e622cfc73d3196c4d4fb4dff03fc083289d240ed",
+    "object_oracle_study.py": "6ff2a0742d9d51a9a201e2befe99e7dc85f6b79aa505d96357d29fe0e132d98e",
+    "object_edit_confirmation.py": "67f96ff885778abff872b92c6c768d8e827249bf3c77cfc0302c1d20c7a585a9"
+  }
+}

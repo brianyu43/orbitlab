@@ -1,0 +1,77 @@
+{
+  "source_model_sha256": "97af3241758f66478716212c3fcc80915030da4bbda3be8ad46b464cc42c2fde",
+  "source_ae_sha256": "923f967a96e79587a0099a20f3c9daf44f39d878906fb3c08c673982cf17060f",
+  "noise_seed": 770118,
+  "n_per_pair": 32,
+  "device": "cpu",
+  "results": {
+    "euler_64": {
+      "velocity_calls": 64,
+      "raw_network_calls_per_sample": 256,
+      "generation_and_decode_seconds": 0.3681904999539256,
+      "seen": {
+        "n": 640,
+        "shape": 0.578125,
+        "color": 0.984375,
+        "joint": 0.575,
+        "strict": 0.1828125,
+        "template_iou": 0.7322127109881897
+      },
+      "ood": {
+        "n": 128,
+        "shape": 0.515625,
+        "color": 0.9921875,
+        "joint": 0.5078125,
+        "strict": 0.1171875,
+        "template_iou": 0.7150068156971361
+      }
+    },
+    "heun_32": {
+      "velocity_calls": 64,
+      "raw_network_calls_per_sample": 256,
+      "generation_and_decode_seconds": 0.35509154200553894,
+      "seen": {
+        "n": 640,
+        "shape": 0.58125,
+        "color": 0.984375,
+        "joint": 0.578125,
+        "strict": 0.184375,
+        "template_iou": 0.7301442403991503
+      },
+      "ood": {
+        "n": 128,
+        "shape": 0.5,
+        "color": 0.984375,
+        "joint": 0.484375,
+        "strict": 0.1015625,
+        "template_iou": 0.710496389550678
+      }
+    },
+    "euler_256": {
+      "velocity_calls": 256,
+      "raw_network_calls_per_sample": 1024,
+      "generation_and_decode_seconds": 1.0301399580202997,
+      "seen": {
+        "n": 640,
+        "shape": 0.5828125,
+        "color": 0.984375,
+        "joint": 0.5796875,
+        "strict": 0.1828125,
+        "template_iou": 0.7303050230111102
+      },
+      "ood": {
+        "n": 128,
+        "shape": 0.5,
+        "color": 0.984375,
+        "joint": 0.484375,
+        "strict": 0.1015625,
+        "template_iou": 0.7104050214117245
+      }
+    }
+  },
+  "paired_final_latent_mse": {
+    "euler64_vs_heun32": 0.0001783196785254404,
+    "euler64_vs_euler256": 0.00011540373088791966
+  },
+  "interpretation_limit": "Single old development checkpoint and 32 noise samples per condition; not independent model confirmation."
+}
